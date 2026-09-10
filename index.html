@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Host Hub — Planner per Host</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blu: #1B4B66;
+    --blu-scuro: #123245;
+    --ocra: #D9A441;
+    --ocra-chiaro: #EFCE8A;
+    --calce: #F6F1E7;
+    --calce-scuro: #EDE4D2;
+    --oliva: #5B6E4E;
+    --inchiostro: #2B2320;
+    --rosso-conto: #A8432F;
+    --bordo: #DDD2B8;
+    --radius: 3px;
+  }
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; max-width:100%; overflow-x:hidden; }
+  body{
+    font-family: 'Work Sans', sans-serif;
+    background: var(--calce);
+    color: var(--inchiostro);
+    min-height: 100vh;
+  }
+  h1,h2,h3,.brand{
+    font-family: 'Fraunces', serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* --- Layout shell --- */
+  .app{ display:flex; min-height:100vh; }
+
+  .sidebar{
+    width: 220px;
+    flex-shrink:0;
+    background: var(--blu);
+    color: var(--calce);
+    padding: 28px 0;
+    display:flex;
+    flex-direction:column;
+  }
+  .brand{
+    font-size: 22px;
+    font-weight:600;
+    color: var(--ocra-chiaro);
+    padding: 0 24px 22px 24px;
+    border-bottom: 1px solid rgba(246,241,231,0.15);
+    margin-bottom: 18px;
+  }
+  .brand small{
+    display:block;
+    font-family:'Work Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(246,241,231,0.65);
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  nav.tabs{ display:flex; flex-direction:column; gap:2px; padding: 0 12px; }
+  nav.tabs button{
+    all: unset;
+    cursor:pointer;
+    padding: 11px 12px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    color: rgba(246,241,231,0.82);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  nav.tabs button:hover{ background: rgba(246,241,231,0.08); }
+  nav.tabs button.active{
+    background: var(--ocra);
+    color: var(--blu-scuro);
+    font-weight: 600;
+  }
+  .sidebar-foot{
+    margin-top:auto;
+    padding: 16px 24px 0 24px;
+    font-size: 12px;
+    color: rgba(246,241,231,0.5);
+    border-top: 1px solid rgba(246,241,231,0.12);
+  }
+  .link-reset{
+    all: unset;
+    cursor: pointer;
+    color: var(--ocra-chiaro);
+    font-size: 12px;
+    text-decoration: underline;
+    margin-top: 6px;
+    display: inline-block;
+  }
+
+  main{
+    flex:1;
+    min-width: 0;
+    padding: 36px 44px 60px 44px;
+    max-width: 1000px;
+  }
+
+  .table-wrap{ width:100%; overflow-x:auto; border-radius: var(--radius); }
+  .table-wrap table{ min-width: 560px; }
+  .page-title{
+    font-size: 30px;
+    font-weight:600;
+    margin: 0 0 4px 0;
+  }
+  .page-sub{
+    color:#7A6E5C;
+    margin: 0 0 30px 0;
+    font-size: 15px;
+  }
+
+  /* --- cards --- */
+  .grid-cards{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+  .card{
+    background: #fff;
+    border: 1px solid var(--bordo);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .card .label{
+    font-size: 12px;
+    text-transform: none;
+    color:#8A7E6B;
+    margin-bottom:8px;
+  }
+  .card .value{
+    font-family:'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--blu);
+  }
+  .card .value.warn{ color: var(--rosso-conto); }
+  .card .value.ok{ color: var(--oliva); }
+
+  section{ margin-bottom: 40px; }
+  section h2{
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 14px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--bordo);
+  }
+
+  /* --- lists / tables --- */
+  table{ width:100%; border-collapse: collapse; background:#fff; border:1px solid var(--bordo); border-radius: var(--radius); overflow:hidden;}
+  th,td{ text-align:left; padding: 11px 14px; font-size:14px; }
+  thead th{
+    background: var(--calce-scuro);
+    color: #6B5F4C;
+    font-weight: 600;
+    font-size: 12.5px;
+  }
+  tbody tr{ border-top: 1px solid var(--bordo); }
+  tbody tr:hover{ background: #FBF8F0; }
+
+  .badge{
+    display:inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight:600;
+  }
+  .badge.entrata{ background:#E7EDE1; color: var(--oliva); }
+  .badge.uscita{ background:#F3E3DD; color: var(--rosso-conto); }
+  .badge.da-fare{ background:#F3E3DD; color:var(--rosso-conto); }
+  .badge.fatto{ background:#E7EDE1; color: var(--oliva); }
+
+  /* --- forms --- */
+  .form-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    background:#fff;
+    border:1px solid var(--bordo);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 16px;
+    align-items:flex-end;
+  }
+  .field{ display:flex; flex-direction:column; gap:5px; }
+  .field label{ font-size:12.5px; color:#6B5F4C; font-weight:600; }
+  .field input, .field select{
+    font-family:'Work Sans', sans-serif;
+    padding: 8px 10px;
+    border: 1px solid var(--bordo);
+    border-radius: var(--radius);
+    font-size: 14px;
+    background: var(--calce);
+    min-width: 130px;
+  }
+  .field input:focus, .field select:focus{
+    outline: 2px solid var(--ocra);
+    outline-offset: 1px;
+  }
+  button.primary{
+    all:unset;
+    cursor:pointer;
+    background: var(--blu);
+    color: #fff;
+    padding: 9px 18px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  button.primary:hover{ background: var(--blu-scuro); }
+  button.ghost{
+    all:unset;
+    cursor:pointer;
+    color: var(--rosso-conto);
+    font-size: 13px;
+    font-weight:600;
+    padding: 4px 8px;
+  }
+  button.ghost:hover{ text-decoration: underline; }
+  button.chk{
+    all:unset;
+    cursor:pointer;
+    font-size: 13px;
+    font-weight:600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--bordo);
+  }
+
+  .empty{
+    padding: 24px;
+    text-align:center;
+    color: #8A7E6B;
+    font-size: 14px;
+    background: #fff;
+    border: 1px dashed var(--bordo);
+    border-radius: var(--radius);
+  }
+
+  .note{
+    font-size: 12.5px;
+    color: #8A7E6B;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 800px){
+    .app{ flex-direction: column; }
+    .sidebar{ display:none; }
+    main{ padding: 22px 16px; max-width: 100%; }
+    .page-title{ font-size: 24px; }
+    .grid-cards{ grid-template-columns: 1fr; }
+    table{ font-size: 13px; }
+    .form-row{ flex-direction: column; align-items: stretch; }
+    .field{ width: 100%; }
+    .field input, .field select{ width: 100%; min-width: 0; }
+    .form-row button.primary{ width: auto; align-self: center; margin-top: 6px; padding: 10px 26px; font-size: 14px; }
+
+    /* Tabelle come schede impilate, niente scroll orizzontale */
+    .table-wrap{ overflow-x: visible; }
+    .table-wrap table{ min-width: 0; }
+    table{ border: none; background: transparent; }
+    thead{ display:none; }
+    tbody{ display:block; }
+    tr{
+      display:block;
+      background:#fff;
+      border: 1px solid var(--bordo);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      padding: 4px 0;
+    }
+    tbody tr:hover{ background:#fff; }
+    td{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 12px;
+      text-align:right;
+      padding: 9px 14px;
+      border-top: 1px solid var(--calce-scuro);
+    }
+    td:first-child{ border-top: none; }
+    td::before{
+      content: attr(data-label);
+      font-weight:600;
+      font-size: 12.5px;
+      color: #6B5F4C;
+      text-align:left;
+      flex-shrink:0;
+    }
+  }
+
+  /* --- barra + tendina mobile --- */
+  .mobile-topbar{
+    display:none;
+    background: var(--blu);
+    color: var(--calce);
+    padding: 14px 18px;
+    align-items:center;
+    justify-content:space-between;
+    position: sticky;
+    top:0;
+    z-index: 50;
+  }
+  .mobile-brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color: var(--ocra-chiaro);
+    font-size: 18px;
+  }
+  .menu-wrap{ position:relative; }
+  .menu-btn{
+    all:unset; cursor:pointer;
+    background: var(--ocra);
+    color: var(--blu-scuro);
+    font-weight:700;
+    font-size: 13px;
+    padding: 9px 16px;
+    border-radius: 20px;
+  }
+  .mobile-dropdown{
+    display:none;
+    position:absolute;
+    top: calc(100% + 8px);
+    right:0;
+    background:#fff;
+    border:1px solid var(--bordo);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    min-width: 200px;
+    overflow:hidden;
+    z-index: 60;
+  }
+  .mobile-dropdown.open{ display:block; }
+  .mobile-dropdown button{
+    all:unset; cursor:pointer; display:block; width:100%;
+    padding: 12px 18px;
+    font-size: 14.5px;
+    color: var(--inchiostro);
+  }
+  .mobile-dropdown button:hover{ background: var(--calce-scuro); }
+  .mobile-dropdown button.active{ background: var(--ocra-chiaro); font-weight:600; }
+
+  @media (max-width: 800px){
+    .mobile-topbar{ display:flex; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Barra + tendina, visibile solo su mobile -->
+  <div class="mobile-topbar">
+    <div class="mobile-brand">Host Hub</div>
+    <div class="menu-wrap">
+      <button class="menu-btn" id="mobileMenuBtn">Menu ▾</button>
+      <div class="mobile-dropdown" id="mobileDropdown">
+        <button data-tab="panoramica" class="active">Panoramica</button>
+        <button data-tab="calendario">Prenotazioni</button>
+        <button data-tab="pulizie">Pulizie</button>
+        <button data-tab="finanze">Finanze</button>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="brand">Host Hub<small>Planner per host — prototipo</small></div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="panoramica" class="active">Panoramica</button>
+      <button data-tab="calendario">Prenotazioni</button>
+      <button data-tab="pulizie">Pulizie</button>
+      <button data-tab="finanze">Finanze</button>
+    </nav>
+    <div class="sidebar-foot">
+      I dati restano salvati su questo dispositivo/browser.<br>
+      <button class="link-reset" onclick="cancellaTutto()">Cancella tutti i dati</button>
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- PANORAMICA -->
+    <div class="page" id="page-panoramica">
+      <h1 class="page-title">Panoramica</h1>
+      <p class="page-sub">Come sta andando la tua casa questo mese.</p>
+      <div class="grid-cards">
+        <div class="card">
+          <div class="label">Prossimo arrivo</div>
+          <div class="value" id="kpi-prossimo">—</div>
+        </div>
+        <div class="card">
+          <div class="label">Pulizie da fare</div>
+          <div class="value warn" id="kpi-pulizie">0</div>
+        </div>
+        <div class="card">
+          <div class="label">Saldo del mese</div>
+          <div class="value ok" id="kpi-saldo">€0</div>
+        </div>
+      </div>
+
+      <section>
+        <h2>Prossime prenotazioni</h2>
+        <div id="panoramica-prenotazioni"></div>
+      </section>
+    </div>
+
+    <!-- CALENDARIO / PRENOTAZIONI -->
+    <div class="page" id="page-calendario" style="display:none;">
+      <h1 class="page-title">Prenotazioni</h1>
+      <p class="page-sub">Aggiungi un soggiorno: la pulizia di fine soggiorno viene creata da sola.</p>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Nome ospite</label>
+          <input type="text" id="f-ospite" placeholder="Es. Famiglia Rossi">
+        </div>
+        <div class="field">
+          <label>Check-in</label>
+          <input type="date" id="f-checkin">
+        </div>
+        <div class="field">
+          <label>Check-out</label>
+          <input type="date" id="f-checkout">
+        </div>
+        <div class="field">
+          <label>Piattaforma</label>
+          <select id="f-piattaforma">
+            <option>Airbnb</option>
+            <option>Booking</option>
+            <option>Diretta</option>
+            <option>Altro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Importo (€)</label>
+          <input type="number" id="f-importo" placeholder="0">
+        </div>
+        <button class="primary" onclick="aggiungiPrenotazione()">Aggiungi prenotazione</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th><th></th></tr>
+          </thead>
+          <tbody id="tabella-prenotazioni"></tbody>
+        </table>
+      </div>
+      <p class="note">Aggiungendo una prenotazione, il giorno del check-out compare automaticamente nella scheda Pulizie.</p>
+    </div>
+
+    <!-- PULIZIE -->
+    <div class="page" id="page-pulizie" style="display:none;">
+      <h1 class="page-title">Pulizie</h1>
+      <p class="page-sub">Un turnover per ogni check-out. Segna quando è fatto.</p>
+      <div id="lista-pulizie"></div>
+    </div>
+
+    <!-- FINANZE -->
+    <div class="page" id="page-finanze" style="display:none;">
+      <h1 class="page-title">Finanze</h1>
+      <p class="page-sub">Entrate dalle prenotazioni e uscite che aggiungi tu.</p>
+
+      <div class="grid-cards">
+        <div class="card">
+          <div class="label">Entrate</div>
+          <div class="value ok" id="fin-entrate">€0</div>
+        </div>
+        <div class="card">
+          <div class="label">Uscite</div>
+          <div class="value warn" id="fin-uscite">€0</div>
+        </div>
+        <div class="card">
+          <div class="label">Saldo</div>
+          <div class="value" id="fin-saldo">€0</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Descrizione uscita</label>
+          <input type="text" id="f-desc-uscita" placeholder="Es. Detersivi, manutenzione...">
+        </div>
+        <div class="field">
+          <label>Data</label>
+          <input type="date" id="f-data-uscita">
+        </div>
+        <div class="field">
+          <label>Importo (€)</label>
+          <input type="number" id="f-importo-uscita" placeholder="0">
+        </div>
+        <button class="primary" onclick="aggiungiUscita()">Aggiungi uscita</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Data</th><th>Descrizione</th><th>Tipo</th><th>Importo</th><th></th></tr></thead>
+          <tbody id="tabella-finanze"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ---- Stato in memoria (si azzera se ricarichi la pagina: è un prototipo) ----
+let prenotazioni = [
+  { id: 1, ospite: "Famiglia Bianchi", checkin: "2026-09-14", checkout: "2026-09-18", piattaforma: "Airbnb", importo: 420 },
+  { id: 2, ospite: "M. Conti", checkin: "2026-09-20", checkout: "2026-09-23", piattaforma: "Booking", importo: 310 }
+];
+let pulizie = []; // { id, prenotazioneId, ospite, data, fatto }
+let uscite = []; // { id, data, descrizione, importo }
+let puliziaCompletata = {}; // { [prenotazioneId]: true/false } — persiste indipendentemente dalla lista pulizie ricalcolata
+let nextId = 3;
+const CHIAVE_SALVATAGGIO = 'host-hub-dati-v1';
+
+function salva(){
+  try{
+    const dati = { prenotazioni, uscite, puliziaCompletata, nextId };
+    localStorage.setItem(CHIAVE_SALVATAGGIO, JSON.stringify(dati));
+  } catch(e){
+    console.warn('Impossibile salvare i dati in locale:', e);
+  }
+}
+
+function carica(){
+  try{
+    const grezzo = localStorage.getItem(CHIAVE_SALVATAGGIO);
+    if(!grezzo) return false;
+    const dati = JSON.parse(grezzo);
+    prenotazioni = dati.prenotazioni || [];
+    uscite = dati.uscite || [];
+    puliziaCompletata = dati.puliziaCompletata || {};
+    nextId = dati.nextId || (Math.max(0, ...prenotazioni.map(p=>p.id), ...uscite.map(u=>u.id)) + 1);
+    return true;
+  } catch(e){
+    console.warn('Impossibile leggere i dati salvati:', e);
+    return false;
+  }
+}
+
+function cancellaTutto(){
+  if(!confirm("Vuoi cancellare tutte le prenotazioni, pulizie e movimenti salvati? L'operazione non si può annullare.")) return;
+  prenotazioni = [];
+  uscite = [];
+  puliziaCompletata = {};
+  nextId = 1;
+  salva();
+  ricostruisciPulizie();
+  renderTutto();
+}
+
+function ricostruisciPulizie(){
+  // una pulizia per ogni checkout, leggendo lo stato "fatto" dalla mappa persistente
+  pulizie = prenotazioni.map(p => ({
+    id: p.id,
+    prenotazioneId: p.id,
+    ospite: p.ospite,
+    data: p.checkout,
+    fatto: !!puliziaCompletata[p.id]
+  })).sort((a,b) => a.data.localeCompare(b.data));
+}
+
+function formattaData(iso){
+  if(!iso) return "—";
+  const [a,m,g] = iso.split("-");
+  return `${g}/${m}/${a}`;
+}
+
+function aggiungiPrenotazione(){
+  const ospite = document.getElementById('f-ospite').value.trim();
+  const checkin = document.getElementById('f-checkin').value;
+  const checkout = document.getElementById('f-checkout').value;
+  const piattaforma = document.getElementById('f-piattaforma').value;
+  const importo = parseFloat(document.getElementById('f-importo').value) || 0;
+
+  if(!ospite || !checkin || !checkout){
+    alert("Inserisci almeno nome ospite, check-in e check-out.");
+    return;
+  }
+
+  prenotazioni.push({ id: nextId++, ospite, checkin, checkout, piattaforma, importo });
+  document.getElementById('f-ospite').value = "";
+  document.getElementById('f-checkin').value = "";
+  document.getElementById('f-checkout').value = "";
+  document.getElementById('f-importo').value = "";
+
+  ricostruisciPulizie();
+  salva();
+  renderTutto();
+}
+
+function eliminaPrenotazione(id){
+  prenotazioni = prenotazioni.filter(p => p.id !== id);
+  delete puliziaCompletata[id];
+  ricostruisciPulizie();
+  salva();
+  renderTutto();
+}
+
+function segnaPulizia(id){
+  puliziaCompletata[id] = !puliziaCompletata[id];
+  ricostruisciPulizie();
+  salva();
+  renderTutto();
+}
+
+function aggiungiUscita(){
+  const descrizione = document.getElementById('f-desc-uscita').value.trim();
+  const data = document.getElementById('f-data-uscita').value;
+  const importo = parseFloat(document.getElementById('f-importo-uscita').value) || 0;
+
+  if(!descrizione || !data || !importo){
+    alert("Compila descrizione, data e importo.");
+    return;
+  }
+
+  uscite.push({ id: nextId++, data, descrizione, importo });
+  document.getElementById('f-desc-uscita').value = "";
+  document.getElementById('f-data-uscita').value = "";
+  document.getElementById('f-importo-uscita').value = "";
+  salva();
+  renderTutto();
+}
+
+function eliminaUscita(id){
+  uscite = uscite.filter(u => u.id !== id);
+  salva();
+  renderTutto();
+}
+
+// ---- Rendering ----
+function renderPanoramica(){
+  const oggi = new Date().toISOString().slice(0,10);
+  const future = prenotazioni.filter(p => p.checkin >= oggi).sort((a,b)=>a.checkin.localeCompare(b.checkin));
+  document.getElementById('kpi-prossimo').textContent = future.length ? `${future[0].ospite} — ${formattaData(future[0].checkin)}` : "Nessuna in arrivo";
+
+  const daFare = pulizie.filter(p => !p.fatto).length;
+  document.getElementById('kpi-pulizie').textContent = daFare;
+
+  const entrate = prenotazioni.reduce((s,p)=>s+p.importo,0);
+  const totUscite = uscite.reduce((s,u)=>s+u.importo,0);
+  document.getElementById('kpi-saldo').textContent = `€${(entrate-totUscite).toLocaleString('it-IT')}`;
+
+  const cont = document.getElementById('panoramica-prenotazioni');
+  if(future.length === 0){
+    cont.innerHTML = `<div class="empty">Nessuna prenotazione in arrivo. Aggiungine una dalla scheda Prenotazioni.</div>`;
+  } else {
+    cont.innerHTML = `<div class="table-wrap"><table><thead><tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th></tr></thead><tbody>` +
+      future.slice(0,5).map(p => `<tr><td data-label="Ospite">${p.ospite}</td><td data-label="Check-in">${formattaData(p.checkin)}</td><td data-label="Check-out">${formattaData(p.checkout)}</td><td data-label="Piattaforma">${p.piattaforma}</td></tr>`).join('') +
+      `</tbody></table></div>`;
+  }
+}
+
+function renderPrenotazioni(){
+  const tbody = document.getElementById('tabella-prenotazioni');
+  if(prenotazioni.length === 0){
+    tbody.innerHTML = `<tr><td colspan="6"><div class="empty">Ancora nessuna prenotazione.</div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = prenotazioni
+    .sort((a,b)=>a.checkin.localeCompare(b.checkin))
+    .map(p => `
+      <tr>
+        <td data-label="Ospite">${p.ospite}</td>
+        <td data-label="Check-in">${formattaData(p.checkin)}</td>
+        <td data-label="Check-out">${formattaData(p.checkout)}</td>
+        <td data-label="Piattaforma">${p.piattaforma}</td>
+        <td data-label="Importo">€${p.importo.toLocaleString('it-IT')}</td>
+        <td data-label="">${'\u00A0'}<button class="ghost" onclick="eliminaPrenotazione(${p.id})">Rimuovi</button></td>
+      </tr>
+    `).join('');
+}
+
+function renderPulizie(){
+  const cont = document.getElementById('lista-pulizie');
+  if(pulizie.length === 0){
+    cont.innerHTML = `<div class="empty">Nessuna pulizia in programma. Aggiungi una prenotazione per generarne una.</div>`;
+    return;
+  }
+  cont.innerHTML = `<div class="table-wrap"><table><thead><tr><th>Data check-out</th><th>Ospite</th><th>Stato</th><th></th></tr></thead><tbody>` +
+    pulizie.map(p => `
+      <tr>
+        <td data-label="Data check-out">${formattaData(p.data)}</td>
+        <td data-label="Ospite">${p.ospite}</td>
+        <td data-label="Stato"><span class="badge ${p.fatto ? 'fatto' : 'da-fare'}">${p.fatto ? 'Fatta' : 'Da fare'}</span></td>
+        <td data-label="">${'\u00A0'}<button class="chk" onclick="segnaPulizia(${p.id})">${p.fatto ? 'Segna da rifare' : 'Segna come fatta'}</button></td>
+      </tr>
+    `).join('') + `</tbody></table></div>`;
+}
+
+function renderFinanze(){
+  const entrate = prenotazioni.reduce((s,p)=>s+p.importo,0);
+  const totUscite = uscite.reduce((s,u)=>s+u.importo,0);
+  document.getElementById('fin-entrate').textContent = `€${entrate.toLocaleString('it-IT')}`;
+  document.getElementById('fin-uscite').textContent = `€${totUscite.toLocaleString('it-IT')}`;
+  document.getElementById('fin-saldo').textContent = `€${(entrate-totUscite).toLocaleString('it-IT')}`;
+
+  const righe = [
+    ...prenotazioni.map(p => ({ data: p.checkin, descrizione: `Prenotazione — ${p.ospite}`, tipo: 'entrata', importo: p.importo, id: null })),
+    ...uscite.map(u => ({ data: u.data, descrizione: u.descrizione, tipo: 'uscita', importo: u.importo, id: u.id }))
+  ].sort((a,b) => b.data.localeCompare(a.data));
+
+  const tbody = document.getElementById('tabella-finanze');
+  if(righe.length === 0){
+    tbody.innerHTML = `<tr><td colspan="5"><div class="empty">Nessun movimento ancora.</div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = righe.map(r => `
+    <tr>
+      <td data-label="Data">${formattaData(r.data)}</td>
+      <td data-label="Descrizione">${r.descrizione}</td>
+      <td data-label="Tipo"><span class="badge ${r.tipo}">${r.tipo === 'entrata' ? 'Entrata' : 'Uscita'}</span></td>
+      <td data-label="Importo">${r.tipo === 'entrata' ? '+' : '−'}€${r.importo.toLocaleString('it-IT')}</td>
+      <td data-label="">${r.id ? `<button class="ghost" onclick="eliminaUscita(${r.id})">Rimuovi</button>` : ''}</td>
+    </tr>
+  `).join('');
+}
+
+function renderTutto(){
+  renderPanoramica();
+  renderPrenotazioni();
+  renderPulizie();
+  renderFinanze();
+}
+
+// ---- Navigazione ----
+function vaiAllaPagina(tab){
+  document.querySelectorAll('#tabs button, #mobileDropdown button').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tab);
+  });
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  document.getElementById('page-' + tab).style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+document.getElementById('tabs').addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-tab]');
+  if(!btn) return;
+  vaiAllaPagina(btn.dataset.tab);
+});
+
+// tendina mobile
+const mobileDropdown = document.getElementById('mobileDropdown');
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+mobileMenuBtn.addEventListener('click', () => mobileDropdown.classList.toggle('open'));
+mobileDropdown.addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-tab]');
+  if(!btn) return;
+  vaiAllaPagina(btn.dataset.tab);
+  mobileDropdown.classList.remove('open');
+});
+document.addEventListener('click', (e) => {
+  if(!e.target.closest('.menu-wrap')) mobileDropdown.classList.remove('open');
+});
+
+const datiEsistenti = carica();
+if(!datiEsistenti){
+  // prima apertura: mostriamo due esempi così l'host capisce subito come funziona
+  puliziaCompletata = {};
+}
+ricostruisciPulizie();
+renderTutto();
+</script>
+
+</body>
+</html>
