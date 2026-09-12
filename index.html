@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Host Hub — Planner per Host</title>
+
+<!-- Icona home screen + comportamento da app (PWA) -->
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkhvc3QgSHViIOKAlCBQbGFubmVyIHBlciBIb3N0IiwgInNob3J0X25hbWUiOiAiSG9zdCBIdWIiLCAic3RhcnRfdXJsIjogIi4iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgImJhY2tncm91bmRfY29sb3IiOiAiI0Y2RjFFNyIsICJ0aGVtZV9jb2xvciI6ICIjMUI0QjY2IiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTUFBQUFEQUNBWUFBQUJTM0d3SEFBQUZDVWxFUVZSNG5PM2NPM0ljVlFDRjRSNFZ1ekNwRndLcFYyQUNRbStEWWhzS0NXQUZTczFDbEtKMW1BRGtrbVhObzd2djdmczQzNWRTSmZkMG4zL3VTSlk1TFoxNTkrSFRsOWJYUUQxUEQvZW4xdGZ3VXRPTE1YYVdwVzBVaC8vQlJzOGxSOGR3MkI5bStLeHhWQWpWL3hERFo0L2FJVlQ3NG9aUFNiVkNLUDVGRForYVNvZHdWL0tMR1QrMWxkNVlrWm9NbnhaS25BYTdUd0RqcDVVUzI5c1ZnUEhUMnQ0TmJnN0ErT25GbmkxdUNzRDQ2YzNXVGE0T3dQanAxWlp0cmdyQStPbmQybzNlSElEeE00bzFXNzBwQU9Obk5MZHU5bW9BeHMrb2J0bHUwVitGZ05GY0RNQzdQNk83dHVHekFSZy9zN2kwWlIrQmlQWm1BTjc5bWMyNVRUc0JpUFpkQU43OW1kVmIyM1lDRU8yYkFMejdNN3ZYRzNjQ0VPMXJBTjc5U2ZGeTYwNEFvZ21BYUhmTDR1TVBlWjQzN3dRZ21nQ0lKZ0NpQ1lCb0o5OEFrOHdKUURRQkVFMEFSQk1BMFFSQU5BRVFUUUJFRXdEUkJFQTBBUkJOQUVRVEFORUVRRFFCRUUwQVJCTUEwUVRRMk9lUGo2MHZJWm9BR25vZXZ3amFFVUFqcjBjdmdqWUUwTUM1c1l2Z2VBSTQyTFdSaStCWUFqalFyZU1Xd1hFRWNKQzFveGJCTVFSd2dLMWpGa0Y5QXFoczc0aEZVSmNBS2lvMVhoSFVJNEJLU285V0JIVUlvSUphWXhWQmVRSW9yUFpJUlZDV0FBcjUvUEh4c0hHS29Cd0JGTkJpa0NJb1F3QTd0UnlpQ1BZVHdBNDlETENIYXhpWkFEYnFhWGc5WGN0b0JMQkJqNFByOFpwR0lJQ1ZlaDVhejlmV0t3R3NNTUxBUnJqR25namdSaU1OYTZScmJVMEFOeGh4VUNOZWN3c0N1R0xrSVkxODdVY1J3QVV6REdpRzExQ1RBTTZZYVRnenZaYlNCUENHR1FkejVDL3JqVVFBcjh3K2t0bGYzMW9DZUNGbEhDbXY4eFlDK0YvYUtOSmU3emtDV0hMSGtQcTZYNG9QSUgwRTZhOC9Pb0QwaC84cytUN0VCcEQ4ME4rU2VqOGlBMGg5Mk5jazNwZTRBQklmOGhwcDl5Y3FnTFNIdTFYU2ZZb0pJT21obHBCeXY2WVB3Ty9BYkpkdzM2WU9JT0VCMWpiN1BadzJnTmtmM0pGbXZwZFRCakR6QTJ0bDFuczZYUUN6UHFnZXpIaHZwd3BneGdmVW05bnU4VFFCelBaZ2VqYlR2WjRpZ0prZXlDaG11ZWZEQnpETGd4alJEUGQrNkFCbWVBQ2pHLzBaREJ2QTZEZCtKaU0vaXlFREdQbUd6MnJVWnpKY0FLUGU2QVFqUHBzZldsL0FXai8vOWY3c2Yzdjg4L2NEcnlUWCsxOSthMzBKeFF4M0FrQkpBaUNhQUlnbUFLSUpnR2dDSUpvQWlDWUFvZ21BYUFJZ21nQ0lKZ0NpQ1lCb0FpQ2FBSWdtQUtJTjl3OWlldmZqVDc5Vy9mci8vUDFIMWErZnhnbEFOQUVRVFFCRUV3RFJCRUEwQVJCTkFFUVRBTkVFUURRQkVFMEFSQk1BMFFSQU5BRVFUUUJFRXdEUkJFQTBBUkJOQUVRVEFORUVRRFFCRUUwQVJCTUEwUVJBTkFFUVRRQkVFd0RSQkVBMEFSQk5BRVFUQU5FRVFEUUJFTzN1NmVIKzFQb2lvSVduaC91VEU0Qm9wMlZabG5jZlBuMXBmU0Z3TkNjQThRUkF0THRsK2U4b2FIMGhjS1RuelRzQmlDWUFvbjBOd01jZ1VyemN1aE9BYU44RTRCUmdkcTgzN2dRZzJuY0JPQVdZMVZ2YmRnSVE3YzBBbkFMTTV0eW1uUUJFT3h1QVU0QlpYTnJ5eFJOQUJJenUyb1o5QkNMYTFRQ2NBb3pxbHUzZWRBS0lnTkhjdXRtYlB3S0pnRkdzMmVxcTd3RkVRTy9XYm5UMU44RWlvRmRidHJucHAwQWlvRGRiTjduNXg2QWlvQmQ3dHJqcjd3RkVRR3Q3TjdqN0w4SkVRQ3NsdGxkMHZQNFBjeHloNUp0dTBWK0ZjQnBRVyttTlZSdXMwNENTYXIyNVZuL0hGZ0o3MVA1VWNkaEhGaUd3eGxFZnB3Ly96QzRFTGpuNis4aW0zN1NLZ1dWcCs4T1Q3bjVxSTRxNTlmYVR3bjhCUDltaEZpUktBR2tBQUFBQVNVVk9SSzVDWUlJPSIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn0sIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBWUFBQUQwZU5UNkFBQVBwa2xFUVZSNG5PM2R2WmtjeHhXRzBRWWVaa0c1REVSeUdRRmt5R1FhZXBRR1RSbFNCSFNoUU9DS2NWREdhb0VCc1BQVFBWVmR0K283SndDcXA2YTc3anMxZzlXN2paSisvUG1YUDBaZkEwQUx2Ly8yNjd2UjE4RDN2Q21ER1BBQUx3VENHQmI5QklZOXdENmlvRDhMM0lHQkQ5Q1dJR2pQZ2paZzRBT2NTeEE4endJZVpPZ0QxQ0FHanJGb094ajZBTFdKZ2NkWnFEc01mWUE1aVlIYkxNNFZCai9BR29UQTJ5ektCVU1mWUcxaTRBc0xzUm44QUdtRVFIZ0FHUHdBMlpKRElQS0ZHL3dBWEVvTWdhZ1hiUEFEY0V0U0NFUzhVSU1mZ0QwU1F1RDk2QXZvemZBSFlLK0UyYkZzNFNTOGVRRDB0K3Bwd0hJdnl1QUhvSWZWUW1DcHJ3QU1md0I2V1czR0xGRXpxNzBwQU5TMndtbkE5Q2NBaGo4QVoxdGg5a3dkQUN1OEFRRE1hZllaTk9VUnh1eUxEc0JhWnZ4S1lMb1RBTU1mZ0dwbW5FMVRCY0NNQ3d4QWh0bG0xQlJIRnJNdEtnRFpadmhLb1B3SmdPRVB3R3htbUYybEEyQ0dCUVNBdDFTZllXVURvUHJDQWNBOWxXZFp5UUNvdkdBQXNFZlZtVll1QUtvdUZBQWNWWEcybFFxQWlnc0VBQzFVbTNGbEFxRGF3Z0JBYTVWbVhZa0FxTFFnQU5CVGxaazNQQUNxTEFRQW5LWEM3QnNhQUJVV0FBQkdHRDBEaHdYQTZCY09BS09ObklWREFzRHdCNEFYbzJiaTZRRmcrQVBBMTBiTXhsTUR3UEFIZ0xlZFBTTlBDd0RESHdCdU8zTlduaElBaGo4QVBPYXNtVG44N3dBQUFPZnJIZ0ErL1FQQVBtZk16cTRCWVBnRHdERzlaMmkzQUREOEFlQTVQV2VwM3dBQVFLQXVBZURUUHdDMDBXdW1OZzhBd3g4QTJ1b3hXNXNHZ09FUEFIMjBuckYrQXdBQWdab0ZnRS8vQU5CWHkxbmJKQUFNZndBNFI2dVo2eXNBQUFqMGRBRDQ5QThBNTJveGU1MEFBRUNncHdMQXAzOEFHT1BaR1h3NEFBeC9BQmpybVZuc0t3QUFDSFFvQUh6NkI0QWFqczVrSndBQUVHaDNBUGowRHdDMUhKbk5UZ0FBSU5DdUFQRHBId0JxMmp1am5RQUFRS0NIQThDbmZ3Q29iYytzZGdJQUFJRWVDZ0NmL2dGZ0RvL09iQ2NBQUJCSUFBQkFvTHNCNFBnZkFPYnl5T3gyQWdBQWdXNEdnRS8vQURDbmV6UGNDUUFBQkJJQUFCRG9hZ0E0L2dlQXVkMmE1VTRBQUNDUUFBQ0FRRzhHZ09OL0FGakR0Wm51QkFBQUFna0FBQWowWFFBNC9nZUF0YncxMjUwQUFFQWdBUUFBZ1FRQUFBVDZLZ0I4L3c4QWEvcDJ4anNCQUlCQUFnQUFBZ2tBQUFqME9RQjgvdzhBYTd1YzlVNEFBQ0NRQUFDQVFBSUFBQUlKQUFBSTlIN2IvQUFRQUZLOHpud25BQUFRU0FBQVFDQUJBQUNCQkFBQUJCSUFBQkJJQUFCQUlBRUFBSUhlK1JzQUFKREhDUUFBQkJJQUFCQklBQUJBSUFFQUFJRUVBQUFFRWdBQUVFZ0FBRUFnQVFBQWdRUUFBQVFTQUFBUVNBQUFRQ0FCQUFDQkJBQUFCQklBQUJCSUFBQkFJQUVBQUlFRUFBQUVFZ0FBRUVnQUFFQWdBUUFBZ1FRQUFBUVNBQUFRU0FBQVFDQUJBQUNCQkFBQUJCSUFBQkJJQUFCQUlBRUFBSUVFQUFBRUVnQUFFRWdBQUVBZ0FRQUFnUVFBQUFRU0FBQVFTQUFBUUNBQkFBQ0JCQUFBQkJJQUFCQklBQUJBSUFFQUFJRUVBQVQ3K09IVDZFc0FCaEVBRU9wMStJc0F5Q1FBSU5DM1ExOEVRQjRCQUdHdURYc1JBRmtFQUFTNU4rUkZBT1FRQUJEaTBlRXVBaUNEQUlBQWU0ZTZDSUQxQ1FCWTNORmhMZ0pnYlFJQUZ2YnNFQmNCc0M0QkFJdHFOYnhGQUt4SkFNQ0NXZzl0RVFEckVRQ3dtRjdEV2dUQVdnUUFMT0xqaDAvZGg3UUlnSFVJQUZqQW1ZTlpCTUFhQkFCTWJzUkFQdU8wQWVoTEFNREVSZy9oMGYvN3dIRUNBQ1pWWmZoV3VRNWdId0VBRTZvMmRLdGREM0NmQUlESlZCMjJWYThMZUpzQWdJbFVIN0xWcncvNFFnREFKR1lacnJOY0o2UVRBRENCMllicWJOY0xpUVFBRkRmck1KMzF1aUdGQUlEQ1poK2lzMTgvckV3QVFGR3JETTlWWGdlc1JnQkFRYXNOemRWZUQ2eEFBRUF4cXc3TFZWOFh6RW9BUUNHckQ4blZYeC9NUkFCQUVTbkRNZVYxUW5VQ0FBcElHNHBwcnhjcUVnQXdXT293VEgzZFVJVUFnSUhTaDJENjY0ZVJCQUFNWXZpOXNBNHdoZ0NBQVF5OXIxa1BPSjhBZ0JOOS9QREpzTHZDdXNDNUJBQ2N4SUM3enhyQmVRUUFuTUJnZTV5MWduTUlBT2pNUU52UG1rRi9BZ0E2TXNpT3MzYlFsd0NBVGd5dzUxbEQ2RWNBUUFjR1Z6dis1UVQwSVFDZ01jT3FEK3NLYlFrQWFNaVE2c3Y2UWpzQ0FCb3huTTVobmFFTkFRQU5HRXJuc3Q3d1BBRUFUektNeHJEdThCd0JBRTh3aE1heS9uQ2NBSUNEREo4YXZBOXdqQUNBQXd5ZFdyd2ZzSjhBZ0owTW01cThMN0NQQUlBZERKbmF2RC93T0FFQUR6SmM1dUI5Z3NjSUFIaUFvVElYN3hmY0p3RGdEc05rVHQ0M3VFMEF3QTJHeU55OGYzQ2RBSUFyREk4MWVCL2hiUUlBdnVIL2YzNDkzay80bmdDQUN3YkZ1cnkzOERVQkFQOW5RS3pQZXd4ZkNBRFlESVlrM210NElRQ0laeURrOFo2REFDQ2NRWkRMZTA4NkFVQXNBd0QzQU1rRUFKRnMvTHh5TDVCS0FCREhocyszM0JNa0VnQkVzZEZ6alh1RE5BS0FHRFo0N25HUGtFUUFFTUhHenFQOEtXaFNDQUNXWnpQbkNQY05xeE1BTE0wbXpqUGNQNnhNQUxBc216Y3R1STlZbFFCZ1NUWnRXbkkvc1NJQndISnMxdlRndm1JMUFvQ2wyS1RweWYzRlNnUUF5N0E1Y3diM0dhc1FBQ3pCcHN5WjNHK3NRQUF3UFpzeEk3anZtSjBBWUdvMllVWnkvekV6QWNDVS9MbFdxbkFmTWlzQndIUnN1RlRqbm1SR0FvQ3AyR2lweXIzSmJBUUEwN0RCVXAxN2xKa0lBS1pnWTJVVzdsVm1JUUFvejRiS2JOeXp6RUFBVUpxTmxGbTVkNmxPQUZDV0RaVFp1WWVwVEFCUWtvMlRWYmlYcVVvQVVJNE5rOVc0cDZsSUFGQ0tqWkpWdWJlcFJnQlFoZzJTMWJuSHFVUUFVSUtOa1JUdWRhb1FBQXhuUXlTTmU1NEtCQUJEMlFoSjVkNW5OQUhBTURaQTBua0dHRWtBTUlTTkQxNTgvUERKODhBUUFvRFQyZXpnZTU0THppWUFPSlZORHE3emZIQW1BY0JwYkc1d24rZUVzd2dBVG1GVGc4ZDVYamlEQUtBN214bnM1N21oTndGQU4zN2RETS94L05DVEFLQUxHeGUwNFZtaUZ3RkFjellzYU1zelJROENnS1pzVk5DSFo0dldCQUROMktDZ0w4OFlMUWtBbXJBeHdUazhhN1FpQUhpYURRbk81Wm1qQlFIQVUyeEVNSVpuajJjSkFBNnpBY0ZZbmtHZUlRQTR4TVlETlhnV09Vb0FzSnNOQjJyeFRIS0VBR0FYR3czVTVObGtMd0hBdzJ3d1VKdG5sRDBFQUEreHNjQWNQS3M4U2dCd2x3MEY1dUtaNVJFQ2dKdHNKREFuenk3M0NBQ3Vzb0hBM0R6RDNDSUFlSk9OQTliZ1dlWWFBY0IzYkJpd0ZzODBieEVBZk1WR0FXdnliUE10QWNCbk5naFkyOGNQbnp6bmZDWUEyTGJOOElja25uZTJUUURFODRrQU1ubnVFUURCYkFDUXpSNlFUUUNFOHVBRDIyWXZTQ1lBQW5uZ2dVdjJoRXdDSUl3SEhYaUx2U0dQQUFqaUFRZHVzVWRrRVFBaFBOakFJK3dWT1FSQUFBODBzSWM5STRNQVdKd0hHVGpDM3JFK0FiQXdEekR3REh2STJnVEFvank0UUF2MmtuVUpnQVY1WUlHVzdDbHIrbUgwQmREZVgvNzlVL1AvNXFkLy9hUDVmeFBvNDZlLy9uMzBKVEFCSndBQUVFZ0FBRUFnQVFBQWdRUUFBQVFTQUFBUVNBQUFRQ0FCQUFDQkJBQUFCQklBQUJCSUFBQkFJQUVBQUlFRUFBQUVFZ0FBRUVnQUFFQWdBUUFBZ1FRQUFBUVNBQUFRU0FBQVFDQUJBQUNCQkFBQUJCSUFBQkJJQUFCQUlBRUFBSUVFQUFBRUVnQUFFRWdBQUVBZ0FRQUFnUVFBQUFRU0FBQVFTQUFBUUNBQkFBQ0JCQUFBQkJJQUFCQklBQUJBSUFFQUFJRUVBQUFFRWdBQUVFZ0FBRUFnQVFBQWdRUUFBQVFTQUFBUVNBQUFRQ0FCQUFDQkJBQUFCQklBQUJCSUFBQkFvQjlHWHdDays5T2YvemI2RW9iNDczLytPZm9TSUpvVEFBQUlKQUFBSUpBQUFJQkFBZ0FBQWdrQUFBZ2tBQUFna0FBQWdFQUNBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFBSUFBQUlKQUFBSUpBQUFJSkFBQUlCQUFnQUFBZ2tBQUFna0FBQWdrQUFBZ0VBQ0FBQUNDUUFBQ0NRQUFDQ1FBQUNBUUFJQUFBSUpBQUFJSkFBQUlKQUFBSUJBQWdBQUFna0FBQWdrQUFBZ2tBQUFnRUFDQUFBQ0NRQUFDQ1FBQUNDUUFBQ0FRQUlBQUFJSkFBQUlKQUFBSUpBQUFJQkFBZ0FBQWdrQUFBZ2tBQUFna0FBQWdFQUNBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFBSUFBQUlKQUFBSUpBQUFJSkFBQUlCQUFnQUFBZ2tBQUFna0FBQWdrQUFBZ0VBQ0FBQUNDUUFBQ0NRQUFDQ1FBQUNBUUFJQUFBSUpBQUFJSkFBQUlKQUFBSUJBQWdBQUFna0FBQWdrQUFBZ2tBQUFnRUFDQUFBQ0NRQUFDQ1FBQUNDUUFBQ0FRQUlBQUFJSkFBQUlKQUFBSUpBQUFJQkFBZ0FBQWdrQUFBZ2tBQUFna0FBQWdFQUNBQUFDQ1FBQUNDUUFBQ0NRQUFDQVFBSUFBQUlKQUFBSTlQNzMzMzU5Ti9vaUFJRHovUDdicisrY0FBQkFJQUVBQUlFRUFBQUVFZ0FBRUVnQUFFQWdBUUFBZ1FRQUFBUjZ2MjB2L3g1dzlJVUFBUDI5em53bkFBQVE2UE1uL3g5Ly91V1BrUmNDQVBUbkJBQUFnZ2tBQUFqME9RRDhFQkFBMW5ZNTY1MEFBRUFnQVFBQWdRUUFBQVQ2S2dEOERnQUExdlR0akhjQ0FBQ0JCQUFBQkJJQUFCRG91d0R3T3dBQVdNdGJzOTBKQUFBRUVnQUFFT2pOQVBBMUFBQ3M0ZHBNZHdJQUFJRUVBQUFFdWhvQXZnWUFnTG5kbXVWT0FBQWdrQUFBZ0VBM0E4RFhBQUF3cDNzejNBa0FBQVM2R3dCT0FRQmdMby9NYmljQUFCQklBQUJBb0ljQ3dOY0FBRENIUjJlMkV3QUFDUFJ3QURnRkFJRGE5c3hxSndBQUVHaFhBRGdGQUlDYTlzNW9Kd0FBRUdoM0FEZ0ZBSUJhanN4bUp3QUFFT2hRQURnRkFJQWFqczVrSndBQUVPaHdBRGdGQUlDeG5wbkZUNTBBaUFBQUdPUFpHZXdyQUFBSTlIUUFPQVVBZ0hPMW1MMU9BQUFnVUpNQWNBb0FBT2RvTlhPYm5RQ0lBQURvcStXczlSVUFBQVJxR2dCT0FRQ2dqOVl6dHZrSmdBZ0FnTFo2ek5ZdVh3R0lBQUJvbzlkTTlSc0FBQWpVTFFDY0FnREFjM3JPMHE0bkFDSUFBSTdwUFVPN2Z3VWdBZ0JnbnpObXA5OEFBRUNnVXdMQUtRQUFQT2FzbVhuYUNZQUlBSURienB5VnAzNEZJQUlBNEcxbno4alRmd01nQWdEZ2F5Tm00NUFmQVlvQUFIZ3hhaVlPKzFjQUlnQ0FkQ05uNGRCL0JpZ0NBRWcxZWdZTy96c0FveGNBQU01V1lmWU5ENEJ0cTdFUUFIQ0dLak92UkFCc1c1MEZBWUJlS3MyNk1nR3diYlVXQmdCYXFqYmpTZ1hBdHRWYklBQjRWc1haVmk0QXRxM21RZ0hBRVZWbldza0EyTGE2Q3dZQWo2bzh5OG9Hd0xiVlhqZ0F1S1g2RENzZEFOdFdmd0VCNEZzenpLN3lGM2pweDU5LytXUDBOUURBTlRNTS9sZmxUd0F1emJTd0FHU1piVVpORlFEYk50OENBN0MrR1dmVGRCZDh5VmNDQUl3MDQrQi9OZDBKd0tXWkZ4NkF1YzArZzZZT2dHMmIvdzBBWUQ0cnpKN3BYOEFsWHdrQTBOTUtnLy9WOUNjQWwxWjZZd0NvWmJVWnM5U0x1ZVEwQUlBV1ZodjhyNVo4VVplRUFBQkhyRHI0WHkzMUZjQmJWbjhEQVdndllYWXMvd0l2T1EwQTRKYUV3ZjhxNW9WZUVnSUFYRW9hL0svaVh2QWxJUUNRTFhId3Y0cDk0WmVFQUVDVzVNSC9LbjRCTGdrQmdMVVovRjlZaUN2RUFNQWFEUDIzV1pRN2hBREFuQXorMnl6T0RtSUFvRFpELzNFVzZpQXhBRkNEb1grTVJXdEFEQUNjeTlCL25nWHNRQkFBdEdYZ3QyZEJUeUFJQVBZeDhQdXp3SU9JQW9BWGh2MFlGcjBvZ1FDc3dvQ3Y2WCsvMEQ0blI1RGJDQUFBQUFCSlJVNUVya0pnZ2c9PSIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn1dfQ==">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFCUlEQVR4nO3cO3IcVQCF4R4VuzCpFwKpV2ACQm+DYhsKCWAFSs1ClKJ1mADkkmXNo7vv7fs435dSJfd0n3/uSJY5LZ159+HTl9bXQD1PD/en1tfwUtOLMXaWpW0Uh//BRs8lR8dw2B9m+KxxVAjV/xDDZ4/aIVT74oZPSbVCKP5FDZ+aSodwV/KLGT+1ld5YkZoMnxZKnAa7TwDjp5US29sVgPHT2t4Nbg7A+OnFni1uCsD46c3WTa4OwPjp1ZZtrgrA+Ond2o3eHIDxM4o1W70pAONnNLdu9moAxs+obtlu0V+FgNFcDMC7P6O7tuGzARg/s7i0ZR+BiPZmAN79mc25TTsBiPZdAN79mdVb23YCEO2bALz7M7vXG3cCEO1rAN79SfFy604AogmAaHfL4uMPeZ437wQgmgCIJgCiCYBoJ98Ak8wJQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QTQ2OePj60vIZoAGnoevwjaEUAjr0cvgjYE0MC5sYvgeAI42LWRi+BYAjjQreMWwXEEcJC1oxbBMQRwgK1jFkF9Aqhs74hFUJcAKio1XhHUI4BKSo9WBHUIoIJaYxVBeQIorPZIRVCWAAr5/PHxsHGKoBwBFNBikCIoQwA7tRyiCPYTwA49DLCHaxiZADbqaXg9XctoBLBBj4Pr8ZpGIICVeh5az9fWKwGsMMLARrjGngjgRiMNa6RrbU0ANxhxUCNecwsCuGLkIY187UcRwAUzDGiG11CTAM6YaTgzvZbSBPCGGQdz5C/rjUQAr8w+ktlf31oCeCFlHCmv8xYC+F/aKNJe7zkCWHLHkPq6X4oPIH0E6a8/OoD0h/8s+T7EBpD80N+Sej8iA0h92Nck3pe4ABIf8hpp9ycqgLSHu1XSfYoJIOmhlpByv6YPwO/AbJdw36YOIOEB1jb7PZw2gNkf3JFmvpdTBjDzA2tl1ns6XQCzPqgezHhvpwpgxgfUm9nu8TQBzPZgejbTvZ4igJkeyChmuefDBzDLgxjRDPd+6ABmeACjG/0ZDBvA6Dd+JiM/iyEDGPmGz2rUZzJcAKPe6AQjPpsfWl/AWj//9f7sf3v88/cDryTX+19+a30JxQx3AkBJAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIN9w9ievfjT79W/fr//P1H1a+fxglANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEO3u6eH+1PoioIWnh/uTE4Bop2VZlncfPn1pfSFwNCcA8QRAtLtl+e8oaH0hcKTnzTsBiCYAon0NwMcgUrzcuhOAaN8E4BRgdq837gQg2ncBOAWY1VvbdgIQ7c0AnALM5tymnQBEOxuAU4BZXNryxRNABIzu2oZ9BCLa1QCcAozqlu3edAKIgNHcutmbPwKJgFGs2eqq7wFEQO/WbnT1N8EioFdbtrnpp0AioDdbN7n5x6AioBd7trjr7wFEQGt7N7j7L8JEQCsltld0vP4Pcxyh5Jtu0V+FcBpQW+mNVRus04CSar25Vn/HFgJ71P5UcdhHFiGwxlEfpw//zC4ELjn6+8im37SKgWVp+8OT7n5qI4q59faTwn8BP9mhFiRKAGkAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEoElEQVR4nO3cPXJbNxiGUVKTXTitF5K0XoFTpPQ2MtmGyhTJCtQ6C1EbrcMpEnlkmRTvD3ABvDin9QyFCzz6DIkcnU8dePfh05fWa2C/p4f7c+s1NFmAgOfQIvDDvqCI53ZU3FW/iIi5pGbcVV5YyCxRI+y70i8oZpaq0Uqx7xAhs0epaV1kQouZvUo1tOu7QsjUsGdab57QYqaWPW1tClrM1La1sdVBi5mjbGltVdBi5mhrm1sctJhpZU17i4IWM60tbfBm0GKmF0taLP7WN7T0ZtCmM7251eTVoMVMr95q05WDKBeDNp3p3bVGvwtazIziUquuHET5JmjTmdG8btaEJoqgifI1aNcNRvWyXROaKIImyt3p5LrB+J4bNqGJImiiCJooZ/dnkpjQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdAH+fzxsfUSpiDoAzzHLOr6BF3Z64hFXZegK7oWr6jrEXQlt6IVdR2CrmBprKIuT9CFrY1U1GUJuqCtcYq6HEEXsjdKUZch6AJKxSjq/QS9U+kIRb2PoHeoFZ+otxP0Bp8/PlaPTtTbCHqlI0MT9XqCXqFFYKJeR9ALtQxL1MsJeoEeguphDSMQ9A09hdTTWnol6Df0GFCPa+qJoK/oOZye19aaoC8YIZgR1tiCoF8ZKZSR1noUQb8wYiAjrrkmQf9v5DBGXntpgj5lBHHE50tGMH3QaRGkPc9aUwedevipz7XEtEGnH3r6810zZdCzHPYsz/nSdEHPdsizPe9UQc92uM9meu5pgp7pUC+Z5fmnCHqWw7xlhn2ID3qGQ1wjfT+ig04/vK2S9yU26ORDKyF1f+KC9pmG5RL3KSroxAOqLW3PYoJOO5gjJe1dRNBJB9JKyh4OH3TKQfQgYS+HDjrhAHoz+p4OG/ToG9+zkfd2yKBH3vBRjLrHwwU96kaPaMS9HiroETd4dKPt+TBBj7axSUba+yGCHmlDU41yBj+0XsASP//1/uq/Pf75+4Eryff+l99aL2GXISY0LCVoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKEN8HrpXP/70a5XX/efvP6q87gxMaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJcvf0cH9uvQgo4enh/nw+nU6ndx8+fWm9GNjr6eH+7MpBFEET5e50+m9Ut14I7PHcsAlNFEET5WvQrh2M6mW7JjRRBE2Ub4J27WA0r5s1oYnyXdCmNKO41OrFCS1qenetUVcOolwN2pSmV2+1+eaEFjW9udWkKwdRbgZtStOLJS0umtCiprWlDS6+coiaVta0t+oOLWqOtra51T8UipqjbGlt0285RE1tWxvb/Gs7UVPLnraKROnvelBCiSFZ5I0V05q9SjVUPETTmjVKD8Pib32b1ixVo5Wq8ZnWXFJz6B02TcU9t6P+525yPRD3HFpcP7u47wo8Qw8/P/0LR1eFVM7a1QYAAAAASUVORK5CYII=">
+<meta name="theme-color" content="#1B4B66">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Host Hub">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -124,6 +134,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-bottom: 34px;
+  }
+  #finanze-grid{
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
   .card{
     background: #fff;
@@ -255,17 +268,173 @@
     margin-top: 8px;
   }
 
+  /* --- Strumenti Dati --- */
+  .data-tools-row{
+    display:flex;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .btn-outline{
+    all:unset;
+    box-sizing: border-box;
+    cursor:pointer;
+    background:#fff;
+    border: 1px solid var(--bordo);
+    color: var(--inchiostro);
+    font-size: 14px;
+    font-weight:600;
+    padding: 10px 20px;
+    border-radius: 24px;
+    text-align:center;
+  }
+  .btn-outline:hover{ background: var(--calce-scuro); }
+  .btn-danger{
+    all:unset;
+    box-sizing: border-box;
+    cursor:pointer;
+    display:inline-block;
+    background: var(--rosso-conto);
+    color:#fff;
+    font-size: 14px;
+    font-weight:700;
+    padding: 11px 26px;
+    border-radius: 24px;
+    text-align:center;
+    margin-bottom: 20px;
+  }
+  .btn-danger:hover{ background: #8C3627; }
+  .info-note{
+    border: 1px dashed var(--bordo);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    font-size: 13.5px;
+    line-height:1.6;
+    color: #6B5F4C;
+    background: rgba(255,255,255,0.5);
+  }
+  .info-note ol{ margin: 6px 0 0 0; padding-left: 20px; }
+  .info-note ol li{ margin-bottom: 6px; }
+  .info-note code{
+    background: var(--calce-scuro);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 12.5px;
+    word-break: break-all;
+  }
+  .link-azzurro{
+    color: var(--blu);
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* --- Messaggi Ospiti --- */
+  .template-grid{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .template-btn{
+    all:unset;
+    box-sizing: border-box;
+    cursor:pointer;
+    background:#fff;
+    border: 1px solid var(--bordo);
+    color: var(--inchiostro);
+    font-size: 13.5px;
+    font-weight:600;
+    padding: 9px 16px;
+    border-radius: 20px;
+  }
+  .template-btn:hover{ background: var(--calce-scuro); }
+  .template-btn.active{
+    background: var(--ocra);
+    border-color: var(--ocra);
+    color: var(--blu-scuro);
+  }
+  #msg-testo{
+    width: 100%;
+    min-height: 260px;
+    font-family:'Work Sans', sans-serif;
+    font-size: 14.5px;
+    line-height:1.6;
+    color: var(--inchiostro);
+    border: 1px solid var(--bordo);
+    border-radius: var(--radius);
+    padding: 14px;
+    background: var(--calce);
+    resize: vertical;
+  }
+  #msg-testo:focus{
+    outline: 2px solid var(--ocra);
+    outline-offset: 1px;
+  }
+  button.primary.copiato{
+    background: var(--oliva);
+  }
+
+  .settings-panel{
+    background:#fff;
+    border: 1px solid var(--bordo);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 22px;
+  }
+  .settings-panel summary{
+    font-family:'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--blu);
+    cursor: pointer;
+    list-style: none;
+  }
+  .settings-panel summary::-webkit-details-marker{ display:none; }
+  .settings-panel summary::before{
+    content: "▸";
+    display:inline-block;
+    margin-right: 8px;
+    color: var(--ocra);
+    transition: transform 0.15s ease;
+  }
+  .settings-panel[open] summary::before{
+    transform: rotate(90deg);
+  }
+  .settings-panel[open] summary{
+    margin-bottom: 4px;
+  }
+
+  .lang-msg-row{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .lang-msg-btn{
+    padding: 8px 18px;
+  }
+  .lang-msg-mobile{ display:none; margin-bottom:14px; }
+
   @media (max-width: 800px){
     .app{ flex-direction: column; }
     .sidebar{ display:none; }
     main{ padding: 22px 16px; max-width: 100%; }
     .page-title{ font-size: 24px; }
     .grid-cards{ grid-template-columns: 1fr; }
+    #finanze-grid{ grid-template-columns: 1fr; }
     table{ font-size: 13px; }
     .form-row{ flex-direction: column; align-items: stretch; }
     .field{ width: 100%; }
     .field input, .field select{ width: 100%; min-width: 0; }
     .form-row button.primary{ width: auto; align-self: center; margin-top: 6px; padding: 10px 26px; font-size: 14px; }
+    .data-tools-row{ flex-direction: column; }
+    .btn-outline{ width: 100%; }
+    .btn-danger{ display:block; width: 100%; }
+    .template-btn{ width: 100%; text-align:center; }
+    .template-grid{ flex-direction: column; }
+    .lang-msg-row{ display:none; }
+    .lang-msg-mobile{ display:block !important; }
+    .nota-calendario-desktop{ display:none; }
 
     /* Tabelle come schede impilate, niente scroll orizzontale */
     .table-wrap{ overflow-x: visible; }
@@ -356,7 +525,258 @@
   @media (max-width: 800px){
     .mobile-topbar{ display:flex; }
   }
+
+  /* --- Sezioni nella pagina Dati --- */
+  .dati-sezione-titolo{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 34px 0 4px 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--bordo);
+  }
+
+  .scadenza-riga{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--calce-scuro);
+    font-size: 14px;
+  }
+  .scadenza-riga:last-child{ border-bottom:none; }
+  .scadenza-data{
+    font-weight:700;
+    color: var(--blu);
+    min-width: 90px;
+  }
+  .scadenza-desc{ flex:1; }
+
+  /* --- Tasse: modulo Imposta di Soggiorno --- */
+  .info-nota-icona{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .info-nota-icona-simbolo{ font-size:18px; line-height:1.5; flex-shrink:0; }
+
+  .regole-comune-icona{ margin-right:4px; }
+  .regole-comune-riepilogo{
+    display:block;
+    font-family:'Work Sans', sans-serif;
+    font-size:13px;
+    font-weight:400;
+    color:#7A6E5C;
+    margin-top:4px;
+  }
+
+  .tasse-sottotitolo{
+    font-size:17px;
+    font-weight:600;
+    margin:26px 0 14px 0;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .tasse-sottotitolo-nota{
+    font-size:12.5px;
+    font-weight:400;
+    color:#8A7E6B;
+  }
+
+  .tasse-dettagli-blocco{ display:flex; flex-direction:column; gap:20px; }
+  .tasse-campo-stepper label{ font-size:13px; font-weight:600; color:#6B5F4C; display:block; margin-bottom:4px; }
+  .tasse-sottoetichetta{ font-size:12.5px; color:#8A7E6B; margin:0 0 8px 0; }
+  .stepper-riga{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .stepper-icona{ font-size:18px; flex-shrink:0; }
+  .stepper-riga input[type="number"]{
+    flex:1;
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    padding:9px 12px;
+    border:1px solid var(--bordo);
+    border-radius:var(--radius);
+    background:var(--calce);
+    text-align:left;
+  }
+  .stepper-btn{
+    all:unset;
+    box-sizing:border-box;
+    cursor:pointer;
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    font-weight:700;
+    background:var(--calce-scuro);
+    border:1px solid var(--bordo);
+    border-radius:var(--radius);
+    color:var(--inchiostro);
+    flex-shrink:0;
+  }
+  .stepper-btn:hover{ background:var(--ocra-chiaro); }
+  .tasse-nota-dinamica{
+    font-size:12.5px;
+    color:var(--rosso-conto);
+    margin:6px 0 0 0;
+  }
+
+  .tasse-badge{
+    display:inline-block;
+    padding:3px 11px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+  }
+  .tasse-badge-verde{ background:#E7EDE1; color:var(--oliva); }
+  .tasse-badge-grigio{ background:var(--calce-scuro); color:#6B5F4C; }
+  .tasse-badge-ocra{ background:var(--ocra); color:var(--blu-scuro); }
+
+  .tassa-risultato-card{
+    background:var(--blu-scuro);
+    color:var(--calce);
+    border-radius:var(--radius);
+    padding:22px 24px;
+    margin-top:24px;
+  }
+  .tassa-risultato-testata{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .tassa-risultato-etichetta{
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    color:var(--ocra-chiaro);
+    text-transform:uppercase;
+  }
+  .tassa-risultato-cifra{
+    font-family:'Fraunces', serif;
+    font-size:38px;
+    font-weight:700;
+    margin-bottom:18px;
+  }
+  .tassa-risultato-sottocifra{
+    font-family:'Work Sans', sans-serif;
+    font-size:14px;
+    font-weight:400;
+    color:rgba(246,241,231,0.65);
+  }
+  .tassa-risultato-dettaglio{
+    background:rgba(246,241,231,0.06);
+    border:1px solid rgba(246,241,231,0.15);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    margin-bottom:18px;
+  }
+  .tassa-riga{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:6px 0;
+    font-size:13.5px;
+    border-bottom:1px solid rgba(246,241,231,0.1);
+  }
+  .tassa-riga:last-of-type{ border-bottom:none; }
+  .tassa-riga-header{
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:rgba(246,241,231,0.55);
+    border-bottom:1px solid rgba(246,241,231,0.15);
+  }
+  .tassa-riga span:last-child{ font-weight:600; }
+  .tassa-riga-formula{ font-size:12.5px; color:rgba(246,241,231,0.7); }
+  .tassa-riga-formula span:last-child{ font-weight:400; font-family:monospace; }
+  .tasse-nota-esenti-footer{
+    font-size:11.5px;
+    font-style:italic;
+    color:rgba(246,241,231,0.55);
+    margin:8px 0 0 0;
+  }
+  .tassa-risultato-azioni{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .tassa-btn-copia, .tassa-btn-stampa{
+    all:unset;
+    box-sizing:border-box;
+    cursor:pointer;
+    flex:1;
+    min-width:180px;
+    text-align:center;
+    padding:13px 18px;
+    border-radius:24px;
+    font-size:14px;
+    font-weight:700;
+  }
+  .tassa-btn-copia{ background:var(--ocra); color:var(--blu-scuro); }
+  .tassa-btn-copia:hover{ background:var(--ocra-chiaro); }
+  .tassa-btn-copia.copiato{ background:var(--oliva); color:#fff; }
+  .tassa-btn-stampa{ background:rgba(246,241,231,0.12); color:var(--calce); border:1px solid rgba(246,241,231,0.3); }
+  .tassa-btn-stampa:hover{ background:rgba(246,241,231,0.2); }
+
+  @media (max-width:600px){
+    .tassa-risultato-azioni{ flex-direction:column; }
+    .tassa-btn-copia, .tassa-btn-stampa{ min-width:0; }
+  }
+
+  /* --- Stampa report --- */
+  .solo-stampa{ display:none; }
+  @media print{
+    body *{ visibility: hidden; }
+    #report-stampa, #report-stampa *{ visibility: visible; }
+    #report-stampa{
+      display:block !important;
+      position:absolute;
+      top:0; left:0;
+      width:100%;
+      padding: 20px;
+      font-family:'Work Sans', sans-serif;
+      color: #000;
+    }
+    #report-stampa h1{
+      font-family:'Fraunces', serif;
+      font-size: 22px;
+      margin: 0 0 4px 0;
+    }
+    #report-stampa h2{
+      font-family:'Fraunces', serif;
+      font-size: 16px;
+      margin: 24px 0 8px 0;
+      border-bottom: 1px solid #999;
+      padding-bottom: 4px;
+    }
+    #report-stampa p{ margin: 0 0 4px 0; font-size: 13px; }
+    .tabella-stampa{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+    }
+    .tabella-stampa th, .tabella-stampa td{
+      border: 1px solid #999;
+      padding: 6px 8px;
+      font-size: 12px;
+      text-align: left;
+    }
+    .tabella-stampa th{ background: #eee; }
+  }
 </style>
+<!-- Firebase (sincronizzazione cloud opzionale) -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -370,7 +790,10 @@
         <button data-tab="panoramica" class="active">Panoramica</button>
         <button data-tab="calendario">Prenotazioni</button>
         <button data-tab="pulizie">Pulizie</button>
+        <button data-tab="messaggi">Messaggi</button>
         <button data-tab="finanze">Finanze</button>
+        <button data-tab="tasse">Tasse</button>
+        <button data-tab="dati">Dati</button>
       </div>
     </div>
   </div>
@@ -381,11 +804,13 @@
       <button data-tab="panoramica" class="active">Panoramica</button>
       <button data-tab="calendario">Prenotazioni</button>
       <button data-tab="pulizie">Pulizie</button>
+      <button data-tab="messaggi">Messaggi</button>
       <button data-tab="finanze">Finanze</button>
+      <button data-tab="tasse">Tasse</button>
+      <button data-tab="dati">Dati</button>
     </nav>
     <div class="sidebar-foot">
-      I dati restano salvati su questo dispositivo/browser.<br>
-      <button class="link-reset" onclick="cancellaTutto()">Cancella tutti i dati</button>
+      I dati restano salvati su questo dispositivo/browser.
     </div>
   </aside>
 
@@ -394,7 +819,13 @@
     <!-- PANORAMICA -->
     <div class="page" id="page-panoramica">
       <h1 class="page-title">Panoramica</h1>
-      <p class="page-sub">Come sta andando la tua casa questo mese.</p>
+      <p class="page-sub" id="panoramica-sub">Come sta andando la tua casa questo mese.</p>
+
+      <div class="field" style="max-width:280px; margin-bottom:20px;">
+        <label>Codice Identificativo Nazionale (CIN)</label>
+        <input type="text" id="host-cin" placeholder="Es. IT012345A1B2C3D4E5" onchange="salvaProfiloHost()">
+      </div>
+
       <div class="grid-cards">
         <div class="card">
           <div class="label">Prossimo arrivo</div>
@@ -412,6 +843,7 @@
 
       <section>
         <h2>Prossime prenotazioni</h2>
+        <p class="note">Solo visualizzazione. Per modificare, <a href="#" class="link-azzurro" onclick="vaiAllaPagina('calendario'); return false;">vai qui</a>.</p>
         <div id="panoramica-prenotazioni"></div>
       </section>
     </div>
@@ -419,7 +851,9 @@
     <!-- CALENDARIO / PRENOTAZIONI -->
     <div class="page" id="page-calendario" style="display:none;">
       <h1 class="page-title">Prenotazioni</h1>
-      <p class="page-sub">Aggiungi un soggiorno: la pulizia di fine soggiorno viene creata da sola.</p>
+      <p class="page-sub">Aggiungendo una prenotazione, il giorno del check-out compare automaticamente nella scheda <a href="#" class="link-azzurro" onclick="vaiAllaPagina('pulizie'); return false;">Pulizie</a>.</p>
+
+      <p class="note nota-calendario-desktop" style="margin-bottom:10px;">Se il calendario non si apre toccando la data, tocca l'iconcina 📅 a destra del campo.</p>
 
       <div class="form-row">
         <div class="field">
@@ -447,18 +881,25 @@
           <label>Importo (€)</label>
           <input type="number" id="f-importo" placeholder="0">
         </div>
-        <button class="primary" onclick="aggiungiPrenotazione()">Aggiungi prenotazione</button>
+        <div class="field">
+          <label>Ospiti totali</label>
+          <input type="number" id="f-ospiti" placeholder="2" min="0">
+        </div>
+        <button class="primary" id="btn-aggiungi-prenotazione" onclick="aggiungiPrenotazione()">Aggiungi prenotazione</button>
+        <button class="btn-outline" id="btn-annulla-modifica" onclick="annullaModificaPrenotazione()" style="display:none;">Annulla modifica</button>
       </div>
+
+      <h2 class="dati-sezione-titolo">Tutte le prenotazioni</h2>
+      <p class="page-sub">Usa "Modifica" per completare o correggere una prenotazione già inserita (utile soprattutto per quelle importate da iCal).</p>
 
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th><th></th></tr>
+            <tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th><th>Ospiti</th><th></th></tr>
           </thead>
           <tbody id="tabella-prenotazioni"></tbody>
         </table>
       </div>
-      <p class="note">Aggiungendo una prenotazione, il giorno del check-out compare automaticamente nella scheda Pulizie.</p>
     </div>
 
     <!-- PULIZIE -->
@@ -468,25 +909,142 @@
       <div id="lista-pulizie"></div>
     </div>
 
+    <!-- MESSAGGI -->
+    <div class="page" id="page-messaggi" style="display:none;">
+      <h1 class="page-title">Messaggi Ospiti</h1>
+      <p class="page-sub">Template pronti da personalizzare e copiare in chat o su WhatsApp.</p>
+
+      <details class="settings-panel" id="pannello-impostazioni-casa" open>
+        <summary>Impostazioni della Casa e Nome Host</summary>
+        <p class="page-sub" style="margin: 6px 0 16px 0;">Inserisci questi dati una sola volta: verranno usati per completare automaticamente tutti i messaggi per i tuoi ospiti.</p>
+
+        <div class="form-row">
+          <div class="field">
+            <label>Nome Host</label>
+            <input type="text" id="host-nome" placeholder="Es. Marco" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>Nome Alloggio / Struttura</label>
+            <input type="text" id="host-struttura" placeholder="Es. Appartamento Vista Mare" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>Indirizzo completo</label>
+            <input type="text" id="host-indirizzo" placeholder="Es. Via Roma 12, Piano 2" onchange="salvaProfiloHost()">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Orario Check-in standard</label>
+            <input type="text" id="host-orario-checkin" placeholder="Es. dalle 15:00 alle 20:00" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>Orario Check-out standard</label>
+            <input type="text" id="host-orario-checkout" placeholder="Es. entro le 10:00" onchange="salvaProfiloHost()">
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <button class="btn-outline" onclick="salvaProfiloHost()">Salva impostazioni</button>
+          <span class="note" id="host-stato" style="margin-top:0;"></span>
+        </div>
+      </details>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Seleziona Ospite</label>
+          <select id="msg-prenotazione" onchange="selezionaPrenotazioneMessaggio()">
+            <option value="manuale">Clicca e scegli</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Nome Ospite</label>
+          <input type="text" id="msg-nome" placeholder="Es. Mario Rossi" oninput="generaTestoMessaggio()">
+        </div>
+        <div class="field">
+          <label>Check-in</label>
+          <input type="date" id="msg-checkin" oninput="generaTestoMessaggio()">
+        </div>
+        <div class="field">
+          <label>Check-out</label>
+          <input type="date" id="msg-checkout" oninput="generaTestoMessaggio()">
+        </div>
+      </div>
+
+      <div class="lang-msg-row" id="lang-msg-row">
+        <button class="template-btn lang-msg-btn active" data-lang="it" onclick="selezionaLinguaMessaggio('it')">🇮🇹 Italiano</button>
+        <button class="template-btn lang-msg-btn" data-lang="en" onclick="selezionaLinguaMessaggio('en')">🇬🇧 English</button>
+        <button class="template-btn lang-msg-btn" data-lang="es" onclick="selezionaLinguaMessaggio('es')">🇪🇸 Español</button>
+        <button class="template-btn lang-msg-btn" data-lang="de" onclick="selezionaLinguaMessaggio('de')">🇩🇪 Deutsch</button>
+        <button class="template-btn lang-msg-btn" data-lang="fr" onclick="selezionaLinguaMessaggio('fr')">🇫🇷 Français</button>
+      </div>
+
+      <div class="field lang-msg-mobile" id="lang-msg-mobile">
+        <label>Scegli la lingua</label>
+        <select id="lang-msg-select" onchange="selezionaLinguaMessaggio(this.value)">
+          <option value="it">🇮🇹 Italiano</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="fr">🇫🇷 Français</option>
+        </select>
+      </div>
+
+      <div class="template-grid" id="template-grid">
+        <button class="template-btn" data-template="conferma" onclick="selezionaTemplate('conferma')">1. Conferma Prenotazione</button>
+        <button class="template-btn" data-template="preArrivo" onclick="selezionaTemplate('preArrivo')">2. Istruzioni Pre-Arrivo</button>
+        <button class="template-btn" data-template="controllo" onclick="selezionaTemplate('controllo')">3. Controllo Soggiorno</button>
+        <button class="template-btn" data-template="checkout" onclick="selezionaTemplate('checkout')">4. Promemoria Check-out</button>
+        <button class="template-btn" data-template="recensione" onclick="selezionaTemplate('recensione')">5. Richiesta Recensione</button>
+      </div>
+
+      <div class="block" id="messaggi-anteprima-wrap">
+        <textarea id="msg-testo" placeholder="Seleziona un template qui sopra per generare il messaggio, poi personalizzalo liberamente qui." oninput="segnaTestoModificato()"></textarea>
+
+        <div class="info-note" id="msg-modifica-nota" style="display:none; margin-top:12px;">
+          Stai modificando il modello predefinito per questo template e questa lingua. Puoi usare i segnaposto <code>{{nomeOspite}}</code>, <code>{{checkin}}</code>, <code>{{checkout}}</code>, <code>{{nomeHost}}</code>, <code>{{struttura}}</code>, <code>{{indirizzo}}</code>, <code>{{orarioCheckin}}</code>, <code>{{orarioCheckout}}</code> — verranno sostituiti automaticamente ogni volta che generi il messaggio.
+        </div>
+
+        <div style="display:flex; align-items:center; gap:14px; margin-top:12px; flex-wrap:wrap;">
+          <button class="primary" id="btn-copia-messaggio" onclick="copiaTestoMessaggio()">Copia Testo</button>
+          <button class="btn-outline" id="btn-modifica-template" onclick="attivaModificaTemplate()">Modifica messaggio predefinito</button>
+          <button class="primary" id="btn-salva-template" onclick="salvaTemplatePersonalizzato()" style="display:none;">Salva come predefinito</button>
+          <button class="btn-outline" id="btn-annulla-template" onclick="annullaModificaTemplate()" style="display:none;">Annulla</button>
+          <button class="btn-outline" id="btn-ripristina-template" onclick="ripristinaTemplateOriginale()" style="display:none;">Ripristina originale</button>
+          <span class="note" id="msg-stato" style="margin-top:0;"></span>
+        </div>
+        <p class="note" style="margin-top:10px;">Per cambiare definitivamente il messaggio predefinito e usarlo come modello futuro, tocca "Modifica messaggio predefinito" prima di copiare.</p>
+      </div>
+    </div>
+
     <!-- FINANZE -->
     <div class="page" id="page-finanze" style="display:none;">
       <h1 class="page-title">Finanze</h1>
       <p class="page-sub">Entrate dalle prenotazioni e uscite che aggiungi tu.</p>
 
-      <div class="grid-cards">
+      <div class="grid-cards" id="finanze-grid">
         <div class="card">
-          <div class="label">Entrate</div>
+          <div class="label">Entrate Totali</div>
           <div class="value ok" id="fin-entrate">€0</div>
         </div>
         <div class="card">
-          <div class="label">Uscite</div>
+          <div class="label">Uscite Totali</div>
           <div class="value warn" id="fin-uscite">€0</div>
         </div>
         <div class="card">
-          <div class="label">Saldo</div>
-          <div class="value" id="fin-saldo">€0</div>
+          <div class="label">La tua aliquota fiscale</div>
+          <div style="display:flex; align-items:center; gap:6px; margin-top:4px;">
+            <input type="number" id="f-aliquota-fiscale" placeholder="Es. 21" min="0" max="100" step="0.5" onchange="salvaAliquotaFiscale()" style="width:70px; padding:6px 8px; border:1px solid var(--bordo); border-radius:var(--radius); font-family:'Work Sans',sans-serif; font-size:16px; text-align:center;">
+            <span style="font-size:16px; color:var(--inchiostro);">%</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="label">Utile Netto Stimato</div>
+          <div class="value" id="fin-utile-netto">€0</div>
         </div>
       </div>
+
+      <h2 class="dati-sezione-titolo" style="margin-top:8px;">USCITE</h2>
+      <p class="note">Inserisci qui tutte le spese inerenti alla locazione (utenze, pulizie, manutenzione, commissioni, ecc.) per un calcolo corretto dell'utile netto.</p>
 
       <div class="form-row">
         <div class="field">
@@ -506,11 +1064,243 @@
 
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Data</th><th>Descrizione</th><th>Tipo</th><th>Importo</th><th></th></tr></thead>
+          <thead><tr><th>Data</th><th>Descrizione</th><th>Importo</th><th></th></tr></thead>
           <tbody id="tabella-finanze"></tbody>
         </table>
       </div>
     </div>
+
+    <!-- TASSE -->
+    <div class="page" id="page-tasse" style="display:none;">
+      <h1 class="page-title">Tasse</h1>
+      <p class="page-sub">Tassa di soggiorno e scadenze fiscali.</p>
+
+      <div class="info-note info-nota-icona" style="margin-bottom:22px;">
+        <span class="info-nota-icona-simbolo">ℹ️</span>
+        <span>
+          <strong>Come funziona questo modulo?</strong><br>
+          Inserisci i parametri comunali solo una volta (tariffa, notti massime, età esenzione), fatto questo ti basta compilare i <strong>Dati del Soggiorno</strong> per ottenere il <strong>Totale Dovuto</strong> e generare il messaggio da inviare all'ospite.
+        </span>
+      </div>
+
+      <h2 class="dati-sezione-titolo" style="margin-top:0; padding-top:0; border-top:none;">Calcola Imposta di Soggiorno</h2>
+
+      <details class="settings-panel" id="pannello-regole-comune">
+        <summary>
+          <span class="regole-comune-icona">⚙️</span> Regole & Tariffe del Comune
+          <span class="regole-comune-riepilogo" id="regole-comune-riepilogo"></span>
+        </summary>
+
+        <div class="form-row">
+          <div class="field">
+            <label>Tariffa (€ / notte / persona)</label>
+            <input type="number" id="tassa-tariffa" placeholder="Es. 2.00 o 3.50" min="0" step="0.5" onchange="salvaImpostazioniTassaSoggiorno()">
+          </div>
+          <div class="field">
+            <label>Massimo notti tassabili</label>
+            <input type="number" id="tassa-notti-max" placeholder="Inserisci 0 se senza limite" min="0" onchange="salvaImpostazioniTassaSoggiorno()">
+          </div>
+          <div class="field">
+            <label>Età esenzione minori</label>
+            <input type="number" id="tassa-soglia-eta" placeholder="Esenti fino a compimento" min="0" onchange="salvaImpostazioniTassaSoggiorno()">
+          </div>
+        </div>
+        <div class="field" style="max-width:420px;">
+          <label>Nome struttura o note addizionali</label>
+          <input type="text" id="tassa-nome-struttura" placeholder="Es. Dimora del Sole – Apt. Centro Storico" onchange="salvaImpostazioniTassaSoggiorno()">
+        </div>
+      </details>
+
+      <h3 class="tasse-sottotitolo">Dettagli del Soggiorno<span class="tasse-sottotitolo-nota">Compila per ogni prenotazione</span></h3>
+
+      <div class="field" style="max-width:420px; margin-bottom:18px;">
+        <label>Seleziona Ospite</label>
+        <select id="tasse-prenotazione" onchange="selezionaPrenotazioneTassa()">
+          <option value="manuale">Clicca e scegli</option>
+        </select>
+      </div>
+
+      <div class="block tasse-dettagli-blocco">
+        <div class="tasse-campo-stepper">
+          <label>Numero di Notti complessive</label>
+          <div class="stepper-riga">
+            <span class="stepper-icona">🌙</span>
+            <input type="number" id="tassa-calc-notti" value="0" min="0" oninput="calcolaTassaSoggiornoManuale()">
+            <button type="button" class="stepper-btn" onclick="incrementaCampoTassa('tassa-calc-notti', -1)">−</button>
+            <button type="button" class="stepper-btn" onclick="incrementaCampoTassa('tassa-calc-notti', 1)">+</button>
+          </div>
+          <p class="tasse-nota-dinamica" id="tasse-nota-notti"></p>
+        </div>
+
+        <div class="tasse-campo-stepper">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+            <label>Ospiti Paganti (Soggetti a Tassa)</label>
+            <span class="tasse-badge tasse-badge-verde">Tassabili</span>
+          </div>
+          <p class="tasse-sottoetichetta">Tutti gli ospiti con età superiore alla soglia di esenzione. Se l'ospite selezionato ha minori, spostali tu manualmente qui sotto tra gli esenti.</p>
+          <div class="stepper-riga">
+            <span class="stepper-icona">👤</span>
+            <input type="number" id="tassa-calc-ospiti" value="0" min="0" oninput="calcolaTassaSoggiornoManuale()">
+            <button type="button" class="stepper-btn" onclick="incrementaCampoTassa('tassa-calc-ospiti', -1)">−</button>
+            <button type="button" class="stepper-btn" onclick="incrementaCampoTassa('tassa-calc-ospiti', 1)">+</button>
+          </div>
+        </div>
+
+        <div class="tasse-campo-stepper">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+            <label>Ospiti Esenti (Non Paganti)</label>
+            <span class="tasse-badge tasse-badge-grigio">0,00 € quota</span>
+          </div>
+          <p class="tasse-sottoetichetta" id="tasse-nota-esenti">Minori, accompagnatori o aventi diritto</p>
+          <div class="stepper-riga">
+            <span class="stepper-icona">🙂</span>
+            <input type="number" id="tassa-calc-minori" value="0" min="0" oninput="calcolaTassaSoggiornoManuale()">
+            <button type="button" class="stepper-btn" onclick="incrementaCampoTassa('tassa-calc-minori', -1)">−</button>
+            <button type="button" class="stepper-btn" onclick="incrementaCampoTassa('tassa-calc-minori', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lang-msg-row" id="lang-tassa-row" style="margin-top:20px;">
+        <button class="template-btn lang-tassa-btn active" data-lang="it" onclick="selezionaLinguaTassa('it')">🇮🇹 Italiano</button>
+        <button class="template-btn lang-tassa-btn" data-lang="en" onclick="selezionaLinguaTassa('en')">🇬🇧 English</button>
+        <button class="template-btn lang-tassa-btn" data-lang="es" onclick="selezionaLinguaTassa('es')">🇪🇸 Español</button>
+        <button class="template-btn lang-tassa-btn" data-lang="de" onclick="selezionaLinguaTassa('de')">🇩🇪 Deutsch</button>
+        <button class="template-btn lang-tassa-btn" data-lang="fr" onclick="selezionaLinguaTassa('fr')">🇫🇷 Français</button>
+      </div>
+      <div class="field lang-msg-mobile" id="lang-tassa-mobile">
+        <label>Scegli la lingua</label>
+        <select id="lang-tassa-select" onchange="selezionaLinguaTassa(this.value)">
+          <option value="it">🇮🇹 Italiano</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="fr">🇫🇷 Français</option>
+        </select>
+      </div>
+
+      <div class="tassa-risultato-card">
+        <div class="tassa-risultato-testata">
+          <span class="tassa-risultato-etichetta">Totale Dovuto</span>
+          <span class="tasse-badge tasse-badge-ocra">Da saldare al check-in</span>
+        </div>
+        <div class="tassa-risultato-cifra"><span id="tassa-calc-risultato">€0</span> <span class="tassa-risultato-sottocifra">imposta totale</span></div>
+
+        <div class="tassa-risultato-dettaglio">
+          <div class="tassa-riga tassa-riga-header"><span>Voce</span><span>Dato applicato</span></div>
+          <div class="tassa-riga"><span>🟢 Ospiti paganti:</span><span id="tassa-dettaglio-ospiti">0 persone</span></div>
+          <div class="tassa-riga"><span>🟠 Notti conteggiate:</span><span id="tassa-dettaglio-notti">0 notti</span></div>
+          <div class="tassa-riga"><span>🔵 Tariffa applicata:</span><span id="tassa-dettaglio-tariffa">€0 a persona / notte</span></div>
+          <div class="tassa-riga tassa-riga-formula"><span>Formula:</span><span id="tassa-dettaglio-formula"></span></div>
+          <p class="tasse-nota-esenti-footer" id="tassa-dettaglio-esenti-nota"></p>
+        </div>
+
+        <div class="tassa-risultato-azioni">
+          <button class="tassa-btn-copia" onclick="copiaMessaggioTassaSoggiorno()" id="btn-copia-messaggio-tassa">📋 Copia Messaggio</button>
+          <button class="tassa-btn-stampa" onclick="stampaImpostaSoggiorno()">🖨️ Stampa / Salva PDF</button>
+        </div>
+        <span class="note" id="tassa-calc-stato" style="display:block; margin-top:8px; color:var(--calce);"></span>
+        <textarea id="tassa-messaggio-nascosto" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true" tabindex="-1"></textarea>
+      </div>
+
+      <h2 class="dati-sezione-titolo">Scadenze Fiscali</h2>
+      <p class="page-sub">Le scadenze standard della Cedolare Secca per l'anno in corso sono precompilate. Aggiungi le tue (es. tassa di soggiorno comunale).</p>
+
+      <div class="info-note" id="scadenze-banner" style="display:none; border-color:var(--ocra); margin-bottom:16px;"></div>
+
+      <div class="block">
+        <div id="scadenze-lista"></div>
+        <div class="form-row" style="margin-top:14px;">
+          <div class="field">
+            <label>Data</label>
+            <input type="date" id="scadenza-data">
+          </div>
+          <div class="field" style="flex:1; min-width:220px;">
+            <label>Descrizione</label>
+            <input type="text" id="scadenza-descrizione" placeholder="Es. Versamento tassa di soggiorno comunale">
+          </div>
+          <button class="primary" onclick="aggiungiPromemoria()">Aggiungi promemoria</button>
+        </div>
+        <p class="note" style="margin-top:10px;">Le date della Cedolare Secca sono quelle standard (30 giugno, 30 novembre): verifica sempre calendario ufficiale e proroghe sul sito dell'Agenzia delle Entrate, perché possono variare.</p>
+      </div>
+    </div>
+
+    <!-- DATI -->
+    <div class="page" id="page-dati" style="display:none;">
+      <h1 class="page-title">Strumenti Dati</h1>
+      <p class="page-sub">Esporta un backup, ripristina da un file, oppure azzera i dati salvati su questo dispositivo.</p>
+
+      <div class="data-tools-row">
+        <button class="btn-outline" onclick="esportaJSON()">Esporta JSON</button>
+        <button class="btn-outline" onclick="document.getElementById('importInput').click()">Importa JSON</button>
+        <button class="btn-outline" onclick="inviaBackupEmail()">Invia backup via email</button>
+      </div>
+      <input type="file" id="importInput" accept=".json,application/json" style="display:none" onchange="importaJSON(event)">
+
+      <button class="btn-danger" onclick="cancellaTutto()">Resetta Planner</button>
+
+      <div class="info-note">
+        Questo planner funziona interamente offline. Tutti i dati (prenotazioni, pulizie, movimenti finanziari) sono salvati nel browser di questo dispositivo e si aggiornano automaticamente a ogni modifica. "Esporta JSON" crea un file di backup che puoi conservare o trasferire su un altro dispositivo con "Importa JSON" mentre cliccando "Resetta Planner" cancelli tutto in modo permanente.
+      </div>
+
+      <h2 class="dati-sezione-titolo">Salvataggio nel Cloud (opzionale)</h2>
+      <p class="page-sub">Scegli come salvare: su questo dispositivo (istantaneo, privato, completamente offline), oppure con un account gratuito per sincronizzare su tutti i tuoi dispositivi.</p>
+
+      <div class="block" id="cloud-blocco-disconnesso">
+        <p style="margin:0 0 14px 0; font-size:14px;">Non sei collegato a nessun account cloud. I tuoi dati restano solo su questo dispositivo.</p>
+        <button class="btn-outline" onclick="accediConGoogle()">🔗 Accedi con Google per sincronizzare</button>
+        <span class="note" id="cloud-stato-messaggio" style="display:block; margin-top:10px;"></span>
+      </div>
+
+      <div class="block" id="cloud-blocco-connesso" style="display:none;">
+        <p style="margin:0 0 6px 0; font-size:14px;">✅ Connesso come <strong id="cloud-email-utente"></strong> — i dati si sincronizzano automaticamente su tutti i dispositivi dove accedi con questo account.</p>
+        <p class="note" id="cloud-ultima-sincronizzazione" style="margin-bottom:14px;"></p>
+        <button class="btn-outline" onclick="sincronizzaOraCloud()">🔄 Sincronizza ora</button>
+        <button class="btn-outline" onclick="disconnettiCloud()">Disconnetti</button>
+      </div>
+
+      <h2 class="dati-sezione-titolo">Report</h2>
+      <p class="page-sub">Genera un riepilogo pulito, pronto da stampare o salvare come PDF.</p>
+      <button class="btn-outline" onclick="stampaReport()">Stampa Report</button>
+
+      <h2 class="dati-sezione-titolo">Calendario iCal</h2>
+      <p class="page-sub">Importa le prenotazioni da un file .ics scaricato da Airbnb/Booking, o esporta le tue per incollarle altrove.</p>
+
+      <div class="block">
+        <h3 style="font-family:'Fraunces',serif; font-size:16px; color:var(--blu); margin:0 0 10px 0;">Importa da file .ics</h3>
+        <div class="form-row">
+          <div class="field">
+            <label>Piattaforma di provenienza</label>
+            <select id="ical-piattaforma" onchange="aggiornaIstruzioniIcal()">
+              <option>Airbnb</option>
+              <option>Booking</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div class="field" style="flex:1; min-width:220px;">
+            <label>File .ics</label>
+            <input type="file" id="ical-file" accept=".ics,text/calendar">
+          </div>
+        </div>
+
+        <div class="info-note" id="istruzioni-ical" style="margin-bottom:16px;"></div>
+
+        <button class="primary" onclick="importaIcal()">Importa da iCal</button>
+        <span class="note" id="ical-stato" style="display:block; margin-top:10px;"></span>
+        <p class="note" style="margin-top:14px;">Nota: i calendari iCal non includono quasi mai l'importo della prenotazione — dopo l'importazione, apri "Prenotazioni" e inserisci manualmente l'importo per ogni soggiorno importato.</p>
+        <p class="note" style="margin-top:10px;">Da smartphone: su Android generalmente il download funziona come sopra. Su iPhone, se toccando il link si apre l'app Calendario invece di scaricare un file, ripeti il procedimento da un computer.</p>
+        <p class="note" style="margin-top:10px;">Usi il planner su più dispositivi? Dopo l'importazione, usa "Esporta JSON" / "Importa JSON" (qui nella scheda Dati) per allineare i dati sull'altro dispositivo — i dati importati restano salvati solo nel browser dove hai fatto l'import.</p>
+      </div>
+
+      <div class="block">
+        <h3 style="font-family:'Fraunces',serif; font-size:16px; color:var(--blu); margin:0 0 10px 0;">Esporta calendario</h3>
+        <p class="page-sub" style="margin-bottom:14px;">Crea un file .ics con tutte le prenotazioni attuali, da incollare su Airbnb, Booking o Google Calendar.</p>
+        <button class="btn-outline" onclick="esportaIcal()">Esporta Calendario (.ics)</button>
+      </div>
+    </div>
+
+    <!-- Contenuto stampabile: nascosto a schermo, visibile solo con window.print() -->
+    <div id="report-stampa" class="solo-stampa"></div>
 
   </main>
 </div>
@@ -518,22 +1308,187 @@
 <script>
 // ---- Stato in memoria (si azzera se ricarichi la pagina: è un prototipo) ----
 let prenotazioni = [
-  { id: 1, ospite: "Famiglia Bianchi", checkin: "2026-09-14", checkout: "2026-09-18", piattaforma: "Airbnb", importo: 420 },
-  { id: 2, ospite: "M. Conti", checkin: "2026-09-20", checkout: "2026-09-23", piattaforma: "Booking", importo: 310 }
+  { id: 1, ospite: "Famiglia Bianchi", checkin: "2026-09-14", checkout: "2026-09-18", piattaforma: "Airbnb", importo: 420, numeroOspiti: 4 },
+  { id: 2, ospite: "M. Conti", checkin: "2026-09-20", checkout: "2026-09-23", piattaforma: "Booking", importo: 310, numeroOspiti: 2 }
 ];
 let pulizie = []; // { id, prenotazioneId, ospite, data, fatto }
 let uscite = []; // { id, data, descrizione, importo }
 let puliziaCompletata = {}; // { [prenotazioneId]: true/false } — persiste indipendentemente dalla lista pulizie ricalcolata
 let nextId = 3;
+let profiloHost = profiloHostVuoto();
+let impostazioniTassaSoggiorno = impostazioniTassaSoggiornoVuote();
+let promemoriaPersonalizzati = []; // { id, data (ISO), descrizione }
+let aliquotaFiscale = ''; // percentuale scelta liberamente dall'host (21, 26, 5, 15, ecc.), vuoto = nessuna tassa applicata
+let templatePersonalizzati = {}; // { [chiaveTemplate]: { [lingua]: 'testo con segnaposto {{...}}' } }
 const CHIAVE_SALVATAGGIO = 'host-hub-dati-v1';
+
+// ==================================================================
+// SALVATAGGIO CLOUD (opzionale) — Firebase
+// ==================================================================
+const firebaseConfig = {
+  apiKey: "AIzaSyBxaVl2TUkeFHfBYA3UqycE0G-ncYtM8cQ",
+  authDomain: "host-hub-xxx.firebaseapp.com",
+  projectId: "host-hub-xxx",
+  storageBucket: "host-hub-xxx.firebasestorage.app",
+  messagingSenderId: "958647165174",
+  appId: "1:958647165174:web:c17400d7e567fdb2898cd7"
+};
+
+let firebaseAuth = null;
+let firebaseDb = null;
+let utenteCloud = null;
+let timerSincronizzazioneCloud = null;
+let sincronizzazioneInCorso = false; // evita scritture cloud durante il caricamento iniziale dei dati
+
+function inizializzaCloud(){
+  try{
+    firebase.initializeApp(firebaseConfig);
+    firebaseAuth = firebase.auth();
+    firebaseDb = firebase.firestore();
+    firebaseAuth.onAuthStateChanged(gestisciCambioAccessoCloud);
+  } catch(e){
+    console.warn('Sincronizzazione cloud non disponibile (funziona comunque tutto offline):', e);
+  }
+}
+
+function accediConGoogle(){
+  if(!firebaseAuth){
+    document.getElementById('cloud-stato-messaggio').textContent = 'Sincronizzazione cloud non disponibile al momento. Il salvataggio in locale funziona comunque normalmente.';
+    return;
+  }
+  const provider = new firebase.auth.GoogleAuthProvider();
+  document.getElementById('cloud-stato-messaggio').textContent = 'Accesso in corso...';
+  firebaseAuth.signInWithPopup(provider).catch(err => {
+    document.getElementById('cloud-stato-messaggio').textContent = 'Accesso non riuscito: ' + (err.message || 'riprova tra poco.');
+  });
+}
+
+function disconnettiCloud(){
+  if(!confirm('Disconnettersi dall\'account cloud? I dati restano comunque salvati su questo dispositivo.')) return;
+  firebaseAuth.signOut();
+}
+
+function gestisciCambioAccessoCloud(user){
+  if(user){
+    utenteCloud = user;
+    aggiornaUICloud();
+    gestisciPrimoAccessoCloud(user);
+  } else {
+    utenteCloud = null;
+    aggiornaUICloud();
+  }
+}
+
+function aggiornaUICloud(){
+  const bloccoDisconnesso = document.getElementById('cloud-blocco-disconnesso');
+  const bloccoConnesso = document.getElementById('cloud-blocco-connesso');
+  if(!bloccoDisconnesso || !bloccoConnesso) return;
+  if(utenteCloud){
+    bloccoDisconnesso.style.display = 'none';
+    bloccoConnesso.style.display = 'block';
+    document.getElementById('cloud-email-utente').textContent = utenteCloud.email || utenteCloud.displayName || 'account Google';
+  } else {
+    bloccoDisconnesso.style.display = 'block';
+    bloccoConnesso.style.display = 'none';
+  }
+}
+
+function gestisciPrimoAccessoCloud(user){
+  sincronizzazioneInCorso = true;
+  firebaseDb.collection('host_hub_utenti').doc(user.uid).get().then(doc => {
+    if(doc.exists){
+      const scegliCloud = confirm('Abbiamo trovato dati salvati nel cloud per questo account.\n\nOK = carica i dati dal cloud (sostituisce quelli di questo dispositivo)\nAnnulla = mantieni i dati di questo dispositivo (li invieremo noi al cloud)');
+      if(scegliCloud){
+        caricaDatiDaOggetto(doc.data());
+        salva();
+        ricostruisciPulizie();
+        popolaFormProfiloHost();
+        popolaFormTassaSoggiorno();
+        document.getElementById('f-aliquota-fiscale').value = aliquotaFiscale;
+        renderTutto();
+        segnalaStatoCloud('Dati caricati dal cloud ✓');
+      } else {
+        scriviSuCloud();
+        segnalaStatoCloud('Dati di questo dispositivo inviati al cloud ✓');
+      }
+    } else {
+      scriviSuCloud();
+      segnalaStatoCloud('Sincronizzazione avviata ✓');
+    }
+    sincronizzazioneInCorso = false;
+  }).catch(err => {
+    sincronizzazioneInCorso = false;
+    segnalaStatoCloud('Errore di sincronizzazione: ' + (err.message || 'riprova più tardi.'));
+  });
+}
+
+function segnalaStatoCloud(testo){
+  const el = document.getElementById('cloud-ultima-sincronizzazione');
+  if(!el) return;
+  const ora = new Date().toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
+  el.textContent = `${testo} — ${ora}`;
+}
+
+function oggettoStatoCompleto(){
+  return {
+    prenotazioni, uscite, puliziaCompletata, nextId, profiloHost,
+    impostazioniTassaSoggiorno, promemoriaPersonalizzati, aliquotaFiscale, templatePersonalizzati
+  };
+}
+
+function caricaDatiDaOggetto(dati){
+  prenotazioni = dati.prenotazioni || [];
+  uscite = dati.uscite || [];
+  puliziaCompletata = dati.puliziaCompletata || {};
+  nextId = dati.nextId || 1;
+  profiloHost = Object.assign(profiloHostVuoto(), dati.profiloHost || {});
+  impostazioniTassaSoggiorno = Object.assign(impostazioniTassaSoggiornoVuote(), dati.impostazioniTassaSoggiorno || {});
+  promemoriaPersonalizzati = dati.promemoriaPersonalizzati || [];
+  aliquotaFiscale = dati.aliquotaFiscale || '';
+  templatePersonalizzati = dati.templatePersonalizzati || {};
+}
+
+function scriviSuCloud(){
+  if(!utenteCloud || !firebaseDb) return;
+  firebaseDb.collection('host_hub_utenti').doc(utenteCloud.uid).set(oggettoStatoCompleto())
+    .then(() => segnalaStatoCloud('Sincronizzato ✓'))
+    .catch(err => segnalaStatoCloud('Sincronizzazione non riuscita: ' + (err.message || '')));
+}
+
+function programmaSincronizzazioneCloud(){
+  if(!utenteCloud || sincronizzazioneInCorso) return;
+  clearTimeout(timerSincronizzazioneCloud);
+  timerSincronizzazioneCloud = setTimeout(scriviSuCloud, 1500);
+}
+
+function sincronizzaOraCloud(){
+  if(!utenteCloud){
+    return;
+  }
+  scriviSuCloud();
+}
+
+
+function profiloHostVuoto(){
+  return {
+    nomeHost: '', struttura: '', indirizzo: '',
+    orarioCheckin: '', orarioCheckout: '',
+    cin: ''
+  };
+}
+
+function impostazioniTassaSoggiornoVuote(){
+  return { tariffa: 0, nottiMax: 0, sogliaEta: 14, nomeStrutturaNota: '' };
+}
 
 function salva(){
   try{
-    const dati = { prenotazioni, uscite, puliziaCompletata, nextId };
+    const dati = { prenotazioni, uscite, puliziaCompletata, nextId, profiloHost, impostazioniTassaSoggiorno, promemoriaPersonalizzati, aliquotaFiscale, templatePersonalizzati };
     localStorage.setItem(CHIAVE_SALVATAGGIO, JSON.stringify(dati));
   } catch(e){
     console.warn('Impossibile salvare i dati in locale:', e);
   }
+  programmaSincronizzazioneCloud();
 }
 
 function carica(){
@@ -545,11 +1500,99 @@ function carica(){
     uscite = dati.uscite || [];
     puliziaCompletata = dati.puliziaCompletata || {};
     nextId = dati.nextId || (Math.max(0, ...prenotazioni.map(p=>p.id), ...uscite.map(u=>u.id)) + 1);
+    profiloHost = Object.assign(profiloHostVuoto(), dati.profiloHost || {});
+    impostazioniTassaSoggiorno = Object.assign(impostazioniTassaSoggiornoVuote(), dati.impostazioniTassaSoggiorno || {});
+    promemoriaPersonalizzati = dati.promemoriaPersonalizzati || [];
+    aliquotaFiscale = dati.aliquotaFiscale || '';
+    templatePersonalizzati = dati.templatePersonalizzati || {};
     return true;
   } catch(e){
     console.warn('Impossibile leggere i dati salvati:', e);
     return false;
   }
+}
+
+function popolaFormProfiloHost(){
+  document.getElementById('host-nome').value = profiloHost.nomeHost;
+  document.getElementById('host-struttura').value = profiloHost.struttura;
+  document.getElementById('host-indirizzo').value = profiloHost.indirizzo;
+  document.getElementById('host-orario-checkin').value = profiloHost.orarioCheckin;
+  document.getElementById('host-orario-checkout').value = profiloHost.orarioCheckout;
+  document.getElementById('host-cin').value = profiloHost.cin;
+}
+
+function salvaProfiloHost(){
+  profiloHost = {
+    nomeHost: document.getElementById('host-nome').value.trim(),
+    struttura: document.getElementById('host-struttura').value.trim(),
+    indirizzo: document.getElementById('host-indirizzo').value.trim(),
+    orarioCheckin: document.getElementById('host-orario-checkin').value.trim(),
+    orarioCheckout: document.getElementById('host-orario-checkout').value.trim(),
+    cin: document.getElementById('host-cin').value.trim()
+  };
+  salva();
+  generaTestoMessaggio();
+  renderFinanze();
+  const statoEl = document.getElementById('host-stato');
+  if(statoEl){
+    statoEl.textContent = 'Impostazioni salvate ✓';
+    setTimeout(() => { statoEl.textContent = ''; }, 2000);
+  }
+}
+
+function salvaImpostazioniTassaSoggiorno(){
+  impostazioniTassaSoggiorno = {
+    tariffa: parseFloat(document.getElementById('tassa-tariffa').value) || 0,
+    nottiMax: parseInt(document.getElementById('tassa-notti-max').value) || 0,
+    sogliaEta: parseInt(document.getElementById('tassa-soglia-eta').value) || 0,
+    nomeStrutturaNota: document.getElementById('tassa-nome-struttura').value.trim()
+  };
+  salva();
+  aggiornaRiepilogoRegoleComune();
+  calcolaTassaSoggiornoManuale();
+}
+
+function popolaFormTassaSoggiorno(){
+  document.getElementById('tassa-tariffa').value = impostazioniTassaSoggiorno.tariffa || '';
+  document.getElementById('tassa-notti-max').value = impostazioniTassaSoggiorno.nottiMax || '';
+  document.getElementById('tassa-soglia-eta').value = impostazioniTassaSoggiorno.sogliaEta || '';
+  document.getElementById('tassa-nome-struttura').value = impostazioniTassaSoggiorno.nomeStrutturaNota || '';
+  aggiornaRiepilogoRegoleComune();
+}
+
+function aggiornaRiepilogoRegoleComune(){
+  const el = document.getElementById('regole-comune-riepilogo');
+  if(!el) return;
+  const tariffa = (impostazioniTassaSoggiorno.tariffa || 0).toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2});
+  const notti = impostazioniTassaSoggiorno.nottiMax > 0 ? impostazioniTassaSoggiorno.nottiMax : 'nessun limite';
+  const eta = impostazioniTassaSoggiorno.sogliaEta || 0;
+  el.textContent = `Tariffa: ${tariffa} € • Max: ${notti} notti • Esenzione: fino a ${eta} anni`;
+}
+
+function aggiungiPromemoria(){
+  const data = document.getElementById('scadenza-data').value;
+  const descrizione = document.getElementById('scadenza-descrizione').value.trim();
+  if(!data || !descrizione){
+    alert('Inserisci sia la data che la descrizione del promemoria.');
+    return;
+  }
+  promemoriaPersonalizzati.push({ id: 'custom-' + Date.now(), data, descrizione, standard: false });
+  salva();
+  document.getElementById('scadenza-data').value = '';
+  document.getElementById('scadenza-descrizione').value = '';
+  renderScadenze();
+}
+
+function eliminaPromemoria(id){
+  promemoriaPersonalizzati = promemoriaPersonalizzati.filter(p => p.id !== id);
+  salva();
+  renderScadenze();
+}
+
+function salvaAliquotaFiscale(){
+  aliquotaFiscale = document.getElementById('f-aliquota-fiscale').value;
+  salva();
+  renderFinanze();
 }
 
 function cancellaTutto(){
@@ -558,9 +1601,94 @@ function cancellaTutto(){
   uscite = [];
   puliziaCompletata = {};
   nextId = 1;
+  profiloHost = profiloHostVuoto();
+  impostazioniTassaSoggiorno = impostazioniTassaSoggiornoVuote();
+  promemoriaPersonalizzati = [];
+  aliquotaFiscale = '';
+  templatePersonalizzati = {};
   salva();
   ricostruisciPulizie();
+  popolaFormProfiloHost();
+  popolaFormTassaSoggiorno();
+  document.getElementById('f-aliquota-fiscale').value = '';
   renderTutto();
+}
+
+function esportaJSON(){
+  const dati = {
+    prenotazioni, uscite, puliziaCompletata, nextId, profiloHost,
+    impostazioniTassaSoggiorno, promemoriaPersonalizzati, aliquotaFiscale, templatePersonalizzati,
+    esportatoIl: new Date().toISOString()
+  };
+  const blob = new Blob([JSON.stringify(dati, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `host-hub-backup-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function inviaBackupEmail(){
+  // Un link "mailto:" non può allegare file per limitazione dei browser: scarichiamo
+  // il backup (come "Esporta JSON") e apriamo l'email già pronta con le istruzioni
+  // per allegarlo a mano.
+  esportaJSON();
+
+  const nomeFile = `host-hub-backup-${new Date().toISOString().slice(0,10)}.json`;
+  const oggetto = `Backup Host Hub — ${new Date().toLocaleDateString('it-IT')}`;
+  const corpo = `Ciao,
+
+Ho appena scaricato il file di backup di Host Hub: "${nomeFile}" (di solito nella cartella Download del dispositivo).
+
+Prima di inviare questa email, allega manualmente quel file dal tuo client di posta (di solito c'è un'icona a graffetta o "Allega file").
+
+Un link diretto non può allegare automaticamente il file per una limitazione dei browser — questo passaggio va fatto a mano.
+
+Host Hub`;
+
+  window.location.href = `mailto:?subject=${encodeURIComponent(oggetto)}&body=${encodeURIComponent(corpo)}`;
+}
+
+function importaJSON(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try{
+      const dati = JSON.parse(e.target.result);
+      if(!('prenotazioni' in dati)){
+        throw new Error('formato non riconosciuto');
+      }
+      if(!confirm("Importare questo backup sovrascriverà i dati attualmente salvati. Continuare?")){
+        event.target.value = '';
+        return;
+      }
+      prenotazioni = dati.prenotazioni || [];
+      uscite = dati.uscite || [];
+      puliziaCompletata = dati.puliziaCompletata || {};
+      nextId = dati.nextId || (Math.max(0, ...prenotazioni.map(p=>p.id||0), ...uscite.map(u=>u.id||0)) + 1);
+      profiloHost = Object.assign(profiloHostVuoto(), dati.profiloHost || {});
+      impostazioniTassaSoggiorno = Object.assign(impostazioniTassaSoggiornoVuote(), dati.impostazioniTassaSoggiorno || {});
+      promemoriaPersonalizzati = dati.promemoriaPersonalizzati || [];
+      aliquotaFiscale = dati.aliquotaFiscale || '';
+      templatePersonalizzati = dati.templatePersonalizzati || {};
+      salva();
+      ricostruisciPulizie();
+      popolaFormProfiloHost();
+      popolaFormTassaSoggiorno();
+      document.getElementById('f-aliquota-fiscale').value = aliquotaFiscale;
+      renderTutto();
+      alert("Backup importato correttamente.");
+    } catch(err){
+      alert("Il file selezionato non è un backup valido di Host Hub.");
+    } finally {
+      event.target.value = '';
+    }
+  };
+  reader.readAsText(file);
 }
 
 function ricostruisciPulizie(){
@@ -580,30 +1708,792 @@ function formattaData(iso){
   return `${g}/${m}/${a}`;
 }
 
+// ==================================================================
+// REPORT / STAMPA
+// ==================================================================
+function generaReportStampa(){
+  const dataGenerazione = new Date().toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
+  const nomeStruttura = (profiloHost.struttura && profiloHost.struttura.trim()) || 'Host Hub';
+  const entrate = prenotazioni.reduce((s,p)=>s+p.importo,0);
+  const aliquota = parseFloat(aliquotaFiscale) || 0;
+  const cedolareStimata = entrate * (aliquota / 100);
+  const regimeTesto = aliquota > 0 ? `${aliquota}%` : 'Nessuna aliquota impostata';
+
+  const prenOrdinate = prenotazioni.slice().sort((a,b) => a.checkin.localeCompare(b.checkin));
+  const tabellaPrenotazioni = prenOrdinate.length ? `
+    <table class="tabella-stampa">
+      <thead><tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th></tr></thead>
+      <tbody>
+        ${prenOrdinate.map(p => `<tr><td>${p.ospite}</td><td>${formattaData(p.checkin)}</td><td>${formattaData(p.checkout)}</td><td>${p.piattaforma}</td><td>€${p.importo.toLocaleString('it-IT')}</td></tr>`).join('')}
+      </tbody>
+    </table>` : `<p>Nessuna prenotazione registrata.</p>`;
+
+  document.getElementById('report-stampa').innerHTML = `
+    <h1>${nomeStruttura} — Report</h1>
+    <p>Generato il ${dataGenerazione}</p>
+
+    <h2>Riepilogo Finanziario</h2>
+    <p>Aliquota fiscale applicata: ${regimeTesto}</p>
+    <table class="tabella-stampa">
+      <tbody>
+        <tr><th>Entrate Totali</th><td>${document.getElementById('fin-entrate').textContent}</td></tr>
+        <tr><th>Uscite Totali</th><td>${document.getElementById('fin-uscite').textContent}</td></tr>
+        <tr><th>Tassazione Stimata</th><td>€${cedolareStimata.toLocaleString('it-IT', {maximumFractionDigits:0})}</td></tr>
+        <tr><th>Utile Netto Stimato</th><td>${document.getElementById('fin-utile-netto').textContent}</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Prenotazioni</h2>
+    ${tabellaPrenotazioni}
+  `;
+}
+
+function stampaReport(){
+  generaReportStampa();
+  window.print();
+}
+
+// ==================================================================
+// CALENDARIO iCal — IMPORT/EXPORT (parsing 100% lato client)
+// ==================================================================
+function decodificaTestoIcal(testo){
+  return testo.replace(/\\n/gi, ' ').replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\\\/g, '\\');
+}
+
+function escapeTestoIcal(testo){
+  return String(testo).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+}
+
+function dataIcalAIso(valoreGrezzo){
+  const match = valoreGrezzo.match(/(\d{4})(\d{2})(\d{2})/);
+  if(!match) return null;
+  return `${match[1]}-${match[2]}-${match[3]}`;
+}
+
+function estraiEventiIcal(testo){
+  // normalizza fine riga e "srotola" il line-folding previsto dallo standard iCal
+  // (righe lunghe spezzate con un a-capo seguito da uno spazio o tab)
+  const normalizzato = testo.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const senzaFold = normalizzato.replace(/\n[ \t]/g, '');
+  const righe = senzaFold.split('\n');
+
+  const eventi = [];
+  let eventoCorrente = null;
+
+  righe.forEach(rigaGrezza => {
+    const riga = rigaGrezza.trim();
+    if(riga === 'BEGIN:VEVENT'){
+      eventoCorrente = {};
+    } else if(riga === 'END:VEVENT'){
+      if(eventoCorrente) eventi.push(eventoCorrente);
+      eventoCorrente = null;
+    } else if(eventoCorrente){
+      const idxDuePunti = riga.indexOf(':');
+      if(idxDuePunti === -1) return;
+      const chiaveGrezza = riga.slice(0, idxDuePunti);
+      const valore = riga.slice(idxDuePunti + 1).trim();
+      const chiave = chiaveGrezza.split(';')[0].toUpperCase();
+      if(chiave === 'UID') eventoCorrente.uid = valore;
+      else if(chiave === 'DTSTART') eventoCorrente.dtstart = valore;
+      else if(chiave === 'DTEND') eventoCorrente.dtend = valore;
+      else if(chiave === 'SUMMARY') eventoCorrente.summary = decodificaTestoIcal(valore);
+    }
+  });
+
+  return eventi;
+}
+
+function importaIcal(){
+  const fileInput = document.getElementById('ical-file');
+  const piattaforma = document.getElementById('ical-piattaforma').value;
+  const statoEl = document.getElementById('ical-stato');
+  statoEl.textContent = '';
+
+  if(!(fileInput.files && fileInput.files[0])){
+    statoEl.textContent = 'Seleziona prima un file .ics con "File .ics" qui sopra.';
+    return;
+  }
+
+  const elabora = (testo) => {
+    let eventi;
+    try{
+      eventi = estraiEventiIcal(testo);
+    } catch(e){
+      statoEl.textContent = 'Il contenuto non sembra un calendario iCal valido.';
+      return;
+    }
+    if(!eventi.length){
+      statoEl.textContent = 'Nessun evento trovato nel calendario.';
+      return;
+    }
+
+    let aggiunte = 0, duplicati = 0, scartate = 0;
+    eventi.forEach(ev => {
+      if(!ev.dtstart || !ev.dtend){ scartate++; return; }
+      const checkin = dataIcalAIso(ev.dtstart);
+      const checkout = dataIcalAIso(ev.dtend);
+      if(!checkin || !checkout){ scartate++; return; }
+
+      const uid = ev.uid || `${checkin}_${checkout}_${ev.summary || ''}`;
+      if(prenotazioni.some(p => p.icalUid === uid)){
+        duplicati++;
+        return;
+      }
+
+      prenotazioni.push({
+        id: nextId++,
+        ospite: ev.summary || 'Ospite da iCal',
+        checkin, checkout,
+        piattaforma,
+        importo: 0,
+        icalUid: uid
+      });
+      aggiunte++;
+    });
+
+    if(aggiunte > 0){
+      ricostruisciPulizie();
+      salva();
+      renderTutto();
+    }
+    statoEl.textContent = `Fatto: ${aggiunte} prenotazioni aggiunte, ${duplicati} già presenti, ${scartate} scartate.`;
+    fileInput.value = '';
+  };
+
+  const reader = new FileReader();
+  reader.onload = (e) => elabora(e.target.result);
+  reader.onerror = () => { statoEl.textContent = 'Impossibile leggere il file selezionato.'; };
+  reader.readAsText(fileInput.files[0]);
+}
+
+function aggiornaIstruzioniIcal(){
+  const piattaforma = document.getElementById('ical-piattaforma').value;
+  const contenitore = document.getElementById('istruzioni-ical');
+
+  const istruzioni = {
+    Airbnb: `
+      <strong>Come ottenere il file da Airbnb:</strong>
+      <ol>
+        <li>Vai su Airbnb → Calendario → Disponibilità → Esporta calendario, e copia il link mostrato (simile a <code>https://www.airbnb.it/calendar/ical/1185331971419658960.ics?t=...</code>)</li>
+        <li>Incolla quel link nella barra degli indirizzi del browser e premi Invio</li>
+        <li>Il browser scarica un file (di solito nella cartella "Download")</li>
+        <li>Torna qui, clicca "File .ics" e seleziona il file</li>
+      </ol>`,
+    Booking: `
+      <strong>Come ottenere il file da Booking:</strong>
+      <ol>
+        <li>Accedi a extranet.booking.com con le tue credenziali</li>
+        <li>Vai su Tariffe e disponibilità → Calendario (o Calendario e prezzi)</li>
+        <li>Clicca su Sincronizza i calendari</li>
+        <li>Nella sezione esportazione, clicca su Aggiungi connessione al calendario e copia il link generato</li>
+        <li>Segui lo stesso procedimento di Airbnb per scaricare e caricare il file</li>
+      </ol>`,
+    Altro: `
+      <strong>Come ottenere il file da un'altra piattaforma:</strong>
+      <p style="margin:6px 0 0 0;">Cerca nelle impostazioni del tuo annuncio, di solito nella sezione Calendario/Disponibilità, una voce tipo "Sincronizza calendari", "Esporta calendario" o "Esporta iCal". Copia il link generato e segui lo stesso procedimento: incollalo nel browser, scarica il file, caricalo qui.</p>`
+  };
+
+  contenitore.innerHTML = istruzioni[piattaforma] || istruzioni.Altro;
+}
+
+function esportaIcal(){
+  if(!prenotazioni.length){
+    alert('Non ci sono prenotazioni da esportare.');
+    return;
+  }
+  const adesso = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  const righe = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Host Hub//Planner//IT', 'CALSCALE:GREGORIAN'];
+
+  prenotazioni.forEach(p => {
+    const uid = p.icalUid || `hosthub-${p.id}@host-hub.local`;
+    righe.push('BEGIN:VEVENT');
+    righe.push(`UID:${uid}`);
+    righe.push(`DTSTAMP:${adesso}`);
+    righe.push(`DTSTART;VALUE=DATE:${p.checkin.replace(/-/g, '')}`);
+    righe.push(`DTEND;VALUE=DATE:${p.checkout.replace(/-/g, '')}`);
+    righe.push(`SUMMARY:${escapeTestoIcal(p.ospite + ' - ' + p.piattaforma)}`);
+    righe.push('END:VEVENT');
+  });
+  righe.push('END:VCALENDAR');
+
+  const blob = new Blob([righe.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `host-hub-calendario-${new Date().toISOString().slice(0,10)}.ics`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+// ==================================================================
+// MESSAGGI OSPITI
+// ==================================================================
+// segnaposto neutri mostrati quando un dato non è ancora stato compilato
+const segnapostoVuoto = {
+  it: {
+    nomeOspite: '[Nome Ospite]', checkin: '[Check-in]', checkout: '[Check-out]',
+    nomeHost: '[Nome Host]', struttura: '[Nome Struttura]', indirizzo: '[Indirizzo]',
+    orarioCheckin: '[Orario Check-in]', orarioCheckout: '[Orario Check-out]'
+  },
+  en: {
+    nomeOspite: '[Guest Name]', checkin: '[Check-in Date]', checkout: '[Check-out Date]',
+    nomeHost: '[Your Name]', struttura: '[Property Name]', indirizzo: '[Address]',
+    orarioCheckin: '[Check-in Time]', orarioCheckout: '[Check-out Time]'
+  },
+  es: {
+    nomeOspite: '[Nombre del Huésped]', checkin: '[Fecha de Entrada]', checkout: '[Fecha de Salida]',
+    nomeHost: '[Tu Nombre]', struttura: '[Nombre del Alojamiento]', indirizzo: '[Dirección]',
+    orarioCheckin: '[Hora de Entrada]', orarioCheckout: '[Hora de Salida]'
+  },
+  de: {
+    nomeOspite: '[Gastname]', checkin: '[Anreisedatum]', checkout: '[Abreisedatum]',
+    nomeHost: '[Dein Name]', struttura: '[Name der Unterkunft]', indirizzo: '[Adresse]',
+    orarioCheckin: '[Check-in-Zeit]', orarioCheckout: '[Check-out-Zeit]'
+  },
+  fr: {
+    nomeOspite: "[Nom de l'invité]", checkin: "[Date d'arrivée]", checkout: '[Date de départ]',
+    nomeHost: '[Votre nom]', struttura: '[Nom du logement]', indirizzo: '[Adresse]',
+    orarioCheckin: "[Heure d'arrivée]", orarioCheckout: '[Heure de départ]'
+  }
+};
+
+const templateMessaggi = {
+  conferma: {
+    it: (o) => `Ciao ${o.nomeOspite}! 😊
+
+Grazie per aver prenotato il tuo soggiorno presso ${o.struttura}. Ti confermo la prenotazione dal ${o.checkin} al ${o.checkout}.
+
+Nei prossimi giorni ti invierò tutte le istruzioni per l'arrivo. Se nel frattempo hai domande, scrivimi pure quando vuoi!
+
+A presto,
+${o.nomeHost}`,
+    en: (o) => `Hi ${o.nomeOspite}! 😊
+
+Thank you for your booking at ${o.struttura}. This confirms your stay from ${o.checkin} to ${o.checkout}.
+
+I'll send you all the arrival details over the next few days. If you have any questions in the meantime, feel free to reach out anytime!
+
+See you soon,
+${o.nomeHost}`,
+    es: (o) => `¡Hola ${o.nomeOspite}! 😊
+
+Gracias por tu reserva en ${o.struttura}. Confirmo tu estancia del ${o.checkin} al ${o.checkout}.
+
+En los próximos días te enviaré todos los detalles para la llegada. Si tienes alguna pregunta mientras tanto, ¡escríbeme cuando quieras!
+
+Hasta pronto,
+${o.nomeHost}`,
+    de: (o) => `Hallo ${o.nomeOspite}! 😊
+
+Vielen Dank für deine Buchung bei ${o.struttura}. Hiermit bestätige ich deinen Aufenthalt vom ${o.checkin} bis ${o.checkout}.
+
+In den nächsten Tagen schicke ich dir alle Details zur Anreise. Falls du in der Zwischenzeit Fragen hast, melde dich jederzeit gerne!
+
+Bis bald,
+${o.nomeHost}`,
+    fr: (o) => `Bonjour ${o.nomeOspite} ! 😊
+
+Merci pour votre réservation chez ${o.struttura}. Je confirme votre séjour du ${o.checkin} au ${o.checkout}.
+
+Dans les prochains jours, je vous enverrai tous les détails pour votre arrivée. Si vous avez des questions d'ici là, n'hésitez pas à m'écrire à tout moment !
+
+À bientôt,
+${o.nomeHost}`
+  },
+  preArrivo: {
+    it: (o) => `Ciao ${o.nomeOspite}, ci siamo quasi!
+
+Ti scrivo con le informazioni per il tuo arrivo il ${o.checkin} presso ${o.struttura}:
+— Check-in: ${o.orarioCheckin}
+— Indirizzo: ${o.indirizzo}
+
+Ti ricordo di portare con te un documento d'identità valido per la registrazione, come richiesto dalla normativa.
+
+Se arrivi in anticipo, in ritardo, o ti serve un'indicazione per raggiungerci, scrivimi pure in ogni momento.
+
+Ti aspetto!
+${o.nomeHost}`,
+    en: (o) => `Hi ${o.nomeOspite}, almost there!
+
+We look forward to welcoming you on ${o.checkin} at ${o.struttura}. Here are the details:
+— Check-in: ${o.orarioCheckin}
+— Address: ${o.indirizzo}
+
+Please remember to bring a valid ID for registration, as required by local regulations.
+
+If you're arriving early, running late, or need directions, just message me anytime.
+
+See you soon!
+${o.nomeHost}`,
+    es: (o) => `¡Hola ${o.nomeOspite}, ya casi estamos!
+
+Aquí tienes la información para tu llegada el ${o.checkin} a ${o.struttura}:
+— Entrada: ${o.orarioCheckin}
+— Dirección: ${o.indirizzo}
+
+Recuerda traer un documento de identidad válido para el registro, según exige la normativa local.
+
+Si llegas antes, más tarde, o necesitas indicaciones, escríbeme en cualquier momento.
+
+¡Te espero!
+${o.nomeHost}`,
+    de: (o) => `Hallo ${o.nomeOspite}, es ist bald so weit!
+
+Hier sind die Informationen für deine Anreise am ${o.checkin} bei ${o.struttura}:
+— Check-in: ${o.orarioCheckin}
+— Adresse: ${o.indirizzo}
+
+Bitte denk daran, einen gültigen Ausweis zur Registrierung mitzubringen, wie gesetzlich vorgeschrieben.
+
+Solltest du früher oder später ankommen oder eine Wegbeschreibung brauchen, schreib mir jederzeit.
+
+Ich freue mich auf dich!
+${o.nomeHost}`,
+    fr: (o) => `Bonjour ${o.nomeOspite}, on y est presque !
+
+Voici les informations pour votre arrivée le ${o.checkin} chez ${o.struttura} :
+— Arrivée : ${o.orarioCheckin}
+— Adresse : ${o.indirizzo}
+
+N'oubliez pas d'apporter une pièce d'identité valide pour l'enregistrement, comme l'exige la réglementation locale.
+
+Si vous arrivez plus tôt, plus tard, ou avez besoin d'indications, écrivez-moi à tout moment.
+
+Je vous attends !
+${o.nomeHost}`
+  },
+  controllo: {
+    it: (o) => `Ciao ${o.nomeOspite}, spero che il soggiorno presso ${o.struttura} stia andando bene!
+
+Volevo solo assicurarmi che sia tutto a posto e che tu abbia trovato tutto il necessario in casa. Se hai bisogno di qualcosa, hai domande sulla zona, o vuoi qualche consiglio su dove mangiare, sono a tua disposizione.
+
+Buon proseguimento di soggiorno!
+${o.nomeHost}`,
+    en: (o) => `Hi ${o.nomeOspite}, hope you are having a wonderful stay at ${o.struttura}!
+
+Just checking in to make sure everything is perfect and you found everything you need. If there's anything you need, questions about the area, or you'd like some recommendations for dinner, just let me know.
+
+Enjoy the rest of your stay!
+${o.nomeHost}`,
+    es: (o) => `Hola ${o.nomeOspite}, ¡espero que estés disfrutando de tu estancia en ${o.struttura}!
+
+Solo quería asegurarme de que todo esté bien y de que hayas encontrado todo lo necesario. Si necesitas algo, tienes preguntas sobre la zona, o quieres alguna recomendación para cenar, estoy a tu disposición.
+
+¡Que sigas disfrutando de tu estancia!
+${o.nomeHost}`,
+    de: (o) => `Hallo ${o.nomeOspite}, ich hoffe, dein Aufenthalt bei ${o.struttura} verläuft gut!
+
+Ich wollte nur sichergehen, dass alles in Ordnung ist und du alles Nötige vorgefunden hast. Falls du etwas brauchst, Fragen zur Umgebung hast oder Empfehlungen zum Essen möchtest, stehe ich dir gerne zur Verfügung.
+
+Genieß den Rest deines Aufenthalts!
+${o.nomeHost}`,
+    fr: (o) => `Bonjour ${o.nomeOspite}, j'espère que votre séjour chez ${o.struttura} se passe bien !
+
+Je voulais juste m'assurer que tout va bien et que vous avez trouvé tout ce dont vous aviez besoin. Si vous avez besoin de quoi que ce soit, des questions sur les environs, ou souhaitez des recommandations pour dîner, je suis à votre disposition.
+
+Profitez bien de la suite de votre séjour !
+${o.nomeHost}`
+  },
+  checkout: {
+    it: (o) => `Ciao ${o.nomeOspite}, spero tu abbia trascorso dei bei giorni con noi!
+
+Ti ricordo che il check-out è previsto ${o.orarioCheckout} del ${o.checkout}. Prima di uscire, per favore assicurati di lasciare l'alloggio in ordine e di chiudere bene porte e finestre.
+
+Grazie mille per la collaborazione, è stato un piacere ospitarti!
+${o.nomeHost}`,
+    en: (o) => `Hi ${o.nomeOspite}, hope you've had a great time with us!
+
+A quick reminder that check-out is ${o.orarioCheckout} on ${o.checkout}. Before you leave, please make sure to leave the place tidy and close all doors and windows.
+
+Thank you so much, it was a pleasure hosting you!
+${o.nomeHost}`,
+    es: (o) => `Hola ${o.nomeOspite}, ¡espero que hayas pasado unos días estupendos con nosotros!
+
+Te recuerdo que la salida es ${o.orarioCheckout} el ${o.checkout}. Antes de irte, por favor asegúrate de dejar el alojamiento ordenado y de cerrar bien puertas y ventanas.
+
+¡Muchas gracias por tu colaboración, ha sido un placer recibirte!
+${o.nomeHost}`,
+    de: (o) => `Hallo ${o.nomeOspite}, ich hoffe, du hattest schöne Tage bei uns!
+
+Zur Erinnerung: der Check-out ist ${o.orarioCheckout} am ${o.checkout}. Bitte achte vor der Abreise darauf, die Unterkunft ordentlich zu hinterlassen und Türen sowie Fenster zu schließen.
+
+Vielen Dank für deine Mühe, es war mir eine Freude, dich zu beherbergen!
+${o.nomeHost}`,
+    fr: (o) => `Bonjour ${o.nomeOspite}, j'espère que vous avez passé de bons moments chez nous !
+
+Petit rappel : le départ est prévu ${o.orarioCheckout} le ${o.checkout}. Avant de partir, merci de laisser le logement en ordre et de bien fermer portes et fenêtres.
+
+Merci beaucoup pour votre collaboration, ce fut un plaisir de vous accueillir !
+${o.nomeHost}`
+  },
+  recensione: {
+    it: (o) => `Ciao ${o.nomeOspite}, grazie ancora per aver scelto ${o.struttura} per il tuo soggiorno dal ${o.checkin} al ${o.checkout}!
+
+Spero che tu ti sia trovato bene. Se hai un minuto, una recensione positiva significherebbe davvero tanto per noi e ci aiuterebbe a continuare a offrire un buon servizio a tutti i futuri ospiti.
+
+Grazie di cuore, e spero di poterti ospitare di nuovo presto!
+${o.nomeHost}`,
+    en: (o) => `Hi ${o.nomeOspite}, thank you for staying at ${o.struttura} from ${o.checkin} to ${o.checkout}!
+
+I hope you enjoyed your stay. If you have a moment, a positive review would mean the world to us and helps us keep offering a great experience to future guests.
+
+Thank you so much, and I hope to host you again soon!
+${o.nomeHost}`,
+    es: (o) => `Hola ${o.nomeOspite}, ¡gracias de nuevo por elegir ${o.struttura} para tu estancia del ${o.checkin} al ${o.checkout}!
+
+Espero que lo hayas pasado bien. Si tienes un minuto, una reseña positiva significaría mucho para nosotros y nos ayudaría a seguir ofreciendo un buen servicio a futuros huéspedes.
+
+Muchas gracias de corazón, ¡espero poder recibirte de nuevo pronto!
+${o.nomeHost}`,
+    de: (o) => `Hallo ${o.nomeOspite}, nochmals vielen Dank, dass du dich für ${o.struttura} entschieden hast für deinen Aufenthalt vom ${o.checkin} bis ${o.checkout}!
+
+Ich hoffe, du hattest eine schöne Zeit. Falls du einen Moment Zeit hast, würde uns eine positive Bewertung sehr viel bedeuten und uns helfen, auch künftigen Gästen einen guten Service zu bieten.
+
+Vielen herzlichen Dank, und ich hoffe, dich bald wieder begrüßen zu dürfen!
+${o.nomeHost}`,
+    fr: (o) => `Bonjour ${o.nomeOspite}, merci encore d'avoir choisi ${o.struttura} pour votre séjour du ${o.checkin} au ${o.checkout} !
+
+J'espère que vous avez passé un bon moment. Si vous avez une minute, un avis positif compterait énormément pour nous et nous aiderait à continuer à offrir un bon service à nos futurs invités.
+
+Merci infiniment, et j'espère avoir le plaisir de vous accueillir de nouveau bientôt !
+${o.nomeHost}`
+  }
+};
+
+let templateMessaggioAttivo = null;
+let linguaTassaAttiva = 'it';
+
+const messaggiTassaSoggiorno = {
+  it: (o) => `Gentile Ospite,
+Vi ricordiamo le informazioni relative all'Imposta di Soggiorno:
+
+• Durata soggiorno: ${o.notti} nott${o.notti === 1 ? 'e' : 'i'}
+• Ospiti soggetti a tassa: ${o.ospitiPaganti}
+• Ospiti esenti (minori o aventi diritto): ${o.ospitiEsenti}
+• Tariffa comunale applicata: ${o.tariffa} € per persona a notte
+
+💶 TOTALE DA SALDARE: ${o.totale}
+
+L'importo potrà essere saldato al check-in.
+Vi ringraziamo per la collaborazione!`,
+  en: (o) => `Dear Guest,
+Please find below the information regarding the City Tax:
+
+• Length of stay: ${o.notti} night${o.notti === 1 ? '' : 's'}
+• Guests subject to the tax: ${o.ospitiPaganti}
+• Exempt guests (minors or eligible): ${o.ospitiEsenti}
+• Municipal rate applied: ${o.tariffa} € per person per night
+
+💶 TOTAL DUE: ${o.totale}
+
+The amount can be settled at check-in.
+Thank you for your cooperation!`,
+  es: (o) => `Estimado/a huésped,
+Le recordamos la información relativa a la Tasa Turística:
+
+• Duración de la estancia: ${o.notti} noche${o.notti === 1 ? '' : 's'}
+• Huéspedes sujetos a la tasa: ${o.ospitiPaganti}
+• Huéspedes exentos (menores o con derecho): ${o.ospitiEsenti}
+• Tarifa municipal aplicada: ${o.tariffa} € por persona y noche
+
+💶 TOTAL A PAGAR: ${o.totale}
+
+El importe podrá abonarse en el check-in.
+¡Gracias por su colaboración!`,
+  de: (o) => `Liebe/r Gast,
+hiermit erinnern wir Sie an die Informationen zur Kurtaxe:
+
+• Aufenthaltsdauer: ${o.notti} Nacht${o.notti === 1 ? '' : 'e'}
+• Steuerpflichtige Gäste: ${o.ospitiPaganti}
+• Befreite Gäste (Minderjährige oder Berechtigte): ${o.ospitiEsenti}
+• Angewendeter Gemeindesatz: ${o.tariffa} € pro Person und Nacht
+
+💶 GESAMTBETRAG: ${o.totale}
+
+Der Betrag kann beim Check-in beglichen werden.
+Vielen Dank für Ihre Mitarbeit!`,
+  fr: (o) => `Cher/Chère client(e),
+Nous vous rappelons les informations relatives à la Taxe de Séjour :
+
+• Durée du séjour : ${o.notti} nuit${o.notti === 1 ? '' : 's'}
+• Personnes soumises à la taxe : ${o.ospitiPaganti}
+• Personnes exonérées (mineurs ou ayants droit) : ${o.ospitiEsenti}
+• Tarif communal appliqué : ${o.tariffa} € par personne et par nuit
+
+💶 TOTAL À RÉGLER : ${o.totale}
+
+Le montant pourra être réglé lors du check-in.
+Merci pour votre collaboration !`
+};
+
+let linguaMessaggioAttiva = 'it';
+
+function popolaSelettoreMessaggi(){
+  const sel = document.getElementById('msg-prenotazione');
+  if(!sel) return;
+  const valorePrecedente = sel.value;
+  const opzioni = prenotazioni
+    .slice()
+    .sort((a,b) => a.checkin.localeCompare(b.checkin))
+    .map(p => `<option value="${p.id}">${p.ospite} — ${formattaData(p.checkin)}</option>`)
+    .join('');
+  sel.innerHTML = `<option value="manuale">Clicca e scegli</option>${opzioni}`;
+  const valoreValido = prenotazioni.some(p => String(p.id) === valorePrecedente);
+  sel.value = valoreValido ? valorePrecedente : 'manuale';
+}
+
+function selezionaPrenotazioneMessaggio(){
+  const sel = document.getElementById('msg-prenotazione');
+  if(sel.value !== 'manuale'){
+    const p = prenotazioni.find(x => String(x.id) === sel.value);
+    if(p){
+      document.getElementById('msg-nome').value = p.ospite;
+      document.getElementById('msg-checkin').value = p.checkin;
+      document.getElementById('msg-checkout').value = p.checkout;
+    }
+  }
+  generaTestoMessaggio();
+}
+
+let modalitaModificaTemplate = false;
+
+function selezionaTemplate(chiave){
+  if(modalitaModificaTemplate) uscitaModalitaModificaTemplate();
+  templateMessaggioAttivo = chiave;
+  document.querySelectorAll('.template-btn[data-template]').forEach(b => {
+    b.classList.toggle('active', b.dataset.template === chiave);
+  });
+  generaTestoMessaggio();
+}
+
+function selezionaLinguaMessaggio(lingua){
+  if(modalitaModificaTemplate) uscitaModalitaModificaTemplate();
+  linguaMessaggioAttiva = lingua;
+  document.querySelectorAll('.lang-msg-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lingua);
+  });
+  const selettoreMobile = document.getElementById('lang-msg-select');
+  if(selettoreMobile) selettoreMobile.value = lingua;
+  generaTestoMessaggio();
+}
+
+function datiPerTemplateMessaggio(){
+  const fb = segnapostoVuoto[linguaMessaggioAttiva];
+  const nomeOspiteInput = document.getElementById('msg-nome').value.trim();
+  const checkinRaw = document.getElementById('msg-checkin').value;
+  const checkoutRaw = document.getElementById('msg-checkout').value;
+  const campo = (valore, fallback) => (valore && valore.trim()) ? valore.trim() : fallback;
+  return {
+    nomeOspite: nomeOspiteInput || fb.nomeOspite,
+    checkin: checkinRaw ? formattaData(checkinRaw) : fb.checkin,
+    checkout: checkoutRaw ? formattaData(checkoutRaw) : fb.checkout,
+    nomeHost: campo(profiloHost.nomeHost, fb.nomeHost),
+    struttura: campo(profiloHost.struttura, fb.struttura),
+    indirizzo: campo(profiloHost.indirizzo, fb.indirizzo),
+    orarioCheckin: campo(profiloHost.orarioCheckin, fb.orarioCheckin),
+    orarioCheckout: campo(profiloHost.orarioCheckout, fb.orarioCheckout)
+  };
+}
+
+// segnaposto testuali usati SOLO quando si modifica il modello (non nel messaggio finale)
+const TOKEN_SEGNAPOSTO = {
+  nomeOspite: '{{nomeOspite}}', checkin: '{{checkin}}', checkout: '{{checkout}}',
+  nomeHost: '{{nomeHost}}', struttura: '{{struttura}}', indirizzo: '{{indirizzo}}',
+  orarioCheckin: '{{orarioCheckin}}', orarioCheckout: '{{orarioCheckout}}'
+};
+
+function sostituisciSegnaposto(testo, dati){
+  let risultato = testo;
+  Object.keys(TOKEN_SEGNAPOSTO).forEach(chiave => {
+    risultato = risultato.split(TOKEN_SEGNAPOSTO[chiave]).join(dati[chiave]);
+  });
+  return risultato;
+}
+
+function testoTemplateGrezzo(chiave, lingua){
+  const override = templatePersonalizzati[chiave] && templatePersonalizzati[chiave][lingua];
+  if(override) return override;
+  return templateMessaggi[chiave][lingua](TOKEN_SEGNAPOSTO);
+}
+
+function generaTestoMessaggio(){
+  document.getElementById('msg-stato').textContent = '';
+  if(!templateMessaggioAttivo || modalitaModificaTemplate) return;
+  const dati = datiPerTemplateMessaggio();
+  const override = templatePersonalizzati[templateMessaggioAttivo] && templatePersonalizzati[templateMessaggioAttivo][linguaMessaggioAttiva];
+  document.getElementById('msg-testo').value = override
+    ? sostituisciSegnaposto(override, dati)
+    : templateMessaggi[templateMessaggioAttivo][linguaMessaggioAttiva](dati);
+}
+
+function segnaTestoModificato(){
+  // l'host sta modificando a mano il testo generato: nessuna azione automatica,
+  // serve solo a evitare che futuri render sovrascrivano una modifica manuale.
+}
+
+function attivaModificaTemplate(){
+  if(!templateMessaggioAttivo){
+    alert('Seleziona prima un template da personalizzare tra quelli qui sopra.');
+    return;
+  }
+  modalitaModificaTemplate = true;
+  document.getElementById('msg-testo').value = testoTemplateGrezzo(templateMessaggioAttivo, linguaMessaggioAttiva);
+
+  const esisteOverride = !!(templatePersonalizzati[templateMessaggioAttivo] && templatePersonalizzati[templateMessaggioAttivo][linguaMessaggioAttiva]);
+  document.getElementById('btn-modifica-template').style.display = 'none';
+  document.getElementById('btn-copia-messaggio').style.display = 'none';
+  document.getElementById('btn-salva-template').style.display = 'inline-block';
+  document.getElementById('btn-annulla-template').style.display = 'inline-block';
+  document.getElementById('btn-ripristina-template').style.display = esisteOverride ? 'inline-block' : 'none';
+  document.getElementById('msg-modifica-nota').style.display = 'block';
+}
+
+function uscitaModalitaModificaTemplate(){
+  modalitaModificaTemplate = false;
+  document.getElementById('btn-modifica-template').style.display = 'inline-block';
+  document.getElementById('btn-copia-messaggio').style.display = 'inline-block';
+  document.getElementById('btn-salva-template').style.display = 'none';
+  document.getElementById('btn-annulla-template').style.display = 'none';
+  document.getElementById('btn-ripristina-template').style.display = 'none';
+  document.getElementById('msg-modifica-nota').style.display = 'none';
+}
+
+function salvaTemplatePersonalizzato(){
+  const testo = document.getElementById('msg-testo').value;
+  if(!templatePersonalizzati[templateMessaggioAttivo]) templatePersonalizzati[templateMessaggioAttivo] = {};
+  templatePersonalizzati[templateMessaggioAttivo][linguaMessaggioAttiva] = testo;
+  salva();
+  uscitaModalitaModificaTemplate();
+  generaTestoMessaggio();
+  const statoEl = document.getElementById('msg-stato');
+  statoEl.textContent = 'Modello personalizzato salvato ✓';
+  setTimeout(() => { statoEl.textContent = ''; }, 2500);
+}
+
+function annullaModificaTemplate(){
+  uscitaModalitaModificaTemplate();
+  generaTestoMessaggio();
+}
+
+function ripristinaTemplateOriginale(){
+  if(!confirm('Tornare al testo predefinito originale per questo template e questa lingua? La tua personalizzazione andrà persa.')) return;
+  if(templatePersonalizzati[templateMessaggioAttivo]){
+    delete templatePersonalizzati[templateMessaggioAttivo][linguaMessaggioAttiva];
+    if(Object.keys(templatePersonalizzati[templateMessaggioAttivo]).length === 0){
+      delete templatePersonalizzati[templateMessaggioAttivo];
+    }
+    salva();
+  }
+  uscitaModalitaModificaTemplate();
+  generaTestoMessaggio();
+}
+
+function copiaTestoMessaggio(){
+  const area = document.getElementById('msg-testo');
+  const testo = area.value;
+  const bottone = document.getElementById('btn-copia-messaggio');
+  const statoEl = document.getElementById('msg-stato');
+  if(!testo.trim()){
+    statoEl.textContent = 'Genera prima un messaggio dai template qui sopra.';
+    return;
+  }
+
+  const mostraCopiato = () => {
+    const testoOriginale = bottone.textContent;
+    bottone.textContent = '✓ Copiato!';
+    bottone.classList.add('copiato');
+    statoEl.textContent = '';
+    setTimeout(() => {
+      bottone.textContent = testoOriginale;
+      bottone.classList.remove('copiato');
+    }, 1800);
+  };
+
+  const copiaConFallback = () => {
+    try{
+      area.focus();
+      area.select();
+      document.execCommand('copy');
+      mostraCopiato();
+    } catch(e){
+      statoEl.textContent = 'Copia non riuscita: seleziona il testo e copialo manualmente.';
+    }
+  };
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(testo).then(mostraCopiato).catch(copiaConFallback);
+  } else {
+    copiaConFallback();
+  }
+}
+
+let prenotazioneInModifica = null; // id della prenotazione in fase di modifica, null = modalità "aggiungi"
+
+function svuotaFormPrenotazione(){
+  document.getElementById('f-ospite').value = "";
+  document.getElementById('f-checkin').value = "";
+  document.getElementById('f-checkout').value = "";
+  document.getElementById('f-piattaforma').value = "Airbnb";
+  document.getElementById('f-importo').value = "";
+  document.getElementById('f-ospiti').value = "";
+}
+
 function aggiungiPrenotazione(){
   const ospite = document.getElementById('f-ospite').value.trim();
   const checkin = document.getElementById('f-checkin').value;
   const checkout = document.getElementById('f-checkout').value;
   const piattaforma = document.getElementById('f-piattaforma').value;
   const importo = parseFloat(document.getElementById('f-importo').value) || 0;
+  const numeroOspiti = parseInt(document.getElementById('f-ospiti').value) || 0;
 
   if(!ospite || !checkin || !checkout){
     alert("Inserisci almeno nome ospite, check-in e check-out.");
     return;
   }
 
-  prenotazioni.push({ id: nextId++, ospite, checkin, checkout, piattaforma, importo });
-  document.getElementById('f-ospite').value = "";
-  document.getElementById('f-checkin').value = "";
-  document.getElementById('f-checkout').value = "";
-  document.getElementById('f-importo').value = "";
+  if(prenotazioneInModifica !== null){
+    const p = prenotazioni.find(x => x.id === prenotazioneInModifica);
+    if(p){
+      Object.assign(p, { ospite, checkin, checkout, piattaforma, importo, numeroOspiti });
+    }
+    annullaModificaPrenotazione();
+  } else {
+    prenotazioni.push({ id: nextId++, ospite, checkin, checkout, piattaforma, importo, numeroOspiti });
+    svuotaFormPrenotazione();
+  }
 
   ricostruisciPulizie();
   salva();
   renderTutto();
 }
 
+function modificaPrenotazione(id){
+  const p = prenotazioni.find(x => x.id === id);
+  if(!p) return;
+  document.getElementById('f-ospite').value = p.ospite;
+  document.getElementById('f-checkin').value = p.checkin;
+  document.getElementById('f-checkout').value = p.checkout;
+  document.getElementById('f-piattaforma').value = p.piattaforma;
+  document.getElementById('f-importo').value = p.importo;
+  document.getElementById('f-ospiti').value = p.numeroOspiti || '';
+
+  prenotazioneInModifica = id;
+  document.getElementById('btn-aggiungi-prenotazione').textContent = 'Salva modifiche';
+  document.getElementById('btn-annulla-modifica').style.display = 'inline-block';
+  document.querySelector('#page-calendario .form-row').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function annullaModificaPrenotazione(){
+  prenotazioneInModifica = null;
+  document.getElementById('btn-aggiungi-prenotazione').textContent = 'Aggiungi prenotazione';
+  document.getElementById('btn-annulla-modifica').style.display = 'none';
+  svuotaFormPrenotazione();
+}
+
 function eliminaPrenotazione(id){
+  if(prenotazioneInModifica === id) annullaModificaPrenotazione();
   prenotazioni = prenotazioni.filter(p => p.id !== id);
   delete puliziaCompletata[id];
   ricostruisciPulizie();
@@ -644,6 +2534,11 @@ function eliminaUscita(id){
 
 // ---- Rendering ----
 function renderPanoramica(){
+  const nomeHost = profiloHost.nomeHost && profiloHost.nomeHost.trim();
+  document.getElementById('panoramica-sub').textContent = nomeHost
+    ? `Ciao ${nomeHost}, ecco il riepilogo (solo visualizzazione).`
+    : 'Come sta andando la tua casa questo mese (solo visualizzazione).';
+
   const oggi = new Date().toISOString().slice(0,10);
   const future = prenotazioni.filter(p => p.checkin >= oggi).sort((a,b)=>a.checkin.localeCompare(b.checkin));
   document.getElementById('kpi-prossimo').textContent = future.length ? `${future[0].ospite} — ${formattaData(future[0].checkin)}` : "Nessuna in arrivo";
@@ -654,6 +2549,8 @@ function renderPanoramica(){
   const entrate = prenotazioni.reduce((s,p)=>s+p.importo,0);
   const totUscite = uscite.reduce((s,u)=>s+u.importo,0);
   document.getElementById('kpi-saldo').textContent = `€${(entrate-totUscite).toLocaleString('it-IT')}`;
+
+  aggiornaAvvisoCin();
 
   const cont = document.getElementById('panoramica-prenotazioni');
   if(future.length === 0){
@@ -668,21 +2565,28 @@ function renderPanoramica(){
 function renderPrenotazioni(){
   const tbody = document.getElementById('tabella-prenotazioni');
   if(prenotazioni.length === 0){
-    tbody.innerHTML = `<tr><td colspan="6"><div class="empty">Ancora nessuna prenotazione.</div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7"><div class="empty">Ancora nessuna prenotazione.</div></td></tr>`;
     return;
   }
   tbody.innerHTML = prenotazioni
     .sort((a,b)=>a.checkin.localeCompare(b.checkin))
-    .map(p => `
+    .map(p => {
+      const daCompletare = p.icalUid && (!p.importo || !p.numeroOspiti);
+      return `
       <tr>
-        <td data-label="Ospite">${p.ospite}</td>
+        <td data-label="Ospite">${p.ospite}${daCompletare ? ' <span class="badge da-fare" title="Importo e/o ospiti mancanti">da completare</span>' : ''}</td>
         <td data-label="Check-in">${formattaData(p.checkin)}</td>
         <td data-label="Check-out">${formattaData(p.checkout)}</td>
         <td data-label="Piattaforma">${p.piattaforma}</td>
         <td data-label="Importo">€${p.importo.toLocaleString('it-IT')}</td>
-        <td data-label="">${'\u00A0'}<button class="ghost" onclick="eliminaPrenotazione(${p.id})">Rimuovi</button></td>
+        <td data-label="Ospiti">${p.numeroOspiti || 0}</td>
+        <td data-label="">
+          <button class="ghost" onclick="modificaPrenotazione(${p.id})">Modifica</button>
+          <button class="ghost" onclick="eliminaPrenotazione(${p.id})">Rimuovi</button>
+        </td>
       </tr>
-    `).join('');
+    `;
+    }).join('');
 }
 
 function renderPulizie(){
@@ -702,32 +2606,239 @@ function renderPulizie(){
     `).join('') + `</tbody></table></div>`;
 }
 
+function calcolaNotti(checkin, checkout){
+  const d1 = new Date(checkin + 'T00:00:00');
+  const d2 = new Date(checkout + 'T00:00:00');
+  const notti = Math.round((d2 - d1) / (1000 * 60 * 60 * 24));
+  return notti > 0 ? notti : 0;
+}
+
+function popolaSelettorePrenotazioniTassa(){
+  const sel = document.getElementById('tasse-prenotazione');
+  if(!sel) return;
+  const valorePrecedente = sel.value;
+  const opzioni = prenotazioni
+    .slice()
+    .sort((a,b) => a.checkin.localeCompare(b.checkin))
+    .map(p => `<option value="${p.id}">${p.ospite} — ${formattaData(p.checkin)}</option>`)
+    .join('');
+  sel.innerHTML = `<option value="manuale">Clicca e scegli</option>${opzioni}`;
+  const valoreValido = prenotazioni.some(p => String(p.id) === valorePrecedente);
+  sel.value = valoreValido ? valorePrecedente : 'manuale';
+}
+
+function selezionaPrenotazioneTassa(){
+  const sel = document.getElementById('tasse-prenotazione');
+  if(sel.value !== 'manuale'){
+    const p = prenotazioni.find(x => String(x.id) === sel.value);
+    if(p){
+      document.getElementById('tassa-calc-notti').value = calcolaNotti(p.checkin, p.checkout);
+      document.getElementById('tassa-calc-ospiti').value = p.numeroOspiti || 0;
+      document.getElementById('tassa-calc-minori').value = 0;
+    }
+  }
+  calcolaTassaSoggiornoManuale();
+}
+
+function selezionaLinguaTassa(lingua){
+  linguaTassaAttiva = lingua;
+  document.querySelectorAll('.lang-tassa-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lingua);
+  });
+  const selettoreMobile = document.getElementById('lang-tassa-select');
+  if(selettoreMobile) selettoreMobile.value = lingua;
+}
+
+function incrementaCampoTassa(id, delta){
+  const el = document.getElementById(id);
+  const valore = Math.max(0, (parseInt(el.value) || 0) + delta);
+  el.value = valore;
+  calcolaTassaSoggiornoManuale();
+}
+
+function calcolaTassaSoggiornoManuale(){
+  const notti = parseInt(document.getElementById('tassa-calc-notti').value) || 0;
+  const ospitiPaganti = parseInt(document.getElementById('tassa-calc-ospiti').value) || 0;
+  const ospitiEsenti = parseInt(document.getElementById('tassa-calc-minori').value) || 0;
+  const tariffa = impostazioniTassaSoggiorno.tariffa || 0;
+  const nottiMax = impostazioniTassaSoggiorno.nottiMax || 0;
+  const sogliaEta = impostazioniTassaSoggiorno.sogliaEta || 0;
+
+  const nottiTassabili = nottiMax > 0 ? Math.min(notti, nottiMax) : notti;
+  const risultato = tariffa * nottiTassabili * ospitiPaganti;
+
+  document.getElementById('tassa-calc-risultato').textContent = `€${risultato.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+  document.getElementById('tassa-dettaglio-ospiti').textContent = `${ospitiPaganti} person${ospitiPaganti === 1 ? 'a' : 'e'}`;
+  document.getElementById('tassa-dettaglio-notti').textContent = `${nottiTassabili} nott${nottiTassabili === 1 ? 'e' : 'i'}`;
+  document.getElementById('tassa-dettaglio-tariffa').textContent = `${tariffa.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2})} € a persona / notte`;
+  document.getElementById('tassa-dettaglio-formula').textContent = `${ospitiPaganti} ospiti x ${nottiTassabili} notti x ${tariffa.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2})} €`;
+
+  const notaEsentiFooter = document.getElementById('tassa-dettaglio-esenti-nota');
+  notaEsentiFooter.textContent = ospitiEsenti > 0
+    ? `*${ospitiEsenti} ospit${ospitiEsenti === 1 ? 'e esente' : 'i esenti'} (sotto i ${sogliaEta} anni o con diritto a esenzione)`
+    : '';
+
+  const notaNotti = document.getElementById('tasse-nota-notti');
+  notaNotti.textContent = (nottiMax > 0 && notti > nottiMax)
+    ? `${nottiTassabili} notti soggette a tassa (limite comunale applicato).`
+    : '';
+
+  const notaEsenti = document.getElementById('tasse-nota-esenti');
+  notaEsenti.textContent = `Minori fino a ${sogliaEta} anni, accompagnatori o aventi diritto`;
+}
+
+function copiaMessaggioTassaSoggiorno(){
+  const notti = parseInt(document.getElementById('tassa-calc-notti').value) || 0;
+  const ospitiPaganti = parseInt(document.getElementById('tassa-calc-ospiti').value) || 0;
+  const ospitiEsenti = parseInt(document.getElementById('tassa-calc-minori').value) || 0;
+  const tariffa = (impostazioniTassaSoggiorno.tariffa || 0).toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2});
+  const totale = document.getElementById('tassa-calc-risultato').textContent;
+
+  const testo = messaggiTassaSoggiorno[linguaTassaAttiva]({ notti, ospitiPaganti, ospitiEsenti, tariffa, totale });
+
+  const bottone = document.getElementById('btn-copia-messaggio-tassa');
+  const statoEl = document.getElementById('tassa-calc-stato');
+  const areaNascosta = document.getElementById('tassa-messaggio-nascosto');
+  areaNascosta.value = testo;
+
+  const mostraCopiato = () => {
+    const originale = bottone.textContent;
+    bottone.textContent = '✓ Copiato!';
+    bottone.classList.add('copiato');
+    statoEl.textContent = '';
+    setTimeout(() => { bottone.textContent = originale; bottone.classList.remove('copiato'); }, 1800);
+  };
+  const copiaConFallback = () => {
+    try{
+      areaNascosta.focus();
+      areaNascosta.select();
+      document.execCommand('copy');
+      mostraCopiato();
+    } catch(e){
+      statoEl.textContent = 'Copia non riuscita: seleziona e copia il testo manualmente.';
+    }
+  };
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(testo).then(mostraCopiato).catch(copiaConFallback);
+  } else {
+    copiaConFallback();
+  }
+}
+
+function stampaImpostaSoggiorno(){
+  const notti = parseInt(document.getElementById('tassa-calc-notti').value) || 0;
+  const ospitiPaganti = parseInt(document.getElementById('tassa-calc-ospiti').value) || 0;
+  const ospitiEsenti = parseInt(document.getElementById('tassa-calc-minori').value) || 0;
+  const tariffa = impostazioniTassaSoggiorno.tariffa || 0;
+  const totale = document.getElementById('tassa-calc-risultato').textContent;
+  const nomeStruttura = impostazioniTassaSoggiorno.nomeStrutturaNota || (profiloHost.struttura && profiloHost.struttura.trim()) || 'Host Hub';
+  const dataGenerazione = new Date().toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+  document.getElementById('report-stampa').innerHTML = `
+    <h1>${nomeStruttura} — Imposta di Soggiorno</h1>
+    <p>Generato il ${dataGenerazione}</p>
+    <table class="tabella-stampa">
+      <tbody>
+        <tr><th>Durata soggiorno</th><td>${notti} notti</td></tr>
+        <tr><th>Ospiti soggetti a tassa</th><td>${ospitiPaganti}</td></tr>
+        <tr><th>Ospiti esenti</th><td>${ospitiEsenti}</td></tr>
+        <tr><th>Tariffa comunale applicata</th><td>${tariffa.toLocaleString('it-IT', {minimumFractionDigits:2})} € a persona/notte</td></tr>
+        <tr><th>Totale da saldare</th><td>${totale}</td></tr>
+      </tbody>
+    </table>
+  `;
+  window.print();
+}
+
+function aggiornaAvvisoCin(){
+  const avviso = document.getElementById('avviso-cin');
+  if(!avviso) return;
+  avviso.style.display = (profiloHost.cin && profiloHost.cin.trim()) ? 'none' : 'block';
+}
+
+function scadenzeStandardCedolare(){
+  const anno = new Date().getFullYear();
+  return [
+    { id: 'std-giugno-' + anno, data: `${anno}-06-30`, descrizione: 'Cedolare Secca — Saldo anno precedente + 1° acconto', standard: true },
+    { id: 'std-novembre-' + anno, data: `${anno}-11-30`, descrizione: 'Cedolare Secca — 2° acconto', standard: true }
+  ];
+}
+
+function renderScadenze(){
+  const bannerEl = document.getElementById('scadenze-banner');
+  const listaEl = document.getElementById('scadenze-lista');
+  if(!bannerEl || !listaEl) return;
+
+  const tutte = [...scadenzeStandardCedolare(), ...promemoriaPersonalizzati]
+    .sort((a,b) => a.data.localeCompare(b.data));
+
+  const oggi = new Date(); oggi.setHours(0,0,0,0);
+  const tra30giorni = new Date(oggi);
+  tra30giorni.setDate(oggi.getDate() + 30);
+
+  const imminenti = tutte.filter(s => {
+    const d = new Date(s.data + 'T00:00:00');
+    return d >= oggi && d <= tra30giorni;
+  });
+
+  if(imminenti.length){
+    bannerEl.style.display = 'block';
+    bannerEl.innerHTML = imminenti
+      .map(s => `⚠ <strong>${formattaData(s.data)}</strong> — ${s.descrizione}`)
+      .join('<br>');
+  } else {
+    bannerEl.style.display = 'none';
+    bannerEl.innerHTML = '';
+  }
+
+  if(tutte.length === 0){
+    listaEl.innerHTML = `<div class="empty">Nessuna scadenza registrata.</div>`;
+  } else {
+    listaEl.innerHTML = tutte.map(s => `
+      <div class="scadenza-riga">
+        <span class="scadenza-data">${formattaData(s.data)}</span>
+        <span class="scadenza-desc">${s.descrizione}</span>
+        ${s.standard ? '' : `<button class="ghost" onclick="eliminaPromemoria('${s.id}')">Rimuovi</button>`}
+      </div>
+    `).join('');
+  }
+}
+
 function renderFinanze(){
   const entrate = prenotazioni.reduce((s,p)=>s+p.importo,0);
   const totUscite = uscite.reduce((s,u)=>s+u.importo,0);
+  const aliquota = parseFloat(aliquotaFiscale) || 0;
+  const cedolare = entrate * (aliquota / 100);
+  const utileNetto = entrate - totUscite - cedolare;
+
   document.getElementById('fin-entrate').textContent = `€${entrate.toLocaleString('it-IT')}`;
   document.getElementById('fin-uscite').textContent = `€${totUscite.toLocaleString('it-IT')}`;
-  document.getElementById('fin-saldo').textContent = `€${(entrate-totUscite).toLocaleString('it-IT')}`;
-
-  const righe = [
-    ...prenotazioni.map(p => ({ data: p.checkin, descrizione: `Prenotazione — ${p.ospite}`, tipo: 'entrata', importo: p.importo, id: null })),
-    ...uscite.map(u => ({ data: u.data, descrizione: u.descrizione, tipo: 'uscita', importo: u.importo, id: u.id }))
-  ].sort((a,b) => b.data.localeCompare(a.data));
+  document.getElementById('fin-utile-netto').textContent = `€${utileNetto.toLocaleString('it-IT', {maximumFractionDigits:0})}`;
 
   const tbody = document.getElementById('tabella-finanze');
-  if(righe.length === 0){
-    tbody.innerHTML = `<tr><td colspan="5"><div class="empty">Nessun movimento ancora.</div></td></tr>`;
+  if(uscite.length === 0){
+    tbody.innerHTML = `<tr><td colspan="4"><div class="empty">Nessuna uscita registrata ancora.</div></td></tr>`;
     return;
   }
-  tbody.innerHTML = righe.map(r => `
+  tbody.innerHTML = uscite
+    .slice()
+    .sort((a,b) => b.data.localeCompare(a.data))
+    .map(u => `
     <tr>
-      <td data-label="Data">${formattaData(r.data)}</td>
-      <td data-label="Descrizione">${r.descrizione}</td>
-      <td data-label="Tipo"><span class="badge ${r.tipo}">${r.tipo === 'entrata' ? 'Entrata' : 'Uscita'}</span></td>
-      <td data-label="Importo">${r.tipo === 'entrata' ? '+' : '−'}€${r.importo.toLocaleString('it-IT')}</td>
-      <td data-label="">${r.id ? `<button class="ghost" onclick="eliminaUscita(${r.id})">Rimuovi</button>` : ''}</td>
+      <td data-label="Data">${formattaData(u.data)}</td>
+      <td data-label="Descrizione">${u.descrizione}</td>
+      <td data-label="Importo">−€${u.importo.toLocaleString('it-IT')}</td>
+      <td data-label="">${'\u00A0'}<button class="ghost" onclick="eliminaUscita(${u.id})">Rimuovi</button></td>
     </tr>
   `).join('');
+}
+
+function renderTasse(){
+  aggiornaRiepilogoRegoleComune();
+  popolaSelettorePrenotazioniTassa();
+  calcolaTassaSoggiornoManuale();
+  renderScadenze();
 }
 
 function renderTutto(){
@@ -735,6 +2846,8 @@ function renderTutto(){
   renderPrenotazioni();
   renderPulizie();
   renderFinanze();
+  renderTasse();
+  popolaSelettoreMessaggi();
 }
 
 // ---- Navigazione ----
@@ -767,11 +2880,29 @@ document.addEventListener('click', (e) => {
   if(!e.target.closest('.menu-wrap')) mobileDropdown.classList.remove('open');
 });
 
+inizializzaCloud();
 const datiEsistenti = carica();
 if(!datiEsistenti){
   // prima apertura: mostriamo due esempi così l'host capisce subito come funziona
   puliziaCompletata = {};
 }
+popolaFormProfiloHost();
+popolaFormTassaSoggiorno();
+document.getElementById('f-aliquota-fiscale').value = aliquotaFiscale;
+aggiornaIstruzioniIcal();
+
+// Su alcuni browser i campi data si aprono solo toccando l'iconcina calendario:
+// qui proviamo ad aprirli cliccando ovunque nel campo (funziona su Chrome, Edge,
+// e la maggior parte dei browser Android). Dove il browser non lo supporta,
+// il comportamento resta quello di sempre — nessun effetto negativo.
+document.querySelectorAll('input[type="date"]').forEach(campo => {
+  campo.addEventListener('click', () => {
+    if(typeof campo.showPicker === 'function'){
+      try{ campo.showPicker(); } catch(e){ /* ignorato: alcuni browser lo bloccano in certi contesti */ }
+    }
+  });
+});
+
 ricostruisciPulizie();
 renderTutto();
 </script>
