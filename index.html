@@ -268,6 +268,21 @@
     margin-top: 8px;
   }
 
+  .app-copyright{
+    text-align: center;
+    font-size: 11px;
+    color: #A69C8C;
+    padding: 14px 20px 6px;
+    line-height: 1.5;
+  }
+  .app-copyright a{
+    color: #A69C8C;
+    text-decoration: underline;
+  }
+  .app-copyright a:hover{
+    color: var(--blu);
+  }
+
   /* --- Strumenti Dati --- */
   .data-tools-row{
     display:flex;
@@ -327,6 +342,81 @@
     text-decoration: underline;
     cursor: pointer;
   }
+
+  /* --- Panoramica --- */
+  .panoramica-banner{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom: 26px;
+    padding: 26px 28px;
+    background: linear-gradient(135deg, var(--blu) 0%, var(--blu-scuro) 100%);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 22px rgba(18,50,69,0.28);
+  }
+  .panoramica-saluto{
+    font-family:'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--calce);
+  }
+  .panoramica-data{
+    font-size: 14px;
+    color: rgba(246,241,231,0.75);
+  }
+  .panoramica-avvisi{ margin-bottom: 30px; }
+  .panoramica-avvisi h2{
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+  }
+  .avviso-riga{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap: 14px;
+    flex-wrap: wrap;
+    background: var(--blu-scuro);
+    border: 1px solid rgba(246,241,231,0.15);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--calce);
+  }
+  .avviso-testo{ display:flex; align-items:center; gap:10px; flex:1; min-width:180px; }
+  .avviso-simbolo{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--ocra);
+    color: var(--blu-scuro);
+    font-weight: 800;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .avviso-azione{ display:flex; gap:8px; flex-wrap:wrap; flex-shrink:0; }
+  .avviso-btn{
+    all:unset;
+    box-sizing:border-box;
+    cursor:pointer;
+    background: rgba(246,241,231,0.12);
+    border: 1px solid rgba(246,241,231,0.3);
+    color: var(--calce);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .avviso-btn:hover{ background: var(--ocra); color: var(--blu-scuro); border-color: var(--ocra); }
+  .avviso-btn.fatto{ background: var(--oliva); color:#fff; border-color: var(--oliva); }
+  .avviso-btn.fatto:hover{ background: #4A5A3E; }
 
   /* --- Messaggi Ospiti --- */
   .template-grid{
@@ -435,6 +525,13 @@
     .lang-msg-row{ display:none; }
     .lang-msg-mobile{ display:block !important; }
     .nota-calendario-desktop{ display:none; }
+    .panoramica-banner{ flex-direction: column; align-items:flex-start; gap:4px; padding: 20px 20px; }
+    .avviso-riga{ flex-direction: column; align-items:flex-start; }
+    .avviso-azione{ width:100%; }
+    .avviso-btn{ flex:1; text-align:center; }
+    .stepper-btn{ width: 34px; height: 34px; font-size: 16px; }
+    .stepper-riga{ gap: 6px; }
+    .scadenza-fissa-riga{ flex-direction: column; gap: 2px; }
 
     /* Tabelle come schede impilate, niente scroll orizzontale */
     .table-wrap{ overflow-x: visible; }
@@ -489,6 +586,44 @@
     color: var(--ocra-chiaro);
     font-size: 18px;
   }
+  .selettore-anno{
+    font-family:'Work Sans', sans-serif;
+    font-weight:700;
+    font-size: 14px;
+    padding: 7px 10px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(246,241,231,0.3);
+    background: rgba(246,241,231,0.08);
+    color: var(--calce);
+    cursor: pointer;
+  }
+  #selettore-anno-desktop, #selettore-anno-mobile{
+    width:100%;
+    max-width: 100%;
+    box-sizing:border-box;
+    min-width: 0;
+    background: var(--blu-scuro);
+    color: var(--calce);
+    border: 1px solid rgba(246,241,231,0.35);
+  }
+  .selettore-anno option{ color: var(--inchiostro); background: var(--calce); }
+  .badge-cavallo-anno{
+    display:inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--ocra-chiaro);
+    color: var(--blu-scuro);
+    white-space: nowrap;
+  }
+  .icona-richieste{
+    display:inline-block;
+    margin-left: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
   .menu-wrap{ position:relative; }
   .menu-btn{
     all:unset; cursor:pointer;
@@ -524,6 +659,7 @@
 
   @media (max-width: 800px){
     .mobile-topbar{ display:flex; }
+    #selettore-anno-mobile{ max-width: 92px; padding: 6px 6px; font-size: 13px; }
   }
 
   /* --- Sezioni nella pagina Dati --- */
@@ -538,7 +674,8 @@
   .scadenza-riga{
     display:flex;
     align-items:center;
-    gap: 14px;
+    flex-wrap: wrap;
+    gap: 10px 14px;
     padding: 10px 0;
     border-bottom: 1px solid var(--calce-scuro);
     font-size: 14px;
@@ -550,6 +687,25 @@
     min-width: 90px;
   }
   .scadenza-desc{ flex:1; }
+
+  .scadenza-fissa-riga{
+    display:flex;
+    align-items:flex-start;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--calce-scuro);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .scadenza-fissa-riga:last-of-type{ border-bottom:none; }
+  .scadenza-fissa-data{
+    font-weight:700;
+    color: var(--blu);
+    min-width: 48px;
+    flex-shrink: 0;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+  }
 
   /* --- Tasse: modulo Imposta di Soggiorno --- */
   .info-nota-icona{
@@ -567,6 +723,28 @@
     font-weight:400;
     color:#7A6E5C;
     margin-top:4px;
+  }
+
+  .didascalia-evidenziata{
+    background: linear-gradient(135deg, var(--blu) 0%, var(--blu-scuro) 100%);
+    color: var(--calce);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    margin: 14px 0 26px 0;
+    box-shadow: 0 4px 14px rgba(18,50,69,0.22);
+  }
+
+  .didascalia-gialla{
+    background: var(--ocra);
+    color: var(--blu-scuro);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    margin: 0 0 16px 0;
+    display: inline-block;
   }
 
   .tasse-sottotitolo{
@@ -594,7 +772,9 @@
   }
   .stepper-icona{ font-size:18px; flex-shrink:0; }
   .stepper-riga input[type="number"]{
-    flex:1;
+    flex:1 1 auto;
+    min-width: 0;
+    box-sizing: border-box;
     font-family:'Work Sans', sans-serif;
     font-size:16px;
     padding:9px 12px;
@@ -736,6 +916,13 @@
   .solo-stampa{ display:none; }
   @media print{
     body *{ visibility: hidden; }
+    /* Elimina le pagine bianche extra: senza queste righe il contenuto
+       dell'app (invisibile ma ancora presente nel flusso, più l'altezza
+       minima di .app) continuerebbe a occupare spazio nel PDF stampato. */
+    .app{ min-height:0 !important; }
+    .sidebar, .mobile-topbar{ display:none !important; }
+    main > .page{ display:none !important; }
+
     #report-stampa, #report-stampa *{ visibility: visible; }
     #report-stampa{
       display:block !important;
@@ -771,12 +958,66 @@
       text-align: left;
     }
     .tabella-stampa th{ background: #eee; }
+
+    /* Layout specifico per la Ricevuta Ufficiale */
+    .ricevuta-intestazione{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .ricevuta-titolo-box h1{
+      margin:0;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ricevuta-titolo-box p{ margin:4px 0 0 0; font-size:11px; color:#475569; }
+    .ricevuta-numero{ text-align:right; font-size:12.5px; white-space:nowrap; }
+    .ricevuta-parti{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px;
+      margin-bottom:16px;
+      padding-bottom:12px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size:12.5px;
+      line-height:1.6;
+    }
+    .ricevuta-parte-titolo{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      color:#1B4B66;
+      margin-bottom:5px;
+      font-weight:700;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 3px;
+    }
+    .ricevuta-periodo{ margin-bottom:10px; font-size:12.5px; }
+    .ricevuta-tabella{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 12.5px;
+    }
+    .ricevuta-tabella td{
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .ricevuta-tabella td.etichetta{ width:65%; color:#334155; }
+    .ricevuta-tabella td.num{ text-align:right; font-weight:600; }
+    .ricevuta-tabella .riga-descrizione td{ background:#f8fafc; font-weight:600; color:#1e293b; }
+    .ricevuta-tabella .totale-riga td{ font-weight:800; background:#f1f5f9; font-size:13.5px; }
+    .ricevuta-nota-fiscale{ font-size:11px; color:#555; margin-top:14px; font-style:italic; }
+    .ricevuta-firma{ display:flex; justify-content:flex-end; margin-top:60px; }
+    .ricevuta-firma-box{ width:220px; border-top:1px solid #999; text-align:center; padding-top:6px; font-size:12px; }
   }
 </style>
-<!-- Firebase (sincronizzazione cloud opzionale) -->
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -784,6 +1025,7 @@
   <!-- Barra + tendina, visibile solo su mobile -->
   <div class="mobile-topbar">
     <div class="mobile-brand">Host Hub</div>
+    <select class="selettore-anno" id="selettore-anno-mobile" onchange="cambiaAnnoSelezionato(this.value)"></select>
     <div class="menu-wrap">
       <button class="menu-btn" id="mobileMenuBtn">Menu ▾</button>
       <div class="mobile-dropdown" id="mobileDropdown">
@@ -792,22 +1034,30 @@
         <button data-tab="pulizie">Pulizie</button>
         <button data-tab="messaggi">Messaggi</button>
         <button data-tab="finanze">Finanze</button>
-        <button data-tab="tasse">Tasse</button>
-        <button data-tab="dati">Dati</button>
+        <button data-tab="tasse">Imposta di Soggiorno</button>
+        <button data-tab="scadenze">Scadenze Fiscali</button>
+        <button data-tab="impostazioni">Impostazioni</button>
+        <button data-tab="dati">Backup</button>
       </div>
     </div>
   </div>
 
   <aside class="sidebar">
-    <div class="brand">Host Hub<small>Planner per host — prototipo</small></div>
+    <div class="brand">Host Hub<small>Planner per host</small></div>
+    <div class="field" style="margin-bottom:16px; padding: 0 12px;">
+      <label style="color:rgba(246,241,231,0.7);">Anno fiscale</label>
+      <select class="selettore-anno" id="selettore-anno-desktop" onchange="cambiaAnnoSelezionato(this.value)"></select>
+    </div>
     <nav class="tabs" id="tabs">
       <button data-tab="panoramica" class="active">Panoramica</button>
       <button data-tab="calendario">Prenotazioni</button>
       <button data-tab="pulizie">Pulizie</button>
       <button data-tab="messaggi">Messaggi</button>
       <button data-tab="finanze">Finanze</button>
-      <button data-tab="tasse">Tasse</button>
-      <button data-tab="dati">Dati</button>
+      <button data-tab="tasse">Imposta di Soggiorno</button>
+      <button data-tab="scadenze">Scadenze Fiscali</button>
+      <button data-tab="impostazioni">Impostazioni</button>
+      <button data-tab="dati">Backup</button>
     </nav>
     <div class="sidebar-foot">
       I dati restano salvati su questo dispositivo/browser.
@@ -819,30 +1069,43 @@
     <!-- PANORAMICA -->
     <div class="page" id="page-panoramica">
       <h1 class="page-title">Panoramica</h1>
-      <p class="page-sub" id="panoramica-sub">Come sta andando la tua casa questo mese.</p>
 
-      <div class="field" style="max-width:280px; margin-bottom:20px;">
-        <label>Codice Identificativo Nazionale (CIN)</label>
-        <input type="text" id="host-cin" placeholder="Es. IT012345A1B2C3D4E5" onchange="salvaProfiloHost()">
+      <div class="panoramica-banner">
+        <div class="panoramica-saluto" id="panoramica-saluto"></div>
+        <div class="panoramica-data" id="panoramica-data-oggi"></div>
       </div>
+
+      <section class="panoramica-avvisi">
+        <h2>Da fare oggi</h2>
+        <div id="panoramica-oggi"></div>
+      </section>
+
+      <section class="panoramica-avvisi">
+        <h2>Da fare a breve</h2>
+        <div id="panoramica-a-breve"></div>
+      </section>
 
       <div class="grid-cards">
         <div class="card">
-          <div class="label">Prossimo arrivo</div>
-          <div class="value" id="kpi-prossimo">—</div>
+          <div class="label">Guadagni del Mese</div>
+          <div class="value ok" id="kpi-guadagni-mese">€0</div>
         </div>
         <div class="card">
-          <div class="label">Pulizie da fare</div>
-          <div class="value warn" id="kpi-pulizie">0</div>
+          <div class="label">Spese del Mese</div>
+          <div class="value warn" id="kpi-spese-mese">€0</div>
         </div>
         <div class="card">
-          <div class="label">Saldo del mese</div>
-          <div class="value ok" id="kpi-saldo">€0</div>
+          <div class="label">Utile Netto del Mese</div>
+          <div class="value" id="kpi-utile-mese">€0</div>
+        </div>
+        <div class="card">
+          <div class="label">Notti Prenotate nel Mese</div>
+          <div class="value" id="kpi-notti-mese">0</div>
         </div>
       </div>
 
       <section>
-        <h2>Prossime prenotazioni</h2>
+        <h2>Prenotazioni del Mese</h2>
         <p class="note">Solo visualizzazione. Per modificare, <a href="#" class="link-azzurro" onclick="vaiAllaPagina('calendario'); return false;">vai qui</a>.</p>
         <div id="panoramica-prenotazioni"></div>
       </section>
@@ -883,7 +1146,15 @@
         </div>
         <div class="field">
           <label>Ospiti totali</label>
-          <input type="number" id="f-ospiti" placeholder="2" min="0">
+          <input type="number" id="f-ospiti" placeholder="0" min="0">
+        </div>
+        <div class="field">
+          <label>Orario di arrivo (facoltativo)</label>
+          <input type="text" id="f-orario-arrivo" placeholder="Es. 16:00 o self check-in serale">
+        </div>
+        <div class="field" style="flex:1; min-width:220px;">
+          <label>Richieste speciali (facoltativo)</label>
+          <input type="text" id="f-richieste-speciali" placeholder="Es. allergia, culla, animale al seguito...">
         </div>
         <button class="primary" id="btn-aggiungi-prenotazione" onclick="aggiungiPrenotazione()">Aggiungi prenotazione</button>
         <button class="btn-outline" id="btn-annulla-modifica" onclick="annullaModificaPrenotazione()" style="display:none;">Annulla modifica</button>
@@ -891,11 +1162,12 @@
 
       <h2 class="dati-sezione-titolo">Tutte le prenotazioni</h2>
       <p class="page-sub">Usa "Modifica" per completare o correggere una prenotazione già inserita (utile soprattutto per quelle importate da iCal).</p>
+      <p class="page-sub">Le eventuali richieste speciali, se inserite, sono visibili cliccando il punto interrogativo rosso, in parte al nome dell'ospite.</p>
 
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th><th>Ospiti</th><th></th></tr>
+            <tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th><th>Ospiti</th><th>Orario arrivo</th><th></th></tr>
           </thead>
           <tbody id="tabella-prenotazioni"></tbody>
         </table>
@@ -906,48 +1178,41 @@
     <div class="page" id="page-pulizie" style="display:none;">
       <h1 class="page-title">Pulizie</h1>
       <p class="page-sub">Un turnover per ogni check-out. Segna quando è fatto.</p>
+      <label style="display:flex; align-items:center; gap:8px; font-size:14px; cursor:pointer; margin-bottom:16px;">
+        <input type="checkbox" id="nascondi-pulizie-fatte" onchange="cambiaNascondiPulizieFatte()">
+        Nascondi le pulizie già fatte
+      </label>
       <div id="lista-pulizie"></div>
+
+      <h2 class="dati-sezione-titolo">Avvisa l'Addetto Pulizie</h2>
+      <p class="page-sub">Un messaggio pronto da copiare e inviare a chi si occupa del cambio.</p>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Nome addetto / ditta pulizie</label>
+          <input type="text" id="pulizie-nome-addetto" placeholder="Es. Maria, Pulisco Bene Srl" onchange="salvaProfiloHost()">
+        </div>
+        <div class="field" style="flex:1; min-width:220px;">
+          <label>Seleziona pulizia</label>
+          <select id="pulizie-selettore" onchange="generaMessaggioPulizia()">
+            <option value="manuale">Clicca e scegli</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="block">
+        <textarea id="pulizie-messaggio-testo" style="width:100%; min-height:140px; font-family:'Work Sans',sans-serif; font-size:14.5px; line-height:1.6; color:var(--inchiostro); border:1px solid var(--bordo); border-radius:var(--radius); padding:14px; background:var(--calce); resize:vertical;"></textarea>
+        <div style="display:flex; align-items:center; gap:14px; margin-top:12px; flex-wrap:wrap;">
+          <button class="primary" onclick="copiaMessaggioPulizia()" id="btn-copia-messaggio-pulizia">Copia Testo</button>
+          <span class="note" id="pulizie-messaggio-stato" style="margin-top:0;"></span>
+        </div>
+      </div>
     </div>
 
     <!-- MESSAGGI -->
     <div class="page" id="page-messaggi" style="display:none;">
       <h1 class="page-title">Messaggi Ospiti</h1>
-      <p class="page-sub">Template pronti da personalizzare e copiare in chat o su WhatsApp.</p>
-
-      <details class="settings-panel" id="pannello-impostazioni-casa" open>
-        <summary>Impostazioni della Casa e Nome Host</summary>
-        <p class="page-sub" style="margin: 6px 0 16px 0;">Inserisci questi dati una sola volta: verranno usati per completare automaticamente tutti i messaggi per i tuoi ospiti.</p>
-
-        <div class="form-row">
-          <div class="field">
-            <label>Nome Host</label>
-            <input type="text" id="host-nome" placeholder="Es. Marco" onchange="salvaProfiloHost()">
-          </div>
-          <div class="field">
-            <label>Nome Alloggio / Struttura</label>
-            <input type="text" id="host-struttura" placeholder="Es. Appartamento Vista Mare" onchange="salvaProfiloHost()">
-          </div>
-          <div class="field">
-            <label>Indirizzo completo</label>
-            <input type="text" id="host-indirizzo" placeholder="Es. Via Roma 12, Piano 2" onchange="salvaProfiloHost()">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label>Orario Check-in standard</label>
-            <input type="text" id="host-orario-checkin" placeholder="Es. dalle 15:00 alle 20:00" onchange="salvaProfiloHost()">
-          </div>
-          <div class="field">
-            <label>Orario Check-out standard</label>
-            <input type="text" id="host-orario-checkout" placeholder="Es. entro le 10:00" onchange="salvaProfiloHost()">
-          </div>
-        </div>
-
-        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
-          <button class="btn-outline" onclick="salvaProfiloHost()">Salva impostazioni</button>
-          <span class="note" id="host-stato" style="margin-top:0;"></span>
-        </div>
-      </details>
+      <p class="page-sub">Template pronti da personalizzare e copiare in chat o su WhatsApp. I tuoi dati host e struttura vengono inseriti in automatico (puoi modificarli in <a href="#" class="link-azzurro" onclick="vaiAllaPagina('impostazioni'); return false;">Impostazioni</a>).</p>
 
       <div class="form-row">
         <div class="field">
@@ -1019,7 +1284,7 @@
     <!-- FINANZE -->
     <div class="page" id="page-finanze" style="display:none;">
       <h1 class="page-title">Finanze</h1>
-      <p class="page-sub">Entrate dalle prenotazioni e uscite che aggiungi tu.</p>
+      <p class="page-sub" id="finanze-sub">Entrate dalle prenotazioni e uscite che aggiungi tu.</p>
 
       <div class="grid-cards" id="finanze-grid">
         <div class="card">
@@ -1041,7 +1306,25 @@
           <div class="label">Utile Netto Stimato</div>
           <div class="value" id="fin-utile-netto">€0</div>
         </div>
+        <div class="card">
+          <div class="label">Totale Notti Prenotate</div>
+          <div class="value" id="fin-notti-anno">0</div>
+        </div>
+        <div class="card">
+          <div class="label" id="fin-confronto-etichetta">Rispetto all'anno precedente</div>
+          <div class="value" id="fin-confronto-anno">—</div>
+        </div>
       </div>
+
+      <details class="settings-panel" style="margin-top:20px;">
+        <summary>Come scegliere la tua aliquota fiscale?</summary>
+        <p class="page-sub" style="margin: 10px 0 14px 0;">
+          <strong>Cedolare Secca:</strong> <strong>21%</strong> (1° immobile scelto) oppure <strong>26%</strong> (immobili successivi).
+        </p>
+        <p class="page-sub" style="margin: 0;">
+          <strong>Regime Forfettario</strong> — Attività ricettiva diretta (ATECO 55): inserisci <strong>2%</strong> sul lordo (se start-up al 5%) oppure <strong>6%</strong> sul lordo (se aliquota standard 15%). Calcolati su redditività 40%, contributi previdenziali esclusi.
+        </p>
+      </details>
 
       <h2 class="dati-sezione-titolo" style="margin-top:8px;">USCITE</h2>
       <p class="note">Inserisci qui tutte le spese inerenti alla locazione (utenze, pulizie, manutenzione, commissioni, ecc.) per un calcolo corretto dell'utile netto.</p>
@@ -1059,7 +1342,8 @@
           <label>Importo (€)</label>
           <input type="number" id="f-importo-uscita" placeholder="0">
         </div>
-        <button class="primary" onclick="aggiungiUscita()">Aggiungi uscita</button>
+        <button class="primary" id="btn-aggiungi-uscita" onclick="aggiungiUscita()">Aggiungi uscita</button>
+        <button class="btn-outline" id="btn-annulla-modifica-uscita" onclick="annullaModificaUscita()" style="display:none;">Annulla modifica</button>
       </div>
 
       <div class="table-wrap">
@@ -1072,26 +1356,21 @@
 
     <!-- TASSE -->
     <div class="page" id="page-tasse" style="display:none;">
-      <h1 class="page-title">Tasse</h1>
-      <p class="page-sub">Tassa di soggiorno e scadenze fiscali.</p>
+      <h1 class="page-title">Imposta di Soggiorno</h1>
+      <p class="page-sub">Calcola la tassa di soggiorno per un ospite.</p>
 
-      <div class="info-note info-nota-icona" style="margin-bottom:22px;">
-        <span class="info-nota-icona-simbolo">ℹ️</span>
-        <span>
-          <strong>Come funziona questo modulo?</strong><br>
-          Inserisci i parametri comunali solo una volta (tariffa, notti massime, età esenzione), fatto questo ti basta compilare i <strong>Dati del Soggiorno</strong> per ottenere il <strong>Totale Dovuto</strong> e generare il messaggio da inviare all'ospite.
-        </span>
-      </div>
-
-      <h2 class="dati-sezione-titolo" style="margin-top:0; padding-top:0; border-top:none;">Calcola Imposta di Soggiorno</h2>
-
-      <details class="settings-panel" id="pannello-regole-comune">
+      <details class="settings-panel" id="pannello-regole-comune" open>
         <summary>
-          <span class="regole-comune-icona">⚙️</span> Regole & Tariffe del Comune
+          Regole & Tariffe del Comune
           <span class="regole-comune-riepilogo" id="regole-comune-riepilogo"></span>
         </summary>
+        <p class="page-sub" style="margin: 6px 0 16px 0;">Inserisci i parametri comunali solo una volta.</p>
 
         <div class="form-row">
+          <div class="field">
+            <label>Nome del Comune</label>
+            <input type="text" id="tassa-comune" placeholder="Es. Verona, Roma, Palermo" onchange="salvaImpostazioniTassaSoggiorno()">
+          </div>
           <div class="field">
             <label>Tariffa (€ / notte / persona)</label>
             <input type="number" id="tassa-tariffa" placeholder="Es. 2.00 o 3.50" min="0" step="0.5" onchange="salvaImpostazioniTassaSoggiorno()">
@@ -1105,12 +1384,9 @@
             <input type="number" id="tassa-soglia-eta" placeholder="Esenti fino a compimento" min="0" onchange="salvaImpostazioniTassaSoggiorno()">
           </div>
         </div>
-        <div class="field" style="max-width:420px;">
-          <label>Nome struttura o note addizionali</label>
-          <input type="text" id="tassa-nome-struttura" placeholder="Es. Dimora del Sole – Apt. Centro Storico" onchange="salvaImpostazioniTassaSoggiorno()">
-        </div>
       </details>
 
+      <h2 class="dati-sezione-titolo">Calcola Imposta di Soggiorno</h2>
       <h3 class="tasse-sottotitolo">Dettagli del Soggiorno<span class="tasse-sottotitolo-nota">Compila per ogni prenotazione</span></h3>
 
       <div class="field" style="max-width:420px; margin-bottom:18px;">
@@ -1151,7 +1427,7 @@
             <label>Ospiti Esenti (Non Paganti)</label>
             <span class="tasse-badge tasse-badge-grigio">0,00 € quota</span>
           </div>
-          <p class="tasse-sottoetichetta" id="tasse-nota-esenti">Minori, accompagnatori o aventi diritto</p>
+          <p class="tasse-sottoetichetta" id="tasse-nota-esenti">Minori, residenti o aventi diritto</p>
           <div class="stepper-riga">
             <span class="stepper-icona">🙂</span>
             <input type="number" id="tassa-calc-minori" value="0" min="0" oninput="calcolaTassaSoggiornoManuale()">
@@ -1161,22 +1437,24 @@
         </div>
       </div>
 
-      <div class="lang-msg-row" id="lang-tassa-row" style="margin-top:20px;">
-        <button class="template-btn lang-tassa-btn active" data-lang="it" onclick="selezionaLinguaTassa('it')">🇮🇹 Italiano</button>
-        <button class="template-btn lang-tassa-btn" data-lang="en" onclick="selezionaLinguaTassa('en')">🇬🇧 English</button>
-        <button class="template-btn lang-tassa-btn" data-lang="es" onclick="selezionaLinguaTassa('es')">🇪🇸 Español</button>
-        <button class="template-btn lang-tassa-btn" data-lang="de" onclick="selezionaLinguaTassa('de')">🇩🇪 Deutsch</button>
-        <button class="template-btn lang-tassa-btn" data-lang="fr" onclick="selezionaLinguaTassa('fr')">🇫🇷 Français</button>
-      </div>
-      <div class="field lang-msg-mobile" id="lang-tassa-mobile">
-        <label>Scegli la lingua</label>
-        <select id="lang-tassa-select" onchange="selezionaLinguaTassa(this.value)">
-          <option value="it">🇮🇹 Italiano</option>
-          <option value="en">🇬🇧 English</option>
-          <option value="es">🇪🇸 Español</option>
-          <option value="de">🇩🇪 Deutsch</option>
-          <option value="fr">🇫🇷 Français</option>
-        </select>
+      <div class="block" style="margin-top:24px;">
+        <p class="didascalia-gialla">Scegli la lingua del messaggio</p>
+        <div class="lang-msg-row" id="lang-tassa-row">
+          <button class="template-btn lang-tassa-btn active" data-lang="it" onclick="selezionaLinguaTassa('it')">🇮🇹 Italiano</button>
+          <button class="template-btn lang-tassa-btn" data-lang="en" onclick="selezionaLinguaTassa('en')">🇬🇧 English</button>
+          <button class="template-btn lang-tassa-btn" data-lang="es" onclick="selezionaLinguaTassa('es')">🇪🇸 Español</button>
+          <button class="template-btn lang-tassa-btn" data-lang="de" onclick="selezionaLinguaTassa('de')">🇩🇪 Deutsch</button>
+          <button class="template-btn lang-tassa-btn" data-lang="fr" onclick="selezionaLinguaTassa('fr')">🇫🇷 Français</button>
+        </div>
+        <div class="field lang-msg-mobile" id="lang-tassa-mobile" style="margin-bottom:0;">
+          <select id="lang-tassa-select" onchange="selezionaLinguaTassa(this.value)">
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+          </select>
+        </div>
       </div>
 
       <div class="tassa-risultato-card">
@@ -1196,15 +1474,77 @@
         </div>
 
         <div class="tassa-risultato-azioni">
-          <button class="tassa-btn-copia" onclick="copiaMessaggioTassaSoggiorno()" id="btn-copia-messaggio-tassa">📋 Copia Messaggio</button>
-          <button class="tassa-btn-stampa" onclick="stampaImpostaSoggiorno()">🖨️ Stampa / Salva PDF</button>
+          <button class="tassa-btn-stampa" onclick="stampaImpostaSoggiorno()" style="flex:1;">🖨️ Stampa / Salva Promemoria PDF</button>
         </div>
-        <span class="note" id="tassa-calc-stato" style="display:block; margin-top:8px; color:var(--calce);"></span>
-        <textarea id="tassa-messaggio-nascosto" style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true" tabindex="-1"></textarea>
       </div>
 
-      <h2 class="dati-sezione-titolo">Scadenze Fiscali</h2>
-      <p class="page-sub">Le scadenze standard della Cedolare Secca per l'anno in corso sono precompilate. Aggiungi le tue (es. tassa di soggiorno comunale).</p>
+      <div class="block" style="margin-top:20px;">
+        <textarea id="tassa-messaggio-testo" style="width:100%; min-height:220px; font-family:'Work Sans',sans-serif; font-size:14.5px; line-height:1.6; color:var(--inchiostro); border:1px solid var(--bordo); border-radius:var(--radius); padding:14px; background:var(--calce); resize:vertical;"></textarea>
+        <div style="display:flex; align-items:center; gap:14px; margin-top:12px; flex-wrap:wrap;">
+          <button class="primary" onclick="copiaMessaggioTassaSoggiorno()" id="btn-copia-messaggio-tassa">Copia Testo</button>
+          <span class="note" id="tassa-calc-stato" style="margin-top:0;"></span>
+        </div>
+      </div>
+
+      <h2 class="dati-sezione-titolo">Crea Ricevuta</h2>
+      <p class="page-sub" style="margin-bottom:20px;">Crea un documento vero e proprio da consegnare all'ospite.</p>
+
+      <h3 class="tasse-sottotitolo" style="margin-top:0;">Dati Documento</h3>
+      <div class="form-row">
+        <div class="field">
+          <label>Ricevuta N.</label>
+          <input type="text" id="ricevuta-numero" placeholder="Es. 01/2026">
+        </div>
+        <div class="field">
+          <label>Data di Emissione</label>
+          <input type="date" id="ricevuta-data">
+        </div>
+        <div class="field">
+          <label>Check-in</label>
+          <input type="date" id="ricevuta-checkin">
+        </div>
+        <div class="field">
+          <label>Check-out</label>
+          <input type="date" id="ricevuta-checkout">
+        </div>
+      </div>
+      <p class="note" style="margin-top:-10px;">Check-in e check-out si compilano da soli se scegli una prenotazione qui sopra in "Seleziona Ospite".</p>
+
+      <h3 class="tasse-sottotitolo">Dati Alloggio / Host</h3>
+      <div class="card" id="ricevuta-host-card">
+        <div class="label">Dati che compariranno sulla ricevuta</div>
+        <div id="ricevuta-host-recap" style="font-size:14px; line-height:1.7;"></div>
+        <button class="ghost" style="margin-top:10px; color:var(--blu);" onclick="vaiAllaPagina('impostazioni')">Modifica in Impostazioni →</button>
+      </div>
+
+      <h3 class="tasse-sottotitolo">Dati Intestatario / Ospite</h3>
+      <div class="form-row">
+        <div class="field">
+          <label>Cognome e Nome Ospite</label>
+          <input type="text" id="ricevuta-ospite-nome" placeholder="Es. Rossi Marco">
+        </div>
+        <div class="field">
+          <label>Codice Fiscale / Documento</label>
+          <input type="text" id="ricevuta-ospite-doc" placeholder="Es. RSSMRC85M01H501Z">
+        </div>
+        <div class="field">
+          <label>Domicilio / Città</label>
+          <input type="text" id="ricevuta-ospite-domicilio" placeholder="Es. Milano (MI)">
+        </div>
+      </div>
+
+      <div class="tassa-risultato-card" style="margin-top:20px;">
+        <div class="tassa-risultato-azioni">
+          <button class="tassa-btn-stampa" onclick="stampaRicevutaUfficiale()" style="flex:1;">🖨️ Stampa / Scarica PDF Ricevuta</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SCADENZE FISCALI -->
+    <div class="page" id="page-scadenze" style="display:none;">
+      <h1 class="page-title">Scadenze Fiscali</h1>
+      <p class="page-sub">Scrivi le tue scadenze fiscali e cancella quelle che non ti riguardano, appariranno nella pagina Panoramica quando sarà il momento.</p>
 
       <div class="info-note" id="scadenze-banner" style="display:none; border-color:var(--ocra); margin-bottom:16px;"></div>
 
@@ -1217,84 +1557,160 @@
           </div>
           <div class="field" style="flex:1; min-width:220px;">
             <label>Descrizione</label>
-            <input type="text" id="scadenza-descrizione" placeholder="Es. Versamento tassa di soggiorno comunale">
+            <input type="text" id="scadenza-descrizione" placeholder="Es. TARI, versamento imposta di soggiorno o altro">
           </div>
           <button class="primary" onclick="aggiungiPromemoria()">Aggiungi promemoria</button>
         </div>
-        <p class="note" style="margin-top:10px;">Le date della Cedolare Secca sono quelle standard (30 giugno, 30 novembre): verifica sempre calendario ufficiale e proroghe sul sito dell'Agenzia delle Entrate, perché possono variare.</p>
+      </div>
+
+      <h3 class="tasse-sottotitolo" style="margin-top:26px;">Scadenze Fiscali Fisse per Host Privati<span class="tasse-sottotitolo-nota">Senza Partita IVA — uguali ogni anno</span></h3>
+      <div class="block">
+        <div class="scadenza-fissa-riga"><span class="scadenza-fissa-data">16/03</span><span>Certificazione Unica (CU) Airbnb / Booking — rilascio e download del riepilogo compensi e ritenute subite</span></div>
+        <div class="scadenza-fissa-riga"><span class="scadenza-fissa-data">16/06</span><span>IMU — versamento 1ª rata (acconto 50%)</span></div>
+        <div class="scadenza-fissa-riga"><span class="scadenza-fissa-data">30/06</span><span>Cedolare Secca — versamento saldo anno precedente + 1° acconto anno in corso (modello F24)</span></div>
+        <div class="scadenza-fissa-riga"><span class="scadenza-fissa-data">30/06</span><span>Imposta di Soggiorno — invio dichiarazione annuale cumulativa (telematica, Agenzia delle Entrate)</span></div>
+        <div class="scadenza-fissa-riga"><span class="scadenza-fissa-data">30/09</span><span>Modello 730 — termine ultimo per l'invio della dichiarazione dei redditi</span></div>
+        <div class="scadenza-fissa-riga"><span class="scadenza-fissa-data">31/10</span><span>Modello Redditi Persone Fisiche — alternativa al 730; termine invio telematico (può slittare a inizio novembre se cade di sabato o festivo)</span></div>
+        <div class="scadenza-fissa-riga"><span class="scadenza-fissa-data">30/11</span><span>Cedolare Secca — versamento 2° o unico acconto anno in corso (non rateizzabile)</span></div>
+        <div class="scadenza-fissa-riga"><span class="scadenza-fissa-data">16/12</span><span>IMU — versamento 2ª rata (saldo a conguaglio)</span></div>
+        <p class="note" style="margin-top:14px; margin-bottom:0;">Elenco di riferimento generale, pensato per un host privato senza Partita IVA. Non sostituisce la consulenza di un commercialista: verifica sempre le date ufficiali sul sito dell'Agenzia delle Entrate, perché possono variare o slittare da un anno all'altro.</p>
+        <div style="margin-top:16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <button class="btn-outline" onclick="aggiungiScadenzeFisseComePromemoria()">Aggiungi tutte come promemoria</button>
+          <span class="note" id="scadenze-fisse-stato" style="margin-top:0;"></span>
+        </div>
+        <p class="note" style="margin-top:8px;">Verranno aggiunte come promemoria per l'anno selezionato in alto (<span id="scadenze-fisse-anno-riferimento"></span>). Dopo l'aggiunta puoi cancellare singolarmente quelle che non ti riguardano dalla lista qui sopra.</p>
+      </div>
+    </div>
+
+    <!-- IMPOSTAZIONI -->
+    <div class="page" id="page-impostazioni" style="display:none;">
+      <h1 class="page-title">Impostazioni</h1>
+      <p class="page-sub">Configura i dati della tua struttura e del profilo host una sola volta: verranno utilizzati per compilare automaticamente i messaggi e per i report.</p>
+
+      <h2 class="dati-sezione-titolo" style="margin-top:0; padding-top:0; border-top:none;">Dati Struttura & Host</h2>
+      <div class="block">
+        <div class="form-row">
+          <div class="field">
+            <label>Nome Host</label>
+            <input type="text" id="host-nome" placeholder="Es. Marco" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>Nome Alloggio / Struttura</label>
+            <input type="text" id="host-struttura" placeholder="Es. Appartamento Vista Mare" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>Indirizzo completo</label>
+            <input type="text" id="host-indirizzo" placeholder="Es. Via Roma 12, Piano 2" onchange="salvaProfiloHost()">
+          </div>
+        </div>
+        <div class="form-row" style="border-top: 1px solid var(--bordo); padding-top: 18px; margin-top: 4px;">
+          <div class="field">
+            <label>Check-in — dalle ore</label>
+            <input type="time" id="host-checkin-inizio" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>Check-in — fino alle ore (facoltativo)</label>
+            <input type="time" id="host-checkin-fine" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>Check-out — entro le ore</label>
+            <input type="time" id="host-checkout-entro" onchange="salvaProfiloHost()">
+          </div>
+        </div>
+        <p class="note" style="margin-top:-6px; margin-bottom:0;">Inserisci solo l'orario: la frase intorno ("dalle... alle...", "from... to...", ecc.) viene generata da sola nella lingua giusta per ogni messaggio.</p>
+      </div>
+
+      <h2 class="dati-sezione-titolo">Adempimenti & Normativa</h2>
+      <div class="block">
+        <div class="form-row">
+          <div class="field">
+            <label>Codice Identificativo Nazionale (CIN)</label>
+            <input type="text" id="host-cin" placeholder="Es. IT012345A1B2C3D4E5" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>P.IVA / Codice Fiscale</label>
+            <input type="text" id="host-piva-cf" placeholder="Es. RSSMRA80A01L219X" onchange="salvaProfiloHost()">
+          </div>
+          <div class="field">
+            <label>Tipologia struttura</label>
+            <select id="host-tipologia-struttura" onchange="salvaProfiloHost()">
+              <option value="">— Seleziona —</option>
+              <option value="Casa Vacanze">Casa Vacanze</option>
+              <option value="Affittacamere">Affittacamere</option>
+              <option value="Bed & Breakfast">Bed & Breakfast</option>
+              <option value="Appartamento ad uso turistico">Appartamento ad uso turistico</option>
+              <option value="Locazione turistica">Locazione turistica</option>
+              <option value="Altro">Altro</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <button class="primary" onclick="salvaProfiloHost()">Salva tutte le impostazioni</button>
+        <span class="note" id="host-stato" style="margin-top:0;"></span>
       </div>
     </div>
 
     <!-- DATI -->
     <div class="page" id="page-dati" style="display:none;">
-      <h1 class="page-title">Strumenti Dati</h1>
-      <p class="page-sub">Esporta un backup, ripristina da un file, oppure azzera i dati salvati su questo dispositivo.</p>
+      <h1 class="page-title">Backup</h1>
+      <p class="page-sub">Ricorda di esportare un backup periodicamente per non perdere i dati.</p>
 
       <div class="data-tools-row">
-        <button class="btn-outline" onclick="esportaJSON()">Esporta JSON</button>
+        <button class="btn-outline" onclick="inviaBackupEmail()">Esporta / Invia Backup</button>
         <button class="btn-outline" onclick="document.getElementById('importInput').click()">Importa JSON</button>
-        <button class="btn-outline" onclick="inviaBackupEmail()">Invia backup via email</button>
       </div>
       <input type="file" id="importInput" accept=".json,application/json" style="display:none" onchange="importaJSON(event)">
 
       <button class="btn-danger" onclick="cancellaTutto()">Resetta Planner</button>
 
       <div class="info-note">
-        Questo planner funziona interamente offline. Tutti i dati (prenotazioni, pulizie, movimenti finanziari) sono salvati nel browser di questo dispositivo e si aggiornano automaticamente a ogni modifica. "Esporta JSON" crea un file di backup che puoi conservare o trasferire su un altro dispositivo con "Importa JSON" mentre cliccando "Resetta Planner" cancelli tutto in modo permanente.
-      </div>
-
-      <h2 class="dati-sezione-titolo">Salvataggio nel Cloud (opzionale)</h2>
-      <p class="page-sub">Scegli come salvare: su questo dispositivo (istantaneo, privato, completamente offline), oppure con un account gratuito per sincronizzare su tutti i tuoi dispositivi.</p>
-
-      <div class="block" id="cloud-blocco-disconnesso">
-        <p style="margin:0 0 14px 0; font-size:14px;">Non sei collegato a nessun account cloud. I tuoi dati restano solo su questo dispositivo.</p>
-        <button class="btn-outline" onclick="accediConGoogle()">🔗 Accedi con Google per sincronizzare</button>
-        <span class="note" id="cloud-stato-messaggio" style="display:block; margin-top:10px;"></span>
-      </div>
-
-      <div class="block" id="cloud-blocco-connesso" style="display:none;">
-        <p style="margin:0 0 6px 0; font-size:14px;">✅ Connesso come <strong id="cloud-email-utente"></strong> — i dati si sincronizzano automaticamente su tutti i dispositivi dove accedi con questo account.</p>
-        <p class="note" id="cloud-ultima-sincronizzazione" style="margin-bottom:14px;"></p>
-        <button class="btn-outline" onclick="sincronizzaOraCloud()">🔄 Sincronizza ora</button>
-        <button class="btn-outline" onclick="disconnettiCloud()">Disconnetti</button>
+        Questa APP funziona interamente offline: tutti i dati (prenotazioni, pulizie, movimenti finanziari) vengono salvati in locale nel browser del tuo dispositivo. Per trasferire o sincronizzare i dati su un altro dispositivo, usa "Esporta / Invia Backup" e caricali dall'altra parte cliccando su "Importa JSON".
       </div>
 
       <h2 class="dati-sezione-titolo">Report</h2>
-      <p class="page-sub">Genera un riepilogo pulito, pronto da stampare o salvare come PDF.</p>
+      <p class="page-sub">Genera il report dell'anno selezionato: pronto da stampare, scaricare in PDF o esportare in Excel (CSV) per il commercialista.</p>
       <button class="btn-outline" onclick="stampaReport()">Stampa Report</button>
+      <button class="btn-outline" onclick="esportaCsvAnno()">📊 Esporta CSV Anno</button>
+      <div class="info-note" style="margin-top:14px;">
+        <strong>📋 Istruzioni per l'apertura del file:</strong>
+        <ul style="margin:8px 0 0 0; padding-left:20px;">
+          <li style="margin-bottom:8px;"><strong>Se usi Microsoft Excel:</strong> apri Excel, vai su <em>Dati → Da testo/CSV</em> e seleziona il file. (Evita il doppio clic diretto sul file: Excel potrebbe non formattare correttamente le colonne e gli accenti.)</li>
+          <li><strong>Se usi Google Fogli:</strong> vai su sheets.google.com, crea un nuovo foglio di lavoro, vai su <em>File → Importa → Carica</em> per selezionare il file.</li>
+        </ul>
+      </div>
 
       <h2 class="dati-sezione-titolo">Calendario iCal</h2>
       <p class="page-sub">Importa le prenotazioni da un file .ics scaricato da Airbnb/Booking, o esporta le tue per incollarle altrove.</p>
 
       <div class="block">
         <h3 style="font-family:'Fraunces',serif; font-size:16px; color:var(--blu); margin:0 0 10px 0;">Importa da file .ics</h3>
-        <div class="form-row">
-          <div class="field">
-            <label>Piattaforma di provenienza</label>
-            <select id="ical-piattaforma" onchange="aggiornaIstruzioniIcal()">
-              <option>Airbnb</option>
-              <option>Booking</option>
-              <option>Altro</option>
-            </select>
-          </div>
-          <div class="field" style="flex:1; min-width:220px;">
-            <label>File .ics</label>
-            <input type="file" id="ical-file" accept=".ics,text/calendar">
-          </div>
+        <div class="field" style="max-width:280px;">
+          <label>Piattaforma di provenienza</label>
+          <select id="ical-piattaforma" onchange="aggiornaIstruzioniIcal()">
+            <option>Airbnb</option>
+            <option>Booking</option>
+            <option>Altro</option>
+          </select>
         </div>
 
-        <div class="info-note" id="istruzioni-ical" style="margin-bottom:16px;"></div>
+        <div class="info-note" id="istruzioni-ical" style="margin: 16px 0;"></div>
 
-        <button class="primary" onclick="importaIcal()">Importa da iCal</button>
+        <div class="form-row">
+          <div class="field" style="flex:1; min-width:220px;">
+            <label>1. Scegli il file</label>
+            <input type="file" id="ical-file" accept=".ics,text/calendar">
+          </div>
+          <button class="primary" onclick="importaIcal()">2. Importa</button>
+        </div>
         <span class="note" id="ical-stato" style="display:block; margin-top:10px;"></span>
-        <p class="note" style="margin-top:14px;">Nota: i calendari iCal non includono quasi mai l'importo della prenotazione — dopo l'importazione, apri "Prenotazioni" e inserisci manualmente l'importo per ogni soggiorno importato.</p>
-        <p class="note" style="margin-top:10px;">Da smartphone: su Android generalmente il download funziona come sopra. Su iPhone, se toccando il link si apre l'app Calendario invece di scaricare un file, ripeti il procedimento da un computer.</p>
-        <p class="note" style="margin-top:10px;">Usi il planner su più dispositivi? Dopo l'importazione, usa "Esporta JSON" / "Importa JSON" (qui nella scheda Dati) per allineare i dati sull'altro dispositivo — i dati importati restano salvati solo nel browser dove hai fatto l'import.</p>
+        <p class="note" style="margin-top:10px;">Nota: i calendari iCal / file .ics non includono quasi mai l'importo della prenotazione — dopo l'importazione, apri "Prenotazioni" e inserisci manualmente i dati mancanti.</p>
       </div>
 
       <div class="block">
         <h3 style="font-family:'Fraunces',serif; font-size:16px; color:var(--blu); margin:0 0 10px 0;">Esporta calendario</h3>
-        <p class="page-sub" style="margin-bottom:14px;">Crea un file .ics con tutte le prenotazioni attuali, da incollare su Airbnb, Booking o Google Calendar.</p>
+        <p class="page-sub" style="margin-bottom:14px;">Crea un file .ics con tutte le prenotazioni presenti qui, da incollare in Google Calendar o dove consentito.</p>
         <button class="btn-outline" onclick="esportaIcal()">Esporta Calendario (.ics)</button>
       </div>
     </div>
@@ -1302,14 +1718,16 @@
     <!-- Contenuto stampabile: nascosto a schermo, visibile solo con window.print() -->
     <div id="report-stampa" class="solo-stampa"></div>
 
+    <p class="app-copyright">© Diritti d'Autore isegretideglihost.it <span id="copyright-anno"></span>. Licenza d'uso personale | per rivenderlo <a href="https://www.isegretideglihost.it/licenza-commerciale-gestionale-case-vacanze/" target="_blank" rel="noopener">acquista la licenza commerciale</a>.</p>
+
   </main>
 </div>
 
 <script>
 // ---- Stato in memoria (si azzera se ricarichi la pagina: è un prototipo) ----
 let prenotazioni = [
-  { id: 1, ospite: "Famiglia Bianchi", checkin: "2026-09-14", checkout: "2026-09-18", piattaforma: "Airbnb", importo: 420, numeroOspiti: 4 },
-  { id: 2, ospite: "M. Conti", checkin: "2026-09-20", checkout: "2026-09-23", piattaforma: "Booking", importo: 310, numeroOspiti: 2 }
+  { id: 1, ospite: "Famiglia Bianchi", checkin: "2026-09-14", checkout: "2026-09-18", piattaforma: "Airbnb", importo: 420, numeroOspiti: 4, orarioArrivo: "", richiesteSpeciali: "", messaggioPreArrivoFatto: false, messaggioCheckoutFatto: false },
+  { id: 2, ospite: "M. Conti", checkin: "2026-09-20", checkout: "2026-09-23", piattaforma: "Booking", importo: 310, numeroOspiti: 2, orarioArrivo: "", richiesteSpeciali: "", messaggioPreArrivoFatto: false, messaggioCheckoutFatto: false }
 ];
 let pulizie = []; // { id, prenotazioneId, ospite, data, fatto }
 let uscite = []; // { id, data, descrizione, importo }
@@ -1318,177 +1736,117 @@ let nextId = 3;
 let profiloHost = profiloHostVuoto();
 let impostazioniTassaSoggiorno = impostazioniTassaSoggiornoVuote();
 let promemoriaPersonalizzati = []; // { id, data (ISO), descrizione }
-let aliquotaFiscale = ''; // percentuale scelta liberamente dall'host (21, 26, 5, 15, ecc.), vuoto = nessuna tassa applicata
+let aliquotaFiscalePerAnno = {}; // { '2026': '21', '2027': '' } — aliquota scelta liberamente dall'host, per ciascun anno fiscale
 let templatePersonalizzati = {}; // { [chiaveTemplate]: { [lingua]: 'testo con segnaposto {{...}}' } }
+let annoSelezionato = new Date().getFullYear();
+let nascondiPulizieFatte = false;
 const CHIAVE_SALVATAGGIO = 'host-hub-dati-v1';
-
-// ==================================================================
-// SALVATAGGIO CLOUD (opzionale) — Firebase
-// ==================================================================
-const firebaseConfig = {
-  apiKey: "AIzaSyBxaVl2TUkeFHfBYA3UqycE0G-ncYtM8cQ",
-  authDomain: "host-hub-xxx.firebaseapp.com",
-  projectId: "host-hub-xxx",
-  storageBucket: "host-hub-xxx.firebasestorage.app",
-  messagingSenderId: "958647165174",
-  appId: "1:958647165174:web:c17400d7e567fdb2898cd7"
-};
-
-let firebaseAuth = null;
-let firebaseDb = null;
-let utenteCloud = null;
-let timerSincronizzazioneCloud = null;
-let sincronizzazioneInCorso = false; // evita scritture cloud durante il caricamento iniziale dei dati
-
-function inizializzaCloud(){
-  try{
-    firebase.initializeApp(firebaseConfig);
-    firebaseAuth = firebase.auth();
-    firebaseDb = firebase.firestore();
-    firebaseAuth.onAuthStateChanged(gestisciCambioAccessoCloud);
-  } catch(e){
-    console.warn('Sincronizzazione cloud non disponibile (funziona comunque tutto offline):', e);
-  }
-}
-
-function accediConGoogle(){
-  if(!firebaseAuth){
-    document.getElementById('cloud-stato-messaggio').textContent = 'Sincronizzazione cloud non disponibile al momento. Il salvataggio in locale funziona comunque normalmente.';
-    return;
-  }
-  const provider = new firebase.auth.GoogleAuthProvider();
-  document.getElementById('cloud-stato-messaggio').textContent = 'Accesso in corso...';
-  firebaseAuth.signInWithPopup(provider).catch(err => {
-    document.getElementById('cloud-stato-messaggio').textContent = 'Accesso non riuscito: ' + (err.message || 'riprova tra poco.');
-  });
-}
-
-function disconnettiCloud(){
-  if(!confirm('Disconnettersi dall\'account cloud? I dati restano comunque salvati su questo dispositivo.')) return;
-  firebaseAuth.signOut();
-}
-
-function gestisciCambioAccessoCloud(user){
-  if(user){
-    utenteCloud = user;
-    aggiornaUICloud();
-    gestisciPrimoAccessoCloud(user);
-  } else {
-    utenteCloud = null;
-    aggiornaUICloud();
-  }
-}
-
-function aggiornaUICloud(){
-  const bloccoDisconnesso = document.getElementById('cloud-blocco-disconnesso');
-  const bloccoConnesso = document.getElementById('cloud-blocco-connesso');
-  if(!bloccoDisconnesso || !bloccoConnesso) return;
-  if(utenteCloud){
-    bloccoDisconnesso.style.display = 'none';
-    bloccoConnesso.style.display = 'block';
-    document.getElementById('cloud-email-utente').textContent = utenteCloud.email || utenteCloud.displayName || 'account Google';
-  } else {
-    bloccoDisconnesso.style.display = 'block';
-    bloccoConnesso.style.display = 'none';
-  }
-}
-
-function gestisciPrimoAccessoCloud(user){
-  sincronizzazioneInCorso = true;
-  firebaseDb.collection('host_hub_utenti').doc(user.uid).get().then(doc => {
-    if(doc.exists){
-      const scegliCloud = confirm('Abbiamo trovato dati salvati nel cloud per questo account.\n\nOK = carica i dati dal cloud (sostituisce quelli di questo dispositivo)\nAnnulla = mantieni i dati di questo dispositivo (li invieremo noi al cloud)');
-      if(scegliCloud){
-        caricaDatiDaOggetto(doc.data());
-        salva();
-        ricostruisciPulizie();
-        popolaFormProfiloHost();
-        popolaFormTassaSoggiorno();
-        document.getElementById('f-aliquota-fiscale').value = aliquotaFiscale;
-        renderTutto();
-        segnalaStatoCloud('Dati caricati dal cloud ✓');
-      } else {
-        scriviSuCloud();
-        segnalaStatoCloud('Dati di questo dispositivo inviati al cloud ✓');
-      }
-    } else {
-      scriviSuCloud();
-      segnalaStatoCloud('Sincronizzazione avviata ✓');
-    }
-    sincronizzazioneInCorso = false;
-  }).catch(err => {
-    sincronizzazioneInCorso = false;
-    segnalaStatoCloud('Errore di sincronizzazione: ' + (err.message || 'riprova più tardi.'));
-  });
-}
-
-function segnalaStatoCloud(testo){
-  const el = document.getElementById('cloud-ultima-sincronizzazione');
-  if(!el) return;
-  const ora = new Date().toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
-  el.textContent = `${testo} — ${ora}`;
-}
-
-function oggettoStatoCompleto(){
-  return {
-    prenotazioni, uscite, puliziaCompletata, nextId, profiloHost,
-    impostazioniTassaSoggiorno, promemoriaPersonalizzati, aliquotaFiscale, templatePersonalizzati
-  };
-}
-
-function caricaDatiDaOggetto(dati){
-  prenotazioni = dati.prenotazioni || [];
-  uscite = dati.uscite || [];
-  puliziaCompletata = dati.puliziaCompletata || {};
-  nextId = dati.nextId || 1;
-  profiloHost = Object.assign(profiloHostVuoto(), dati.profiloHost || {});
-  impostazioniTassaSoggiorno = Object.assign(impostazioniTassaSoggiornoVuote(), dati.impostazioniTassaSoggiorno || {});
-  promemoriaPersonalizzati = dati.promemoriaPersonalizzati || [];
-  aliquotaFiscale = dati.aliquotaFiscale || '';
-  templatePersonalizzati = dati.templatePersonalizzati || {};
-}
-
-function scriviSuCloud(){
-  if(!utenteCloud || !firebaseDb) return;
-  firebaseDb.collection('host_hub_utenti').doc(utenteCloud.uid).set(oggettoStatoCompleto())
-    .then(() => segnalaStatoCloud('Sincronizzato ✓'))
-    .catch(err => segnalaStatoCloud('Sincronizzazione non riuscita: ' + (err.message || '')));
-}
-
-function programmaSincronizzazioneCloud(){
-  if(!utenteCloud || sincronizzazioneInCorso) return;
-  clearTimeout(timerSincronizzazioneCloud);
-  timerSincronizzazioneCloud = setTimeout(scriviSuCloud, 1500);
-}
-
-function sincronizzaOraCloud(){
-  if(!utenteCloud){
-    return;
-  }
-  scriviSuCloud();
-}
-
 
 function profiloHostVuoto(){
   return {
     nomeHost: '', struttura: '', indirizzo: '',
-    orarioCheckin: '', orarioCheckout: '',
-    cin: ''
+    orarioCheckinInizio: '', orarioCheckinFine: '', orarioCheckoutEntro: '',
+    cin: '', pivaCf: '', nomeAddettoPulizie: '',
+    tipologiaStruttura: ''
   };
 }
 
 function impostazioniTassaSoggiornoVuote(){
-  return { tariffa: 0, nottiMax: 0, sogliaEta: 14, nomeStrutturaNota: '' };
+  return { comune: '', tariffa: 0, nottiMax: 0, sogliaEta: 14 };
+}
+
+// ==================================================================
+// GESTIONE ANNO FISCALE
+// ==================================================================
+function annoDiData(dataIso){
+  return parseInt(dataIso.slice(0, 4));
+}
+
+function prenotazioneTocaAnno(p, anno){
+  return annoDiData(p.checkin) === anno || annoDiData(p.checkout) === anno;
+}
+
+function prenotazioneACavalloAnno(p){
+  return annoDiData(p.checkin) !== annoDiData(p.checkout);
+}
+
+function prenotazioniAnno(anno){
+  return prenotazioni.filter(p => prenotazioneTocaAnno(p, anno));
+}
+
+// per i ricavi, l'intero importo appartiene all'anno del check-in
+// (è l'anno in cui si considera concluso il rapporto commerciale con l'ospite)
+function prenotazioniRicaviAnno(anno){
+  return prenotazioni.filter(p => annoDiData(p.checkin) === anno);
+}
+
+function usciteAnno(anno){
+  return uscite.filter(u => annoDiData(u.data) === anno);
+}
+
+function aliquotaAnnoCorrente(){
+  return aliquotaFiscalePerAnno[annoSelezionato] || '';
+}
+
+function elencoAnniDisponibili(){
+  const annoMinimo = 2026;
+  const annoMassimo = 2028;
+  const anni = new Set();
+  for(let a = annoMinimo; a <= annoMassimo; a++) anni.add(a);
+  prenotazioni.forEach(p => { anni.add(annoDiData(p.checkin)); anni.add(annoDiData(p.checkout)); });
+  uscite.forEach(u => anni.add(annoDiData(u.data)));
+  anni.add(annoSelezionato);
+  return Array.from(anni).sort((a,b) => a - b);
+}
+
+function popolaSelettoreAnno(){
+  const anni = elencoAnniDisponibili();
+  const opzioni = anni.map(a => `<option value="${a}">${a}</option>`).join('');
+  ['selettore-anno-desktop', 'selettore-anno-mobile'].forEach(id => {
+    const sel = document.getElementById(id);
+    if(!sel) return;
+    sel.innerHTML = opzioni;
+    sel.value = annoSelezionato;
+  });
+}
+
+function cambiaAnnoSelezionato(valore){
+  annoSelezionato = parseInt(valore);
+  ['selettore-anno-desktop', 'selettore-anno-mobile'].forEach(id => {
+    const sel = document.getElementById(id);
+    if(sel) sel.value = annoSelezionato;
+  });
+  salva();
+  renderTutto();
 }
 
 function salva(){
   try{
-    const dati = { prenotazioni, uscite, puliziaCompletata, nextId, profiloHost, impostazioniTassaSoggiorno, promemoriaPersonalizzati, aliquotaFiscale, templatePersonalizzati };
+    const dati = { prenotazioni, uscite, puliziaCompletata, nextId, profiloHost, impostazioniTassaSoggiorno, promemoriaPersonalizzati, aliquotaFiscalePerAnno, templatePersonalizzati, annoSelezionato, nascondiPulizieFatte };
     localStorage.setItem(CHIAVE_SALVATAGGIO, JSON.stringify(dati));
   } catch(e){
     console.warn('Impossibile salvare i dati in locale:', e);
   }
-  programmaSincronizzazioneCloud();
+}
+
+function estraiOrariDaTestoLibero(testo){
+  if(!testo) return [];
+  return testo.match(/\d{1,2}:\d{2}/g) || [];
+}
+
+function migraOrariCheckinCheckout(profiloCaricato){
+  // vecchio formato: un'unica frase libera in italiano (es. "dalle 15:00 alle 20:00")
+  // salvata prima che i campi diventassero orari strutturati e multilingua
+  if(!profiloCaricato.orarioCheckinInizio && profiloCaricato.orarioCheckin){
+    const orari = estraiOrariDaTestoLibero(profiloCaricato.orarioCheckin);
+    if(orari[0]) profiloCaricato.orarioCheckinInizio = orari[0];
+    if(orari[1]) profiloCaricato.orarioCheckinFine = orari[1];
+  }
+  if(!profiloCaricato.orarioCheckoutEntro && profiloCaricato.orarioCheckout){
+    const orari = estraiOrariDaTestoLibero(profiloCaricato.orarioCheckout);
+    if(orari[0]) profiloCaricato.orarioCheckoutEntro = orari[0];
+  }
+  return profiloCaricato;
 }
 
 function carica(){
@@ -1500,11 +1858,21 @@ function carica(){
     uscite = dati.uscite || [];
     puliziaCompletata = dati.puliziaCompletata || {};
     nextId = dati.nextId || (Math.max(0, ...prenotazioni.map(p=>p.id), ...uscite.map(u=>u.id)) + 1);
-    profiloHost = Object.assign(profiloHostVuoto(), dati.profiloHost || {});
+    profiloHost = migraOrariCheckinCheckout(Object.assign(profiloHostVuoto(), dati.profiloHost || {}));
     impostazioniTassaSoggiorno = Object.assign(impostazioniTassaSoggiornoVuote(), dati.impostazioniTassaSoggiorno || {});
     promemoriaPersonalizzati = dati.promemoriaPersonalizzati || [];
-    aliquotaFiscale = dati.aliquotaFiscale || '';
     templatePersonalizzati = dati.templatePersonalizzati || {};
+    annoSelezionato = dati.annoSelezionato || new Date().getFullYear();
+    nascondiPulizieFatte = dati.nascondiPulizieFatte || false;
+    if(dati.aliquotaFiscalePerAnno){
+      aliquotaFiscalePerAnno = dati.aliquotaFiscalePerAnno;
+    } else if(dati.aliquotaFiscale){
+      // migrazione dal vecchio formato (un'unica aliquota, non per anno):
+      // la applichiamo all'anno corrente, così non si perde il dato già inserito
+      aliquotaFiscalePerAnno = { [new Date().getFullYear()]: dati.aliquotaFiscale };
+    } else {
+      aliquotaFiscalePerAnno = {};
+    }
     return true;
   } catch(e){
     console.warn('Impossibile leggere i dati salvati:', e);
@@ -1516,9 +1884,13 @@ function popolaFormProfiloHost(){
   document.getElementById('host-nome').value = profiloHost.nomeHost;
   document.getElementById('host-struttura').value = profiloHost.struttura;
   document.getElementById('host-indirizzo').value = profiloHost.indirizzo;
-  document.getElementById('host-orario-checkin').value = profiloHost.orarioCheckin;
-  document.getElementById('host-orario-checkout').value = profiloHost.orarioCheckout;
+  document.getElementById('host-checkin-inizio').value = profiloHost.orarioCheckinInizio;
+  document.getElementById('host-checkin-fine').value = profiloHost.orarioCheckinFine;
+  document.getElementById('host-checkout-entro').value = profiloHost.orarioCheckoutEntro;
   document.getElementById('host-cin').value = profiloHost.cin;
+  document.getElementById('host-piva-cf').value = profiloHost.pivaCf || '';
+  document.getElementById('pulizie-nome-addetto').value = profiloHost.nomeAddettoPulizie;
+  document.getElementById('host-tipologia-struttura').value = profiloHost.tipologiaStruttura || '';
 }
 
 function salvaProfiloHost(){
@@ -1526,13 +1898,19 @@ function salvaProfiloHost(){
     nomeHost: document.getElementById('host-nome').value.trim(),
     struttura: document.getElementById('host-struttura').value.trim(),
     indirizzo: document.getElementById('host-indirizzo').value.trim(),
-    orarioCheckin: document.getElementById('host-orario-checkin').value.trim(),
-    orarioCheckout: document.getElementById('host-orario-checkout').value.trim(),
-    cin: document.getElementById('host-cin').value.trim()
+    orarioCheckinInizio: document.getElementById('host-checkin-inizio').value,
+    orarioCheckinFine: document.getElementById('host-checkin-fine').value,
+    orarioCheckoutEntro: document.getElementById('host-checkout-entro').value,
+    cin: document.getElementById('host-cin').value.trim(),
+    pivaCf: document.getElementById('host-piva-cf').value.trim(),
+    nomeAddettoPulizie: document.getElementById('pulizie-nome-addetto').value.trim(),
+    tipologiaStruttura: document.getElementById('host-tipologia-struttura').value
   };
   salva();
   generaTestoMessaggio();
+  generaMessaggioPulizia();
   renderFinanze();
+  renderRicevutaHostRecap();
   const statoEl = document.getElementById('host-stato');
   if(statoEl){
     statoEl.textContent = 'Impostazioni salvate ✓';
@@ -1542,10 +1920,10 @@ function salvaProfiloHost(){
 
 function salvaImpostazioniTassaSoggiorno(){
   impostazioniTassaSoggiorno = {
+    comune: document.getElementById('tassa-comune').value.trim(),
     tariffa: parseFloat(document.getElementById('tassa-tariffa').value) || 0,
     nottiMax: parseInt(document.getElementById('tassa-notti-max').value) || 0,
-    sogliaEta: parseInt(document.getElementById('tassa-soglia-eta').value) || 0,
-    nomeStrutturaNota: document.getElementById('tassa-nome-struttura').value.trim()
+    sogliaEta: parseInt(document.getElementById('tassa-soglia-eta').value) || 0
   };
   salva();
   aggiornaRiepilogoRegoleComune();
@@ -1553,20 +1931,21 @@ function salvaImpostazioniTassaSoggiorno(){
 }
 
 function popolaFormTassaSoggiorno(){
+  document.getElementById('tassa-comune').value = impostazioniTassaSoggiorno.comune || '';
   document.getElementById('tassa-tariffa').value = impostazioniTassaSoggiorno.tariffa || '';
   document.getElementById('tassa-notti-max').value = impostazioniTassaSoggiorno.nottiMax || '';
   document.getElementById('tassa-soglia-eta').value = impostazioniTassaSoggiorno.sogliaEta || '';
-  document.getElementById('tassa-nome-struttura').value = impostazioniTassaSoggiorno.nomeStrutturaNota || '';
   aggiornaRiepilogoRegoleComune();
 }
 
 function aggiornaRiepilogoRegoleComune(){
   const el = document.getElementById('regole-comune-riepilogo');
   if(!el) return;
+  const comune = impostazioniTassaSoggiorno.comune;
   const tariffa = (impostazioniTassaSoggiorno.tariffa || 0).toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2});
   const notti = impostazioniTassaSoggiorno.nottiMax > 0 ? impostazioniTassaSoggiorno.nottiMax : 'nessun limite';
   const eta = impostazioniTassaSoggiorno.sogliaEta || 0;
-  el.textContent = `Tariffa: ${tariffa} € • Max: ${notti} notti • Esenzione: fino a ${eta} anni`;
+  el.textContent = `${comune ? 'Comune di ' + comune + ' • ' : ''}Tariffa: ${tariffa} € • Max: ${notti} notti • Esenzione: fino a ${eta} anni`;
 }
 
 function aggiungiPromemoria(){
@@ -1576,7 +1955,7 @@ function aggiungiPromemoria(){
     alert('Inserisci sia la data che la descrizione del promemoria.');
     return;
   }
-  promemoriaPersonalizzati.push({ id: 'custom-' + Date.now(), data, descrizione, standard: false });
+  promemoriaPersonalizzati.push({ id: 'custom-' + Date.now(), data, descrizione, standard: false, fatta: false });
   salva();
   document.getElementById('scadenza-data').value = '';
   document.getElementById('scadenza-descrizione').value = '';
@@ -1589,8 +1968,59 @@ function eliminaPromemoria(id){
   renderScadenze();
 }
 
+function segnaPromemoriaFatta(id){
+  const p = promemoriaPersonalizzati.find(x => x.id === id);
+  if(p){
+    p.fatta = true;
+    salva();
+    renderTutto();
+  }
+}
+
+function segnaPromemoriaDaRifare(id){
+  const p = promemoriaPersonalizzati.find(x => x.id === id);
+  if(p){
+    p.fatta = false;
+    salva();
+    renderTutto();
+  }
+}
+
+const SCADENZE_FISSE_HOST = [
+  { chiave: 'cu-airbnb-booking', giorno: 16, mese: 3, descrizione: 'Certificazione Unica (CU) Airbnb / Booking — rilascio e download del riepilogo compensi e ritenute subite' },
+  { chiave: 'imu-1-rata', giorno: 16, mese: 6, descrizione: 'IMU — versamento 1ª rata (acconto 50%)' },
+  { chiave: 'cedolare-saldo-1acconto', giorno: 30, mese: 6, descrizione: 'Cedolare Secca — versamento saldo anno precedente + 1° acconto anno in corso (modello F24)' },
+  { chiave: 'soggiorno-dichiarazione', giorno: 30, mese: 6, descrizione: 'Imposta di Soggiorno — invio dichiarazione annuale cumulativa (telematica, Agenzia delle Entrate)' },
+  { chiave: 'modello-730', giorno: 30, mese: 9, descrizione: 'Modello 730 — termine ultimo per l\'invio della dichiarazione dei redditi' },
+  { chiave: 'redditi-pf', giorno: 31, mese: 10, descrizione: 'Modello Redditi Persone Fisiche — alternativa al 730; termine invio telematico (può slittare a inizio novembre se cade di sabato o festivo)' },
+  { chiave: 'cedolare-2acconto', giorno: 30, mese: 11, descrizione: 'Cedolare Secca — versamento 2° o unico acconto anno in corso (non rateizzabile)' },
+  { chiave: 'imu-2-rata', giorno: 16, mese: 12, descrizione: 'IMU — versamento 2ª rata (saldo a conguaglio)' }
+];
+
+function aggiungiScadenzeFisseComePromemoria(){
+  const anno = annoSelezionato;
+  let aggiunte = 0, duplicati = 0;
+  SCADENZE_FISSE_HOST.forEach(s => {
+    const id = `fissa-${s.chiave}-${anno}`;
+    if(promemoriaPersonalizzati.some(p => p.id === id)){
+      duplicati++;
+      return;
+    }
+    const data = `${anno}-${String(s.mese).padStart(2,'0')}-${String(s.giorno).padStart(2,'0')}`;
+    promemoriaPersonalizzati.push({ id, data, descrizione: s.descrizione, standard: false, fatta: false });
+    aggiunte++;
+  });
+  salva();
+  renderScadenze();
+  const statoEl = document.getElementById('scadenze-fisse-stato');
+  statoEl.textContent = aggiunte > 0
+    ? `Aggiunte ${aggiunte} scadenze per il ${anno}${duplicati > 0 ? ` (${duplicati} già presenti)` : ''} ✓`
+    : `Erano già tutte presenti per il ${anno}.`;
+  setTimeout(() => { statoEl.textContent = ''; }, 4000);
+}
+
 function salvaAliquotaFiscale(){
-  aliquotaFiscale = document.getElementById('f-aliquota-fiscale').value;
+  aliquotaFiscalePerAnno[annoSelezionato] = document.getElementById('f-aliquota-fiscale').value;
   salva();
   renderFinanze();
 }
@@ -1604,20 +2034,24 @@ function cancellaTutto(){
   profiloHost = profiloHostVuoto();
   impostazioniTassaSoggiorno = impostazioniTassaSoggiornoVuote();
   promemoriaPersonalizzati = [];
-  aliquotaFiscale = '';
+  aliquotaFiscalePerAnno = {};
   templatePersonalizzati = {};
+  annoSelezionato = new Date().getFullYear();
+  nascondiPulizieFatte = false;
   salva();
   ricostruisciPulizie();
   popolaFormProfiloHost();
   popolaFormTassaSoggiorno();
+  popolaSelettoreAnno();
   document.getElementById('f-aliquota-fiscale').value = '';
+  document.getElementById('nascondi-pulizie-fatte').checked = false;
   renderTutto();
 }
 
 function esportaJSON(){
   const dati = {
     prenotazioni, uscite, puliziaCompletata, nextId, profiloHost,
-    impostazioniTassaSoggiorno, promemoriaPersonalizzati, aliquotaFiscale, templatePersonalizzati,
+    impostazioniTassaSoggiorno, promemoriaPersonalizzati, aliquotaFiscalePerAnno, templatePersonalizzati, annoSelezionato, nascondiPulizieFatte,
     esportatoIl: new Date().toISOString()
   };
   const blob = new Blob([JSON.stringify(dati, null, 2)], { type: 'application/json' });
@@ -1670,16 +2104,26 @@ function importaJSON(event){
       uscite = dati.uscite || [];
       puliziaCompletata = dati.puliziaCompletata || {};
       nextId = dati.nextId || (Math.max(0, ...prenotazioni.map(p=>p.id||0), ...uscite.map(u=>u.id||0)) + 1);
-      profiloHost = Object.assign(profiloHostVuoto(), dati.profiloHost || {});
+      profiloHost = migraOrariCheckinCheckout(Object.assign(profiloHostVuoto(), dati.profiloHost || {}));
       impostazioniTassaSoggiorno = Object.assign(impostazioniTassaSoggiornoVuote(), dati.impostazioniTassaSoggiorno || {});
       promemoriaPersonalizzati = dati.promemoriaPersonalizzati || [];
-      aliquotaFiscale = dati.aliquotaFiscale || '';
       templatePersonalizzati = dati.templatePersonalizzati || {};
+      annoSelezionato = dati.annoSelezionato || new Date().getFullYear();
+      nascondiPulizieFatte = dati.nascondiPulizieFatte || false;
+      if(dati.aliquotaFiscalePerAnno){
+        aliquotaFiscalePerAnno = dati.aliquotaFiscalePerAnno;
+      } else if(dati.aliquotaFiscale){
+        aliquotaFiscalePerAnno = { [new Date().getFullYear()]: dati.aliquotaFiscale };
+      } else {
+        aliquotaFiscalePerAnno = {};
+      }
       salva();
       ricostruisciPulizie();
       popolaFormProfiloHost();
       popolaFormTassaSoggiorno();
-      document.getElementById('f-aliquota-fiscale').value = aliquotaFiscale;
+      popolaSelettoreAnno();
+      document.getElementById('f-aliquota-fiscale').value = aliquotaAnnoCorrente();
+      document.getElementById('nascondi-pulizie-fatte').checked = nascondiPulizieFatte;
       renderTutto();
       alert("Backup importato correttamente.");
     } catch(err){
@@ -1714,25 +2158,25 @@ function formattaData(iso){
 function generaReportStampa(){
   const dataGenerazione = new Date().toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
   const nomeStruttura = (profiloHost.struttura && profiloHost.struttura.trim()) || 'Host Hub';
-  const entrate = prenotazioni.reduce((s,p)=>s+p.importo,0);
-  const aliquota = parseFloat(aliquotaFiscale) || 0;
+  const entrate = prenotazioniRicaviAnno(annoSelezionato).reduce((s,p)=>s+p.importo,0);
+  const aliquota = parseFloat(aliquotaAnnoCorrente()) || 0;
   const cedolareStimata = entrate * (aliquota / 100);
   const regimeTesto = aliquota > 0 ? `${aliquota}%` : 'Nessuna aliquota impostata';
 
-  const prenOrdinate = prenotazioni.slice().sort((a,b) => a.checkin.localeCompare(b.checkin));
+  const prenOrdinate = prenotazioniAnno(annoSelezionato).slice().sort((a,b) => a.checkin.localeCompare(b.checkin));
   const tabellaPrenotazioni = prenOrdinate.length ? `
     <table class="tabella-stampa">
       <thead><tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th></tr></thead>
       <tbody>
-        ${prenOrdinate.map(p => `<tr><td>${p.ospite}</td><td>${formattaData(p.checkin)}</td><td>${formattaData(p.checkout)}</td><td>${p.piattaforma}</td><td>€${p.importo.toLocaleString('it-IT')}</td></tr>`).join('')}
+        ${prenOrdinate.map(p => `<tr><td>${p.ospite}${prenotazioneACavalloAnno(p) ? ' (a cavallo d\'anno)' : ''}</td><td>${formattaData(p.checkin)}</td><td>${formattaData(p.checkout)}</td><td>${p.piattaforma}</td><td>€${p.importo.toLocaleString('it-IT')}</td></tr>`).join('')}
       </tbody>
-    </table>` : `<p>Nessuna prenotazione registrata.</p>`;
+    </table>` : `<p>Nessuna prenotazione registrata per il ${annoSelezionato}.</p>`;
 
   document.getElementById('report-stampa').innerHTML = `
-    <h1>${nomeStruttura} — Report</h1>
+    <h1>${nomeStruttura} — Report ${annoSelezionato}</h1>
     <p>Generato il ${dataGenerazione}</p>
 
-    <h2>Riepilogo Finanziario</h2>
+    <h2>Riepilogo Finanziario — Anno ${annoSelezionato}</h2>
     <p>Aliquota fiscale applicata: ${regimeTesto}</p>
     <table class="tabella-stampa">
       <tbody>
@@ -1751,6 +2195,67 @@ function generaReportStampa(){
 function stampaReport(){
   generaReportStampa();
   window.print();
+}
+
+function csvCampo(valore){
+  const testo = String(valore == null ? '' : valore);
+  if(/[;"\n]/.test(testo)){
+    return '"' + testo.replace(/"/g, '""') + '"';
+  }
+  return testo;
+}
+
+function csvRiga(campi){
+  return campi.map(csvCampo).join(';');
+}
+
+function esportaCsvAnno(){
+  const righe = [];
+  righe.push(csvRiga([`Host Hub — Report Anno ${annoSelezionato}`]));
+  righe.push('');
+
+  righe.push(csvRiga(['PRENOTAZIONI']));
+  righe.push(csvRiga(['Ospite', 'Check-in', 'Check-out', 'Piattaforma', 'Importo (€)', 'Ospiti', "A cavallo d'anno"]));
+  const prenOrdinate = prenotazioniAnno(annoSelezionato).slice().sort((a,b) => a.checkin.localeCompare(b.checkin));
+  prenOrdinate.forEach(p => {
+    righe.push(csvRiga([
+      p.ospite, formattaData(p.checkin), formattaData(p.checkout), p.piattaforma,
+      (p.importo || 0).toFixed(2), p.numeroOspiti || 0, prenotazioneACavalloAnno(p) ? 'Sì' : 'No'
+    ]));
+  });
+  righe.push('');
+
+  righe.push(csvRiga(['USCITE']));
+  righe.push(csvRiga(['Data', 'Descrizione', 'Importo (€)']));
+  const usciteOrdinate = usciteAnno(annoSelezionato).slice().sort((a,b) => a.data.localeCompare(b.data));
+  usciteOrdinate.forEach(u => {
+    righe.push(csvRiga([formattaData(u.data), u.descrizione, (u.importo || 0).toFixed(2)]));
+  });
+  righe.push('');
+
+  const entrate = prenotazioniRicaviAnno(annoSelezionato).reduce((s,p)=>s+p.importo,0);
+  const totUscite = usciteOrdinate.reduce((s,u)=>s+u.importo,0);
+  const aliquota = parseFloat(aliquotaAnnoCorrente()) || 0;
+  const cedolare = entrate * (aliquota / 100);
+  const utileNetto = entrate - totUscite - cedolare;
+
+  righe.push(csvRiga(['RIEPILOGO']));
+  righe.push(csvRiga(['Entrate Totali (€)', entrate.toFixed(2)]));
+  righe.push(csvRiga(['Uscite Totali (€)', totUscite.toFixed(2)]));
+  righe.push(csvRiga(['Aliquota Fiscale (%)', aliquota]));
+  righe.push(csvRiga(['Tassazione Stimata (€)', cedolare.toFixed(2)]));
+  righe.push(csvRiga(['Utile Netto Stimato (€)', utileNetto.toFixed(2)]));
+
+  const contenuto = '\uFEFF' + righe.join('\r\n'); // BOM per far leggere correttamente gli accenti a Excel
+  const blob = new Blob([contenuto], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `host-hub-report-${annoSelezionato}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 }
 
 // ==================================================================
@@ -1874,10 +2379,9 @@ function aggiornaIstruzioniIcal(){
     Airbnb: `
       <strong>Come ottenere il file da Airbnb:</strong>
       <ol>
-        <li>Vai su Airbnb → Calendario → Disponibilità → Esporta calendario, e copia il link mostrato (simile a <code>https://www.airbnb.it/calendar/ical/1185331971419658960.ics?t=...</code>)</li>
-        <li>Incolla quel link nella barra degli indirizzi del browser e premi Invio</li>
-        <li>Il browser scarica un file (di solito nella cartella "Download")</li>
-        <li>Torna qui, clicca "File .ics" e seleziona il file</li>
+        <li>Vai su Airbnb → Calendario → Disponibilità → Esporta calendario, e copia il link mostrato (simile a <code>https://www.airbnb.it/calendar/ical/xxxx.ics?t=...</code>)</li>
+        <li>Incolla il link nella barra di ricerca del tuo browser (Safari, Chrome...) e premi Invio. Il browser scaricherà un file (di solito nella cartella "Download")</li>
+        <li>Torna qui, nella sezione "Importa da file .ics", clicca su "1. Scegli il file" e selezionalo, poi su "2. Importa"</li>
       </ol>`,
     Booking: `
       <strong>Come ottenere il file da Booking:</strong>
@@ -2172,7 +2676,7 @@ Vi ricordiamo le informazioni relative all'Imposta di Soggiorno:
 • Durata soggiorno: ${o.notti} nott${o.notti === 1 ? 'e' : 'i'}
 • Ospiti soggetti a tassa: ${o.ospitiPaganti}
 • Ospiti esenti (minori o aventi diritto): ${o.ospitiEsenti}
-• Tariffa comunale applicata: ${o.tariffa} € per persona a notte
+• Tariffa comunale applicata: ${o.tariffa} € per persona a notte${o.comuneTesto}
 
 💶 TOTALE DA SALDARE: ${o.totale}
 
@@ -2184,7 +2688,7 @@ Please find below the information regarding the City Tax:
 • Length of stay: ${o.notti} night${o.notti === 1 ? '' : 's'}
 • Guests subject to the tax: ${o.ospitiPaganti}
 • Exempt guests (minors or eligible): ${o.ospitiEsenti}
-• Municipal rate applied: ${o.tariffa} € per person per night
+• Municipal rate applied: ${o.tariffa} € per person per night${o.comuneTesto}
 
 💶 TOTAL DUE: ${o.totale}
 
@@ -2196,7 +2700,7 @@ Le recordamos la información relativa a la Tasa Turística:
 • Duración de la estancia: ${o.notti} noche${o.notti === 1 ? '' : 's'}
 • Huéspedes sujetos a la tasa: ${o.ospitiPaganti}
 • Huéspedes exentos (menores o con derecho): ${o.ospitiEsenti}
-• Tarifa municipal aplicada: ${o.tariffa} € por persona y noche
+• Tarifa municipal aplicada: ${o.tariffa} € por persona y noche${o.comuneTesto}
 
 💶 TOTAL A PAGAR: ${o.totale}
 
@@ -2208,7 +2712,7 @@ hiermit erinnern wir Sie an die Informationen zur Kurtaxe:
 • Aufenthaltsdauer: ${o.notti} Nacht${o.notti === 1 ? '' : 'e'}
 • Steuerpflichtige Gäste: ${o.ospitiPaganti}
 • Befreite Gäste (Minderjährige oder Berechtigte): ${o.ospitiEsenti}
-• Angewendeter Gemeindesatz: ${o.tariffa} € pro Person und Nacht
+• Angewendeter Gemeindesatz: ${o.tariffa} € pro Person und Nacht${o.comuneTesto}
 
 💶 GESAMTBETRAG: ${o.totale}
 
@@ -2220,7 +2724,7 @@ Nous vous rappelons les informations relatives à la Taxe de Séjour :
 • Durée du séjour : ${o.notti} nuit${o.notti === 1 ? '' : 's'}
 • Personnes soumises à la taxe : ${o.ospitiPaganti}
 • Personnes exonérées (mineurs ou ayants droit) : ${o.ospitiEsenti}
-• Tarif communal appliqué : ${o.tariffa} € par personne et par nuit
+• Tarif communal appliqué : ${o.tariffa} € par personne et par nuit${o.comuneTesto}
 
 💶 TOTAL À RÉGLER : ${o.totale}
 
@@ -2234,13 +2738,14 @@ function popolaSelettoreMessaggi(){
   const sel = document.getElementById('msg-prenotazione');
   if(!sel) return;
   const valorePrecedente = sel.value;
-  const opzioni = prenotazioni
+  const prenAnno = prenotazioniAnno(annoSelezionato);
+  const opzioni = prenAnno
     .slice()
     .sort((a,b) => a.checkin.localeCompare(b.checkin))
     .map(p => `<option value="${p.id}">${p.ospite} — ${formattaData(p.checkin)}</option>`)
     .join('');
   sel.innerHTML = `<option value="manuale">Clicca e scegli</option>${opzioni}`;
-  const valoreValido = prenotazioni.some(p => String(p.id) === valorePrecedente);
+  const valoreValido = prenAnno.some(p => String(p.id) === valorePrecedente);
   sel.value = valoreValido ? valorePrecedente : 'manuale';
 }
 
@@ -2279,12 +2784,42 @@ function selezionaLinguaMessaggio(lingua){
   generaTestoMessaggio();
 }
 
+const FRASI_ORARIO_CHECKIN = {
+  it: (inizio, fine) => fine ? `dalle ${inizio} alle ${fine}` : `dalle ${inizio}`,
+  en: (inizio, fine) => fine ? `from ${inizio} to ${fine}` : `from ${inizio}`,
+  es: (inizio, fine) => fine ? `de ${inizio} a ${fine}` : `a partir de las ${inizio}`,
+  de: (inizio, fine) => fine ? `von ${inizio} bis ${fine}` : `ab ${inizio}`,
+  fr: (inizio, fine) => fine ? `de ${inizio} à ${fine}` : `à partir de ${inizio}`
+};
+
+const FRASI_ORARIO_CHECKOUT = {
+  it: (entro) => `entro le ${entro}`,
+  en: (entro) => `by ${entro}`,
+  es: (entro) => `antes de las ${entro}`,
+  de: (entro) => `bis ${entro}`,
+  fr: (entro) => `avant ${entro}`
+};
+
+function formattaOrarioCheckin(inizio, fine, lingua){
+  if(!inizio) return null;
+  const costruisci = FRASI_ORARIO_CHECKIN[lingua] || FRASI_ORARIO_CHECKIN.it;
+  return costruisci(inizio, fine);
+}
+
+function formattaOrarioCheckout(entro, lingua){
+  if(!entro) return null;
+  const costruisci = FRASI_ORARIO_CHECKOUT[lingua] || FRASI_ORARIO_CHECKOUT.it;
+  return costruisci(entro);
+}
+
 function datiPerTemplateMessaggio(){
   const fb = segnapostoVuoto[linguaMessaggioAttiva];
   const nomeOspiteInput = document.getElementById('msg-nome').value.trim();
   const checkinRaw = document.getElementById('msg-checkin').value;
   const checkoutRaw = document.getElementById('msg-checkout').value;
   const campo = (valore, fallback) => (valore && valore.trim()) ? valore.trim() : fallback;
+  const orarioCheckinTesto = formattaOrarioCheckin(profiloHost.orarioCheckinInizio, profiloHost.orarioCheckinFine, linguaMessaggioAttiva);
+  const orarioCheckoutTesto = formattaOrarioCheckout(profiloHost.orarioCheckoutEntro, linguaMessaggioAttiva);
   return {
     nomeOspite: nomeOspiteInput || fb.nomeOspite,
     checkin: checkinRaw ? formattaData(checkinRaw) : fb.checkin,
@@ -2292,8 +2827,8 @@ function datiPerTemplateMessaggio(){
     nomeHost: campo(profiloHost.nomeHost, fb.nomeHost),
     struttura: campo(profiloHost.struttura, fb.struttura),
     indirizzo: campo(profiloHost.indirizzo, fb.indirizzo),
-    orarioCheckin: campo(profiloHost.orarioCheckin, fb.orarioCheckin),
-    orarioCheckout: campo(profiloHost.orarioCheckout, fb.orarioCheckout)
+    orarioCheckin: campo(orarioCheckinTesto, fb.orarioCheckin),
+    orarioCheckout: campo(orarioCheckoutTesto, fb.orarioCheckout)
   };
 }
 
@@ -2438,6 +2973,8 @@ function svuotaFormPrenotazione(){
   document.getElementById('f-piattaforma').value = "Airbnb";
   document.getElementById('f-importo').value = "";
   document.getElementById('f-ospiti').value = "";
+  document.getElementById('f-orario-arrivo').value = "";
+  document.getElementById('f-richieste-speciali').value = "";
 }
 
 function aggiungiPrenotazione(){
@@ -2447,6 +2984,8 @@ function aggiungiPrenotazione(){
   const piattaforma = document.getElementById('f-piattaforma').value;
   const importo = parseFloat(document.getElementById('f-importo').value) || 0;
   const numeroOspiti = parseInt(document.getElementById('f-ospiti').value) || 0;
+  const orarioArrivo = document.getElementById('f-orario-arrivo').value.trim();
+  const richiesteSpeciali = document.getElementById('f-richieste-speciali').value.trim();
 
   if(!ospite || !checkin || !checkout){
     alert("Inserisci almeno nome ospite, check-in e check-out.");
@@ -2456,11 +2995,15 @@ function aggiungiPrenotazione(){
   if(prenotazioneInModifica !== null){
     const p = prenotazioni.find(x => x.id === prenotazioneInModifica);
     if(p){
-      Object.assign(p, { ospite, checkin, checkout, piattaforma, importo, numeroOspiti });
+      // non tocchiamo messaggioPreArrivoFatto/messaggioCheckoutFatto in modifica: restano quelli già segnati
+      Object.assign(p, { ospite, checkin, checkout, piattaforma, importo, numeroOspiti, orarioArrivo, richiesteSpeciali });
     }
     annullaModificaPrenotazione();
   } else {
-    prenotazioni.push({ id: nextId++, ospite, checkin, checkout, piattaforma, importo, numeroOspiti });
+    prenotazioni.push({
+      id: nextId++, ospite, checkin, checkout, piattaforma, importo, numeroOspiti, orarioArrivo, richiesteSpeciali,
+      messaggioPreArrivoFatto: false, messaggioCheckoutFatto: false
+    });
     svuotaFormPrenotazione();
   }
 
@@ -2478,6 +3021,8 @@ function modificaPrenotazione(id){
   document.getElementById('f-piattaforma').value = p.piattaforma;
   document.getElementById('f-importo').value = p.importo;
   document.getElementById('f-ospiti').value = p.numeroOspiti || '';
+  document.getElementById('f-orario-arrivo').value = p.orarioArrivo || '';
+  document.getElementById('f-richieste-speciali').value = p.richiesteSpeciali || '';
 
   prenotazioneInModifica = id;
   document.getElementById('btn-aggiungi-prenotazione').textContent = 'Salva modifiche';
@@ -2508,6 +3053,14 @@ function segnaPulizia(id){
   renderTutto();
 }
 
+let uscitaInModifica = null; // id dell'uscita in fase di modifica, null = modalità "aggiungi"
+
+function svuotaFormUscita(){
+  document.getElementById('f-desc-uscita').value = "";
+  document.getElementById('f-data-uscita').value = "";
+  document.getElementById('f-importo-uscita').value = "";
+}
+
 function aggiungiUscita(){
   const descrizione = document.getElementById('f-desc-uscita').value.trim();
   const data = document.getElementById('f-data-uscita').value;
@@ -2518,68 +3071,263 @@ function aggiungiUscita(){
     return;
   }
 
-  uscite.push({ id: nextId++, data, descrizione, importo });
-  document.getElementById('f-desc-uscita').value = "";
-  document.getElementById('f-data-uscita').value = "";
-  document.getElementById('f-importo-uscita').value = "";
+  if(uscitaInModifica !== null){
+    const u = uscite.find(x => x.id === uscitaInModifica);
+    if(u){
+      Object.assign(u, { descrizione, data, importo });
+    }
+    annullaModificaUscita();
+  } else {
+    uscite.push({ id: nextId++, data, descrizione, importo });
+    svuotaFormUscita();
+  }
+
   salva();
   renderTutto();
 }
 
+function modificaUscita(id){
+  const u = uscite.find(x => x.id === id);
+  if(!u) return;
+  document.getElementById('f-desc-uscita').value = u.descrizione;
+  document.getElementById('f-data-uscita').value = u.data;
+  document.getElementById('f-importo-uscita').value = u.importo;
+
+  uscitaInModifica = id;
+  document.getElementById('btn-aggiungi-uscita').textContent = 'Salva modifiche';
+  document.getElementById('btn-annulla-modifica-uscita').style.display = 'inline-block';
+  document.querySelector('#page-finanze .form-row').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function annullaModificaUscita(){
+  uscitaInModifica = null;
+  document.getElementById('btn-aggiungi-uscita').textContent = 'Aggiungi uscita';
+  document.getElementById('btn-annulla-modifica-uscita').style.display = 'none';
+  svuotaFormUscita();
+}
+
 function eliminaUscita(id){
+  if(uscitaInModifica === id) annullaModificaUscita();
   uscite = uscite.filter(u => u.id !== id);
   salva();
   renderTutto();
 }
 
 // ---- Rendering ----
+function giorniDaOggi(dataIso){
+  const oggi = new Date(); oggi.setHours(0,0,0,0);
+  const data = new Date(dataIso + 'T00:00:00');
+  return Math.round((data - oggi) / (1000 * 60 * 60 * 24));
+}
+
+function nottiNelMese(checkin, checkout, anno, mese){
+  const inizioMese = new Date(anno, mese, 1);
+  const fineMese = new Date(anno, mese + 1, 1); // esclusivo
+  const ci = new Date(checkin + 'T00:00:00');
+  const co = new Date(checkout + 'T00:00:00');
+  const inizioOverlap = ci > inizioMese ? ci : inizioMese;
+  const fineOverlap = co < fineMese ? co : fineMese;
+  const notti = Math.round((fineOverlap - inizioOverlap) / (1000 * 60 * 60 * 24));
+  return notti > 0 ? notti : 0;
+}
+
+function nottiNelAnno(checkin, checkout, anno){
+  const inizioAnno = new Date(anno, 0, 1);
+  const fineAnno = new Date(anno + 1, 0, 1); // esclusivo
+  const ci = new Date(checkin + 'T00:00:00');
+  const co = new Date(checkout + 'T00:00:00');
+  const inizioOverlap = ci > inizioAnno ? ci : inizioAnno;
+  const fineOverlap = co < fineAnno ? co : fineAnno;
+  const notti = Math.round((fineOverlap - inizioOverlap) / (1000 * 60 * 60 * 24));
+  return notti > 0 ? notti : 0;
+}
+
+function dataOggiEstesa(){
+  const giorniSettimana = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+  const mesi = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  const oggi = new Date();
+  return `${giorniSettimana[oggi.getDay()]} ${oggi.getDate()} ${mesi[oggi.getMonth()]} ${oggi.getFullYear()}`;
+}
+
+function renderListaAvvisi(containerId, lista, testoVuoto){
+  const cont = document.getElementById(containerId);
+  if(!cont) return;
+  if(lista.length === 0){
+    cont.innerHTML = `<div class="empty">${testoVuoto}</div>`;
+    return;
+  }
+  cont.innerHTML = lista.map(a => `
+    <div class="avviso-riga">
+      <span class="avviso-testo"><span class="avviso-simbolo">!</span>${a.testo}</span>
+      <span class="avviso-azione">
+        ${a.azione ? `<button class="avviso-btn" onclick="${a.azione.onclick}">${a.azione.label}</button>` : ''}
+        ${a.fatto ? `<button class="avviso-btn fatto" onclick="${a.fatto.onclick}">${a.fatto.label}</button>` : ''}
+      </span>
+    </div>
+  `).join('');
+}
+
+function segnaMessaggioCheckoutFatto(id){
+  const p = prenotazioni.find(x => x.id === id);
+  if(p){ p.messaggioCheckoutFatto = true; salva(); renderTutto(); }
+}
+
+function segnaMessaggioPreArrivoFatto(id){
+  const p = prenotazioni.find(x => x.id === id);
+  if(p){ p.messaggioPreArrivoFatto = true; salva(); renderTutto(); }
+}
+
 function renderPanoramica(){
   const nomeHost = profiloHost.nomeHost && profiloHost.nomeHost.trim();
-  document.getElementById('panoramica-sub').textContent = nomeHost
-    ? `Ciao ${nomeHost}, ecco il riepilogo (solo visualizzazione).`
-    : 'Come sta andando la tua casa questo mese (solo visualizzazione).';
+  document.getElementById('panoramica-saluto').textContent = nomeHost ? `Ciao ${nomeHost} 👋` : 'Ciao! 👋';
+  document.getElementById('panoramica-data-oggi').textContent = dataOggiEstesa();
 
-  const oggi = new Date().toISOString().slice(0,10);
-  const future = prenotazioni.filter(p => p.checkin >= oggi).sort((a,b)=>a.checkin.localeCompare(b.checkin));
-  document.getElementById('kpi-prossimo').textContent = future.length ? `${future[0].ospite} — ${formattaData(future[0].checkin)}` : "Nessuna in arrivo";
+  // ---- DA FARE OGGI ----
+  const avvisiOggi = [];
 
-  const daFare = pulizie.filter(p => !p.fatto).length;
-  document.getElementById('kpi-pulizie').textContent = daFare;
+  prenotazioni.filter(p => giorniDaOggi(p.checkin) === 0).forEach(p => {
+    let testo = `Check-in di oggi di ${p.ospite}`;
+    const orario = p.orarioArrivo && p.orarioArrivo.trim();
+    if(orario){
+      testo += /^\d{1,2}:\d{2}$/.test(orario) ? ` (alle ${orario})` : ` (${orario})`;
+    }
+    if(p.richiesteSpeciali && p.richiesteSpeciali.trim()){
+      testo += ` — ❓ ${p.richiesteSpeciali.trim()}`;
+    }
+    avvisiOggi.push({ testo, azione: null, fatto: null });
+  });
 
-  const entrate = prenotazioni.reduce((s,p)=>s+p.importo,0);
-  const totUscite = uscite.reduce((s,u)=>s+u.importo,0);
-  document.getElementById('kpi-saldo').textContent = `€${(entrate-totUscite).toLocaleString('it-IT')}`;
+  prenotazioni.filter(p => giorniDaOggi(p.checkout) === 0 && !puliziaCompletata[p.id]).forEach(p => {
+    avvisiOggi.push({
+      testo: `Check-out oggi di ${p.ospite} — vai in scheda Pulizie per aggiornare lo stato`,
+      azione: { label: 'Vai a Pulizie', onclick: "vaiAllaPagina('pulizie')" },
+      fatto: null
+    });
+  });
 
-  aggiornaAvvisoCin();
+  prenotazioni.filter(p => giorniDaOggi(p.checkout) === 0 && !p.messaggioCheckoutFatto).forEach(p => {
+    avvisiOggi.push({
+      testo: `Check-out oggi di ${p.ospite} — invia messaggio di saluto/recensione`,
+      azione: { label: 'Vai a Messaggi', onclick: "vaiAllaPagina('messaggi')" },
+      fatto: { label: 'Segna come fatto', onclick: `segnaMessaggioCheckoutFatto(${p.id})` }
+    });
+  });
 
+  [...promemoriaPersonalizzati].filter(s => !s.fatta && giorniDaOggi(s.data) === 0).forEach(s => {
+    avvisiOggi.push({
+      testo: `Scade oggi: ${s.descrizione}`,
+      azione: null,
+      fatto: { label: 'Segna come fatta', onclick: `segnaPromemoriaFatta('${s.id}')` }
+    });
+  });
+
+  if(new Date().getDate() === 28){
+    avvisiOggi.push({
+      testo: 'Ricordati di esportare un backup dei tuoi dati',
+      azione: { label: 'Vai a Backup', onclick: "vaiAllaPagina('dati')" },
+      fatto: null
+    });
+  }
+
+  renderListaAvvisi('panoramica-oggi', avvisiOggi, 'Nessun avviso per oggi.');
+
+  // ---- DA FARE A BREVE ----
+  const avvisiBreve = [];
+
+  prenotazioni.forEach(p => {
+    const giorniCheckin = giorniDaOggi(p.checkin);
+    if(giorniCheckin >= 1 && giorniCheckin <= 3 && !p.messaggioPreArrivoFatto){
+      avvisiBreve.push({
+        testo: `Check-in tra ${giorniCheckin} giorn${giorniCheckin === 1 ? 'o' : 'i'} di ${p.ospite} — invia istruzioni pre-arrivo`,
+        azione: { label: 'Vai a Messaggi', onclick: "vaiAllaPagina('messaggi')" },
+        fatto: { label: 'Segna come fatto', onclick: `segnaMessaggioPreArrivoFatto(${p.id})` }
+      });
+    }
+    const giorniCheckout = giorniDaOggi(p.checkout);
+    if(giorniCheckout === 1 && !p.messaggioCheckoutFatto){
+      avvisiBreve.push({
+        testo: `Check-out domani di ${p.ospite} — invia messaggio di promemoria`,
+        azione: { label: 'Vai a Messaggi', onclick: "vaiAllaPagina('messaggi')" },
+        fatto: { label: 'Segna come fatto', onclick: `segnaMessaggioCheckoutFatto(${p.id})` }
+      });
+    }
+  });
+
+  [...promemoriaPersonalizzati].filter(s => !s.fatta).forEach(s => {
+    const g = giorniDaOggi(s.data);
+    if(g >= 1 && g <= 15){
+      avvisiBreve.push({
+        testo: `Tra ${g} giorn${g === 1 ? 'o' : 'i'}: ${s.descrizione}`,
+        azione: null,
+        fatto: { label: 'Segna come fatta', onclick: `segnaPromemoriaFatta('${s.id}')` }
+      });
+    }
+  });
+
+  renderListaAvvisi('panoramica-a-breve', avvisiBreve, 'Nessun avviso nei prossimi giorni.');
+
+  // ---- KPI DEL MESE CORRENTE (mese reale di oggi, non l'anno fiscale selezionato altrove) ----
+  const oraReale = new Date();
+  const meseCorrente = oraReale.getMonth();
+  const annoCorrenteReale = oraReale.getFullYear();
+
+  const prenotazioniMeseCheckin = prenotazioni.filter(p => {
+    const d = new Date(p.checkin + 'T00:00:00');
+    return d.getMonth() === meseCorrente && d.getFullYear() === annoCorrenteReale;
+  });
+  const guadagniMese = prenotazioniMeseCheckin.reduce((s,p) => s + p.importo, 0);
+
+  const usciteMese = uscite.filter(u => {
+    const d = new Date(u.data + 'T00:00:00');
+    return d.getMonth() === meseCorrente && d.getFullYear() === annoCorrenteReale;
+  });
+  const speseMese = usciteMese.reduce((s,u) => s + u.importo, 0);
+
+  const utileMese = guadagniMese - speseMese;
+  const nottiMese = prenotazioni.reduce((tot,p) => tot + nottiNelMese(p.checkin, p.checkout, annoCorrenteReale, meseCorrente), 0);
+
+  document.getElementById('kpi-guadagni-mese').textContent = `€${guadagniMese.toLocaleString('it-IT')}`;
+  document.getElementById('kpi-spese-mese').textContent = `€${speseMese.toLocaleString('it-IT')}`;
+  document.getElementById('kpi-utile-mese').textContent = `€${utileMese.toLocaleString('it-IT')}`;
+  document.getElementById('kpi-notti-mese').textContent = nottiMese;
+
+  // ---- PRENOTAZIONI DEL MESE ----
   const cont = document.getElementById('panoramica-prenotazioni');
-  if(future.length === 0){
-    cont.innerHTML = `<div class="empty">Nessuna prenotazione in arrivo. Aggiungine una dalla scheda Prenotazioni.</div>`;
+  if(prenotazioniMeseCheckin.length === 0){
+    cont.innerHTML = `<div class="empty">Nessuna prenotazione con check-in questo mese.</div>`;
   } else {
+    const ordinate = prenotazioniMeseCheckin.slice().sort((a,b) => a.checkin.localeCompare(b.checkin));
     cont.innerHTML = `<div class="table-wrap"><table><thead><tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th></tr></thead><tbody>` +
-      future.slice(0,5).map(p => `<tr><td data-label="Ospite">${p.ospite}</td><td data-label="Check-in">${formattaData(p.checkin)}</td><td data-label="Check-out">${formattaData(p.checkout)}</td><td data-label="Piattaforma">${p.piattaforma}</td></tr>`).join('') +
+      ordinate.map(p => `<tr><td data-label="Ospite">${p.ospite}</td><td data-label="Check-in">${formattaData(p.checkin)}</td><td data-label="Check-out">${formattaData(p.checkout)}</td><td data-label="Piattaforma">${p.piattaforma}</td></tr>`).join('') +
       `</tbody></table></div>`;
   }
 }
 
+function mostraRichiestaSpeciale(ospite, testo){
+  alert(`Richieste speciali — ${ospite}:\n\n${testo}`);
+}
+
 function renderPrenotazioni(){
   const tbody = document.getElementById('tabella-prenotazioni');
-  if(prenotazioni.length === 0){
-    tbody.innerHTML = `<tr><td colspan="7"><div class="empty">Ancora nessuna prenotazione.</div></td></tr>`;
+  const prenAnno = prenotazioniAnno(annoSelezionato);
+  if(prenAnno.length === 0){
+    tbody.innerHTML = `<tr><td colspan="8"><div class="empty">Nessuna prenotazione per il ${annoSelezionato}.</div></td></tr>`;
     return;
   }
-  tbody.innerHTML = prenotazioni
+  tbody.innerHTML = prenAnno
     .sort((a,b)=>a.checkin.localeCompare(b.checkin))
     .map(p => {
       const daCompletare = p.icalUid && (!p.importo || !p.numeroOspiti);
+      const cavallo = prenotazioneACavalloAnno(p);
       return `
       <tr>
-        <td data-label="Ospite">${p.ospite}${daCompletare ? ' <span class="badge da-fare" title="Importo e/o ospiti mancanti">da completare</span>' : ''}</td>
+        <td data-label="Ospite">${p.ospite}${p.richiesteSpeciali && p.richiesteSpeciali.trim() ? ` <span class="icona-richieste" onclick="mostraRichiestaSpeciale('${p.ospite.replace(/'/g,"\\'")}', '${p.richiesteSpeciali.replace(/'/g,"\\'")}')">❓</span>` : ''}${daCompletare ? ' <span class="badge da-fare" title="Importo e/o ospiti mancanti">da completare</span>' : ''}</td>
         <td data-label="Check-in">${formattaData(p.checkin)}</td>
-        <td data-label="Check-out">${formattaData(p.checkout)}</td>
+        <td data-label="Check-out">${formattaData(p.checkout)}${cavallo ? ' <span class="badge-cavallo-anno" title="Il soggiorno si estende su due anni">↔ a cavallo d\'anno</span>' : ''}</td>
         <td data-label="Piattaforma">${p.piattaforma}</td>
         <td data-label="Importo">€${p.importo.toLocaleString('it-IT')}</td>
         <td data-label="Ospiti">${p.numeroOspiti || 0}</td>
+        <td data-label="Orario arrivo">${p.orarioArrivo && p.orarioArrivo.trim() ? p.orarioArrivo : '—'}</td>
         <td data-label="">
           <button class="ghost" onclick="modificaPrenotazione(${p.id})">Modifica</button>
           <button class="ghost" onclick="eliminaPrenotazione(${p.id})">Rimuovi</button>
@@ -2589,21 +3337,99 @@ function renderPrenotazioni(){
     }).join('');
 }
 
-function renderPulizie(){
-  const cont = document.getElementById('lista-pulizie');
-  if(pulizie.length === 0){
-    cont.innerHTML = `<div class="empty">Nessuna pulizia in programma. Aggiungi una prenotazione per generarne una.</div>`;
+function cambiaNascondiPulizieFatte(){
+  nascondiPulizieFatte = document.getElementById('nascondi-pulizie-fatte').checked;
+  salva();
+  renderPulizie();
+}
+
+function popolaSelettorePulizie(){
+  const sel = document.getElementById('pulizie-selettore');
+  if(!sel) return;
+  const valorePrecedente = sel.value;
+  const daFare = pulizie.filter(p => !p.fatto).slice().sort((a,b) => a.data.localeCompare(b.data));
+  const opzioni = daFare.map(p => `<option value="${p.id}">${formattaData(p.data)} — ${p.ospite}</option>`).join('');
+  sel.innerHTML = `<option value="manuale">Clicca e scegli</option>${opzioni}`;
+  const valoreValido = daFare.some(p => String(p.id) === valorePrecedente);
+  sel.value = valoreValido ? valorePrecedente : 'manuale';
+}
+
+function generaMessaggioPulizia(){
+  const sel = document.getElementById('pulizie-selettore');
+  const area = document.getElementById('pulizie-messaggio-testo');
+  if(!sel || !area) return;
+
+  const addetto = (profiloHost.nomeAddettoPulizie && profiloHost.nomeAddettoPulizie.trim()) || '[Nome Addetto]';
+  const nomeHost = (profiloHost.nomeHost && profiloHost.nomeHost.trim()) || '[Il tuo nome]';
+
+  if(sel.value === 'manuale'){
+    area.value = `Ciao ${addetto}, veloce promemoria per ricordarti le pulizie e il cambio biancheria programmato per [data checkout]. Fammi sapere quando è tutto pronto, grazie mille!\n${nomeHost}`;
     return;
   }
-  cont.innerHTML = `<div class="table-wrap"><table><thead><tr><th>Data check-out</th><th>Ospite</th><th>Stato</th><th></th></tr></thead><tbody>` +
-    pulizie.map(p => `
-      <tr>
-        <td data-label="Data check-out">${formattaData(p.data)}</td>
-        <td data-label="Ospite">${p.ospite}</td>
-        <td data-label="Stato"><span class="badge ${p.fatto ? 'fatto' : 'da-fare'}">${p.fatto ? 'Fatta' : 'Da fare'}</span></td>
-        <td data-label="">${'\u00A0'}<button class="chk" onclick="segnaPulizia(${p.id})">${p.fatto ? 'Segna da rifare' : 'Segna come fatta'}</button></td>
-      </tr>
-    `).join('') + `</tbody></table></div>`;
+
+  const p = pulizie.find(x => String(x.id) === sel.value);
+  if(!p) return;
+  area.value = `Ciao ${addetto}, veloce promemoria per ricordarti le pulizie e il cambio biancheria programmato per ${formattaData(p.data)}. Fammi sapere quando è tutto pronto, grazie mille!\n${nomeHost}`;
+}
+
+function copiaMessaggioPulizia(){
+  const area = document.getElementById('pulizie-messaggio-testo');
+  const testo = area.value;
+  const bottone = document.getElementById('btn-copia-messaggio-pulizia');
+  const statoEl = document.getElementById('pulizie-messaggio-stato');
+
+  if(!testo.trim()){
+    statoEl.textContent = 'Seleziona prima una pulizia qui sopra.';
+    return;
+  }
+
+  const mostraCopiato = () => {
+    const originale = bottone.textContent;
+    bottone.textContent = '✓ Copiato!';
+    bottone.classList.add('copiato');
+    statoEl.textContent = '';
+    setTimeout(() => { bottone.textContent = originale; bottone.classList.remove('copiato'); }, 1800);
+  };
+  const copiaConFallback = () => {
+    try{
+      area.focus();
+      area.select();
+      document.execCommand('copy');
+      mostraCopiato();
+    } catch(e){
+      statoEl.textContent = 'Copia non riuscita: seleziona e copia il testo manualmente.';
+    }
+  };
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(testo).then(mostraCopiato).catch(copiaConFallback);
+  } else {
+    copiaConFallback();
+  }
+}
+
+function renderPulizie(){
+  const cont = document.getElementById('lista-pulizie');
+  const idPrenAnno = new Set(prenotazioniAnno(annoSelezionato).map(p => p.id));
+  let pulizieAnno = pulizie.filter(p => idPrenAnno.has(p.prenotazioneId));
+  if(nascondiPulizieFatte){
+    pulizieAnno = pulizieAnno.filter(p => !p.fatto);
+  }
+  if(pulizieAnno.length === 0){
+    cont.innerHTML = `<div class="empty">${nascondiPulizieFatte ? 'Nessuna pulizia da fare per il ' + annoSelezionato + '.' : 'Nessuna pulizia in programma per il ' + annoSelezionato + '.'}</div>`;
+  } else {
+    cont.innerHTML = `<div class="table-wrap"><table><thead><tr><th>Data check-out</th><th>Ospite</th><th>Stato</th><th></th></tr></thead><tbody>` +
+      pulizieAnno.map(p => `
+        <tr>
+          <td data-label="Data check-out">${formattaData(p.data)}</td>
+          <td data-label="Ospite">${p.ospite}</td>
+          <td data-label="Stato"><span class="badge ${p.fatto ? 'fatto' : 'da-fare'}">${p.fatto ? 'Fatta' : 'Da fare'}</span></td>
+          <td data-label="">${'\u00A0'}<button class="chk" onclick="segnaPulizia(${p.id})">${p.fatto ? 'Segna da rifare' : 'Segna come fatta'}</button></td>
+        </tr>
+      `).join('') + `</tbody></table></div>`;
+  }
+  popolaSelettorePulizie();
+  generaMessaggioPulizia();
 }
 
 function calcolaNotti(checkin, checkout){
@@ -2617,13 +3443,14 @@ function popolaSelettorePrenotazioniTassa(){
   const sel = document.getElementById('tasse-prenotazione');
   if(!sel) return;
   const valorePrecedente = sel.value;
-  const opzioni = prenotazioni
+  const prenAnno = prenotazioniAnno(annoSelezionato);
+  const opzioni = prenAnno
     .slice()
     .sort((a,b) => a.checkin.localeCompare(b.checkin))
     .map(p => `<option value="${p.id}">${p.ospite} — ${formattaData(p.checkin)}</option>`)
     .join('');
   sel.innerHTML = `<option value="manuale">Clicca e scegli</option>${opzioni}`;
-  const valoreValido = prenotazioni.some(p => String(p.id) === valorePrecedente);
+  const valoreValido = prenAnno.some(p => String(p.id) === valorePrecedente);
   sel.value = valoreValido ? valorePrecedente : 'manuale';
 }
 
@@ -2635,6 +3462,12 @@ function selezionaPrenotazioneTassa(){
       document.getElementById('tassa-calc-notti').value = calcolaNotti(p.checkin, p.checkout);
       document.getElementById('tassa-calc-ospiti').value = p.numeroOspiti || 0;
       document.getElementById('tassa-calc-minori').value = 0;
+      const ospiteNomeInput = document.getElementById('ricevuta-ospite-nome');
+      if(ospiteNomeInput) ospiteNomeInput.value = p.ospite;
+      const checkinInput = document.getElementById('ricevuta-checkin');
+      const checkoutInput = document.getElementById('ricevuta-checkout');
+      if(checkinInput) checkinInput.value = p.checkin;
+      if(checkoutInput) checkoutInput.value = p.checkout;
     }
   }
   calcolaTassaSoggiornoManuale();
@@ -2647,6 +3480,7 @@ function selezionaLinguaTassa(lingua){
   });
   const selettoreMobile = document.getElementById('lang-tassa-select');
   if(selettoreMobile) selettoreMobile.value = lingua;
+  calcolaTassaSoggiornoManuale();
 }
 
 function incrementaCampoTassa(id, delta){
@@ -2666,12 +3500,14 @@ function calcolaTassaSoggiornoManuale(){
 
   const nottiTassabili = nottiMax > 0 ? Math.min(notti, nottiMax) : notti;
   const risultato = tariffa * nottiTassabili * ospitiPaganti;
+  const tariffaTesto = tariffa.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2});
+  const totaleTesto = `€${risultato.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
 
-  document.getElementById('tassa-calc-risultato').textContent = `€${risultato.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+  document.getElementById('tassa-calc-risultato').textContent = totaleTesto;
   document.getElementById('tassa-dettaglio-ospiti').textContent = `${ospitiPaganti} person${ospitiPaganti === 1 ? 'a' : 'e'}`;
   document.getElementById('tassa-dettaglio-notti').textContent = `${nottiTassabili} nott${nottiTassabili === 1 ? 'e' : 'i'}`;
-  document.getElementById('tassa-dettaglio-tariffa').textContent = `${tariffa.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2})} € a persona / notte`;
-  document.getElementById('tassa-dettaglio-formula').textContent = `${ospitiPaganti} ospiti x ${nottiTassabili} notti x ${tariffa.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2})} €`;
+  document.getElementById('tassa-dettaglio-tariffa').textContent = `${tariffaTesto} € a persona / notte`;
+  document.getElementById('tassa-dettaglio-formula').textContent = `${ospitiPaganti} ospiti x ${nottiTassabili} notti x ${tariffaTesto} €`;
 
   const notaEsentiFooter = document.getElementById('tassa-dettaglio-esenti-nota');
   notaEsentiFooter.textContent = ospitiEsenti > 0
@@ -2684,22 +3520,24 @@ function calcolaTassaSoggiornoManuale(){
     : '';
 
   const notaEsenti = document.getElementById('tasse-nota-esenti');
-  notaEsenti.textContent = `Minori fino a ${sogliaEta} anni, accompagnatori o aventi diritto`;
+  notaEsenti.textContent = `Minori fino a ${sogliaEta} anni, residenti o aventi diritto`;
+
+  document.getElementById('tassa-messaggio-testo').value = messaggiTassaSoggiorno[linguaTassaAttiva]({
+    notti, ospitiPaganti, ospitiEsenti, tariffa: tariffaTesto, totale: totaleTesto,
+    comuneTesto: impostazioniTassaSoggiorno.comune ? ` (Comune di ${impostazioniTassaSoggiorno.comune})` : ''
+  });
 }
 
 function copiaMessaggioTassaSoggiorno(){
-  const notti = parseInt(document.getElementById('tassa-calc-notti').value) || 0;
-  const ospitiPaganti = parseInt(document.getElementById('tassa-calc-ospiti').value) || 0;
-  const ospitiEsenti = parseInt(document.getElementById('tassa-calc-minori').value) || 0;
-  const tariffa = (impostazioniTassaSoggiorno.tariffa || 0).toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2});
-  const totale = document.getElementById('tassa-calc-risultato').textContent;
-
-  const testo = messaggiTassaSoggiorno[linguaTassaAttiva]({ notti, ospitiPaganti, ospitiEsenti, tariffa, totale });
-
+  const area = document.getElementById('tassa-messaggio-testo');
+  const testo = area.value;
   const bottone = document.getElementById('btn-copia-messaggio-tassa');
   const statoEl = document.getElementById('tassa-calc-stato');
-  const areaNascosta = document.getElementById('tassa-messaggio-nascosto');
-  areaNascosta.value = testo;
+
+  if(!testo.trim()){
+    statoEl.textContent = 'Genera prima il calcolo qui sopra.';
+    return;
+  }
 
   const mostraCopiato = () => {
     const originale = bottone.textContent;
@@ -2710,8 +3548,8 @@ function copiaMessaggioTassaSoggiorno(){
   };
   const copiaConFallback = () => {
     try{
-      areaNascosta.focus();
-      areaNascosta.select();
+      area.focus();
+      area.select();
       document.execCommand('copy');
       mostraCopiato();
     } catch(e){
@@ -2732,11 +3570,11 @@ function stampaImpostaSoggiorno(){
   const ospitiEsenti = parseInt(document.getElementById('tassa-calc-minori').value) || 0;
   const tariffa = impostazioniTassaSoggiorno.tariffa || 0;
   const totale = document.getElementById('tassa-calc-risultato').textContent;
-  const nomeStruttura = impostazioniTassaSoggiorno.nomeStrutturaNota || (profiloHost.struttura && profiloHost.struttura.trim()) || 'Host Hub';
+  const nomeStruttura = (profiloHost.struttura && profiloHost.struttura.trim()) || 'Host Hub';
   const dataGenerazione = new Date().toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
 
   document.getElementById('report-stampa').innerHTML = `
-    <h1>${nomeStruttura} — Imposta di Soggiorno</h1>
+    <h1>${nomeStruttura} — Imposta di Soggiorno${impostazioniTassaSoggiorno.comune ? ' — Comune di ' + impostazioniTassaSoggiorno.comune : ''}</h1>
     <p>Generato il ${dataGenerazione}</p>
     <table class="tabella-stampa">
       <tbody>
@@ -2751,18 +3589,126 @@ function stampaImpostaSoggiorno(){
   window.print();
 }
 
-function aggiornaAvvisoCin(){
-  const avviso = document.getElementById('avviso-cin');
-  if(!avviso) return;
-  avviso.style.display = (profiloHost.cin && profiloHost.cin.trim()) ? 'none' : 'block';
+// ==================================================================
+// CREA RICEVUTA (documento ufficiale per l'ospite)
+// ==================================================================
+function renderRicevutaHostRecap(){
+  const el = document.getElementById('ricevuta-host-recap');
+  if(!el) return;
+  const struttura = profiloHost.struttura || '---';
+  const tipologia = profiloHost.tipologiaStruttura || '---';
+  const indirizzo = profiloHost.indirizzo || '---';
+  const fiscale = [profiloHost.pivaCf, profiloHost.cin].filter(v => v && v.trim()).join(' • ') || '---';
+  el.innerHTML = `
+    <div><strong>${struttura}</strong></div>
+    <div>${tipologia}</div>
+    <div>${indirizzo}</div>
+    <div>${fiscale}</div>
+  `;
 }
 
-function scadenzeStandardCedolare(){
-  const anno = new Date().getFullYear();
-  return [
-    { id: 'std-giugno-' + anno, data: `${anno}-06-30`, descrizione: 'Cedolare Secca — Saldo anno precedente + 1° acconto', standard: true },
-    { id: 'std-novembre-' + anno, data: `${anno}-11-30`, descrizione: 'Cedolare Secca — 2° acconto', standard: true }
-  ];
+function stampaRicevutaUfficiale(){
+  const numero = document.getElementById('ricevuta-numero').value.trim() || '---';
+  const dataEmissioneInput = document.getElementById('ricevuta-data').value;
+  const dataEmissioneTesto = dataEmissioneInput
+    ? new Date(dataEmissioneInput + 'T00:00:00').toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' })
+    : new Date().toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+  const checkinInput = document.getElementById('ricevuta-checkin').value;
+  const checkoutInput = document.getElementById('ricevuta-checkout').value;
+  const checkinTesto = checkinInput ? formattaData(checkinInput) : null;
+  const checkoutTesto = checkoutInput ? formattaData(checkoutInput) : null;
+
+  const hostStruttura = profiloHost.struttura || '---';
+  const hostTipologia = profiloHost.tipologiaStruttura || '---';
+  const hostIndirizzo = profiloHost.indirizzo || '---';
+  const hostFiscale = [profiloHost.pivaCf, profiloHost.cin].filter(v => v && v.trim()).join(' - ') || '---';
+
+  const ospiteNome = document.getElementById('ricevuta-ospite-nome').value.trim() || '---';
+  const ospiteDoc = document.getElementById('ricevuta-ospite-doc').value.trim() || '---';
+  const ospiteDomicilio = document.getElementById('ricevuta-ospite-domicilio').value.trim() || '---';
+
+  // Notti/ospiti/esenti: stessi valori già inseriti sopra in "Calcola Imposta di Soggiorno"
+  const notti = parseInt(document.getElementById('tassa-calc-notti').value) || 0;
+  const ospitiPaganti = parseInt(document.getElementById('tassa-calc-ospiti').value) || 0;
+  const ospitiEsenti = parseInt(document.getElementById('tassa-calc-minori').value) || 0;
+  const tariffa = impostazioniTassaSoggiorno.tariffa || 0;
+  const nottiMax = impostazioniTassaSoggiorno.nottiMax || 0;
+  const nottiTassabili = nottiMax > 0 ? Math.min(notti, nottiMax) : notti;
+  const totale = tariffa * nottiTassabili * ospitiPaganti;
+  const comune = impostazioniTassaSoggiorno.comune || 'Locale';
+
+  const tariffaTesto = tariffa.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2});
+  const totaleTesto = totale.toLocaleString('it-IT', {minimumFractionDigits:2, maximumFractionDigits:2});
+
+  const periodoTesto = (checkinTesto && checkoutTesto)
+    ? `dal ${checkinTesto} al ${checkoutTesto} (Totale notti: ${notti}, di cui tassabili: ${nottiTassabili})`
+    : `${notti} nott${notti === 1 ? 'e' : 'i'} (di cui tassabili: ${nottiTassabili})`;
+
+  document.getElementById('report-stampa').innerHTML = `
+    <div class="ricevuta-intestazione">
+      <div class="ricevuta-titolo-box">
+        <h1>Ricevuta Imposta di Soggiorno</h1>
+        <p>Esente da IVA ai sensi dell'art. 15, comma 1, n. 3 del D.P.R. 633/1972</p>
+      </div>
+      <div class="ricevuta-numero">
+        <div><strong>Ricevuta n.:</strong> ${numero}</div>
+        <div><strong>Data:</strong> ${dataEmissioneTesto}</div>
+      </div>
+    </div>
+
+    <div class="ricevuta-parti">
+      <div>
+        <div class="ricevuta-parte-titolo">Dati Alloggio</div>
+        <div><strong>${hostStruttura}</strong></div>
+        <div>${hostTipologia}</div>
+        <div>${hostIndirizzo}</div>
+        <div>${hostFiscale}</div>
+      </div>
+      <div>
+        <div class="ricevuta-parte-titolo">Dati del Cliente / Ospite</div>
+        <div><strong>Intestatario:</strong> ${ospiteNome}</div>
+        <div><strong>C.F. / Documento:</strong> ${ospiteDoc}</div>
+        <div><strong>Domicilio:</strong> ${ospiteDomicilio}</div>
+      </div>
+    </div>
+
+    <div class="ricevuta-periodo"><strong>Periodo di soggiorno:</strong> ${periodoTesto}</div>
+
+    <table class="ricevuta-tabella">
+      <tbody>
+        <tr class="riga-descrizione">
+          <td colspan="2">
+            Imposta di soggiorno - Comune di ${comune}${ospitiEsenti > 0 ? ` <span style="font-weight:400; font-size:10.5px; color:#475569;">(${ospitiEsenti} ospit${ospitiEsenti === 1 ? 'e esente' : 'i esenti'})</span>` : ''}
+          </td>
+        </tr>
+        <tr>
+          <td class="etichetta">N. Ospiti</td>
+          <td class="num">${ospitiPaganti}</td>
+        </tr>
+        <tr>
+          <td class="etichetta">Notti imponibili</td>
+          <td class="num">${nottiTassabili}</td>
+        </tr>
+        <tr>
+          <td class="etichetta">Tariffa giornaliera</td>
+          <td class="num">${tariffaTesto} €</td>
+        </tr>
+        <tr class="totale-riga">
+          <td class="etichetta">TOTALE DOVUTO E RISCOSSO:</td>
+          <td class="num">${totaleTesto} €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="ricevuta-nota-fiscale">* L'Imposta di Soggiorno è un tributo istituito nel territorio del Comune di ${comune}, riscosso dalla struttura ricettiva (alberghiera o extralberghiera) in qualità di agente contabile / intermediario per conto dell'ente comunale. Operazione fuori campo IVA ai sensi dell'art. 15, c. 1, n. 3 del D.P.R. 633/1972.</p>
+    <p class="ricevuta-nota-fiscale" style="margin-top:6px;">The City Tax is a local tax levied by the Municipality, collected by this property as a tax agent on behalf of the municipal administration. This amount is excluded from VAT pursuant to Article 15, paragraph 1, item 3 of Presidential Decree (D.P.R.) 633/1972.</p>
+
+    <div class="ricevuta-firma">
+      <div class="ricevuta-firma-box">Firma del gestore / Timbro</div>
+    </div>
+  `;
+  window.print();
 }
 
 function renderScadenze(){
@@ -2770,7 +3716,7 @@ function renderScadenze(){
   const listaEl = document.getElementById('scadenze-lista');
   if(!bannerEl || !listaEl) return;
 
-  const tutte = [...scadenzeStandardCedolare(), ...promemoriaPersonalizzati]
+  const tutte = [...promemoriaPersonalizzati]
     .sort((a,b) => a.data.localeCompare(b.data));
 
   const oggi = new Date(); oggi.setHours(0,0,0,0);
@@ -2778,6 +3724,7 @@ function renderScadenze(){
   tra30giorni.setDate(oggi.getDate() + 30);
 
   const imminenti = tutte.filter(s => {
+    if(s.fatta) return false;
     const d = new Date(s.data + 'T00:00:00');
     return d >= oggi && d <= tra30giorni;
   });
@@ -2799,6 +3746,8 @@ function renderScadenze(){
       <div class="scadenza-riga">
         <span class="scadenza-data">${formattaData(s.data)}</span>
         <span class="scadenza-desc">${s.descrizione}</span>
+        <span class="badge ${s.fatta ? 'fatto' : 'da-fare'}">${s.fatta ? 'Fatta' : 'Da fare'}</span>
+        <button class="chk" onclick="${s.fatta ? `segnaPromemoriaDaRifare('${s.id}')` : `segnaPromemoriaFatta('${s.id}')`}">${s.fatta ? 'Segna da rifare' : 'Segna come fatta'}</button>
         ${s.standard ? '' : `<button class="ghost" onclick="eliminaPromemoria('${s.id}')">Rimuovi</button>`}
       </div>
     `).join('');
@@ -2806,9 +3755,13 @@ function renderScadenze(){
 }
 
 function renderFinanze(){
-  const entrate = prenotazioni.reduce((s,p)=>s+p.importo,0);
-  const totUscite = uscite.reduce((s,u)=>s+u.importo,0);
-  const aliquota = parseFloat(aliquotaFiscale) || 0;
+  document.getElementById('finanze-sub').textContent = `Entrate dalle prenotazioni e uscite che aggiungi tu — anno ${annoSelezionato}.`;
+  document.getElementById('f-aliquota-fiscale').value = aliquotaAnnoCorrente();
+
+  const entrate = prenotazioniRicaviAnno(annoSelezionato).reduce((s,p)=>s+p.importo,0);
+  const usciteFiltrate = usciteAnno(annoSelezionato);
+  const totUscite = usciteFiltrate.reduce((s,u)=>s+u.importo,0);
+  const aliquota = parseFloat(aliquotaAnnoCorrente()) || 0;
   const cedolare = entrate * (aliquota / 100);
   const utileNetto = entrate - totUscite - cedolare;
 
@@ -2816,12 +3769,29 @@ function renderFinanze(){
   document.getElementById('fin-uscite').textContent = `€${totUscite.toLocaleString('it-IT')}`;
   document.getElementById('fin-utile-netto').textContent = `€${utileNetto.toLocaleString('it-IT', {maximumFractionDigits:0})}`;
 
+  const nottiTotaliAnno = prenotazioni.reduce((tot,p) => tot + nottiNelAnno(p.checkin, p.checkout, annoSelezionato), 0);
+  document.getElementById('fin-notti-anno').textContent = nottiTotaliAnno;
+
+  const annoPrecedente = annoSelezionato - 1;
+  const entratePrecedenti = prenotazioniRicaviAnno(annoPrecedente).reduce((s,p)=>s+p.importo,0);
+  const elConfronto = document.getElementById('fin-confronto-anno');
+  document.getElementById('fin-confronto-etichetta').textContent = `Entrate vs ${annoPrecedente}`;
+  if(entratePrecedenti === 0){
+    elConfronto.textContent = entrate > 0 ? 'n/d (anno prec. vuoto)' : '—';
+    elConfronto.className = 'value';
+  } else {
+    const variazione = ((entrate - entratePrecedenti) / entratePrecedenti) * 100;
+    const segno = variazione >= 0 ? '+' : '';
+    elConfronto.textContent = `${segno}${variazione.toLocaleString('it-IT', {maximumFractionDigits:1})}%`;
+    elConfronto.className = 'value ' + (variazione >= 0 ? 'ok' : 'warn');
+  }
+
   const tbody = document.getElementById('tabella-finanze');
-  if(uscite.length === 0){
-    tbody.innerHTML = `<tr><td colspan="4"><div class="empty">Nessuna uscita registrata ancora.</div></td></tr>`;
+  if(usciteFiltrate.length === 0){
+    tbody.innerHTML = `<tr><td colspan="4"><div class="empty">Nessuna uscita registrata per il ${annoSelezionato}.</div></td></tr>`;
     return;
   }
-  tbody.innerHTML = uscite
+  tbody.innerHTML = usciteFiltrate
     .slice()
     .sort((a,b) => b.data.localeCompare(a.data))
     .map(u => `
@@ -2829,7 +3799,10 @@ function renderFinanze(){
       <td data-label="Data">${formattaData(u.data)}</td>
       <td data-label="Descrizione">${u.descrizione}</td>
       <td data-label="Importo">−€${u.importo.toLocaleString('it-IT')}</td>
-      <td data-label="">${'\u00A0'}<button class="ghost" onclick="eliminaUscita(${u.id})">Rimuovi</button></td>
+      <td data-label="">
+        <button class="ghost" onclick="modificaUscita(${u.id})">Modifica</button>
+        <button class="ghost" onclick="eliminaUscita(${u.id})">Rimuovi</button>
+      </td>
     </tr>
   `).join('');
 }
@@ -2838,15 +3811,27 @@ function renderTasse(){
   aggiornaRiepilogoRegoleComune();
   popolaSelettorePrenotazioniTassa();
   calcolaTassaSoggiornoManuale();
+  renderRicevutaHostRecap();
+  if(!document.getElementById('ricevuta-data').value){
+    document.getElementById('ricevuta-data').value = new Date().toISOString().slice(0,10);
+  }
+}
+
+function renderScadenzeFiscali(){
   renderScadenze();
+  const elAnnoRiferimento = document.getElementById('scadenze-fisse-anno-riferimento');
+  if(elAnnoRiferimento) elAnnoRiferimento.textContent = annoSelezionato;
 }
 
 function renderTutto(){
+  document.getElementById('copyright-anno').textContent = new Date().getFullYear();
+  popolaSelettoreAnno();
   renderPanoramica();
   renderPrenotazioni();
   renderPulizie();
   renderFinanze();
   renderTasse();
+  renderScadenzeFiscali();
   popolaSelettoreMessaggi();
 }
 
@@ -2880,7 +3865,6 @@ document.addEventListener('click', (e) => {
   if(!e.target.closest('.menu-wrap')) mobileDropdown.classList.remove('open');
 });
 
-inizializzaCloud();
 const datiEsistenti = carica();
 if(!datiEsistenti){
   // prima apertura: mostriamo due esempi così l'host capisce subito come funziona
@@ -2888,7 +3872,7 @@ if(!datiEsistenti){
 }
 popolaFormProfiloHost();
 popolaFormTassaSoggiorno();
-document.getElementById('f-aliquota-fiscale').value = aliquotaFiscale;
+document.getElementById('nascondi-pulizie-fatte').checked = nascondiPulizieFatte;
 aggiornaIstruzioniIcal();
 
 // Su alcuni browser i campi data si aprono solo toccando l'iconcina calendario:
