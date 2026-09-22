@@ -159,6 +159,53 @@
   .card .value.warn{ color: var(--rosso-conto); }
   .card .value.ok{ color: var(--oliva); }
 
+  /* --- grafico classifica nazionalità --- */
+  .barra-riga{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom: 14px;
+  }
+  .barra-riga .barra-pos{
+    width: 22px;
+    flex-shrink:0;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:#8A7E6B;
+    text-align:right;
+  }
+  .barra-riga.top1 .barra-pos{ color: var(--ocra); }
+  .barra-riga .barra-nome{
+    width: 160px;
+    flex-shrink:0;
+    font-weight:600;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .barra-riga .barra-traccia{
+    flex:1;
+    background: var(--calce-scuro);
+    border-radius: var(--radius);
+    height: 22px;
+    overflow:hidden;
+    min-width: 60px;
+  }
+  .barra-riga .barra-riempimento{
+    height:100%;
+    background: var(--blu);
+    border-radius: var(--radius);
+  }
+  .barra-riga.top1 .barra-riempimento{ background: var(--ocra); }
+  .barra-riga .barra-valore{
+    width: 130px;
+    flex-shrink:0;
+    text-align:right;
+    color:#7A6E5C;
+    font-size: 14px;
+  }
+
+
   section{ margin-bottom: 40px; }
   section h2{
     font-size: 19px;
@@ -532,6 +579,12 @@
     .stepper-btn{ width: 34px; height: 34px; font-size: 16px; }
     .stepper-riga{ gap: 6px; }
     .scadenza-fissa-riga{ flex-direction: column; gap: 2px; }
+
+    /* Classifica nazionalità (Statistiche) su mobile: barra su riga propria */
+    .barra-riga{ flex-wrap:wrap; row-gap:6px; }
+    .barra-riga .barra-nome{ width:auto; flex:1; }
+    .barra-riga .barra-traccia{ order:3; width:100%; flex-basis:100%; }
+    .barra-riga .barra-valore{ width:auto; order:2; font-size:13px; }
 
     /* Tabelle come schede impilate, niente scroll orizzontale */
     .table-wrap{ overflow-x: visible; }
@@ -1017,6 +1070,12 @@
     .ricevuta-firma{ display:flex; justify-content:flex-end; margin-top:60px; }
     .ricevuta-firma-box{ width:220px; border-top:1px solid #999; text-align:center; padding-top:6px; font-size:12px; }
   }
+.toast-backup-auto{
+  position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
+  background:var(--blu); color:#fff; padding:12px 20px; border-radius:10px;
+  font-family:'Work Sans',sans-serif; font-size:14px; box-shadow:0 6px 18px rgba(0,0,0,.2);
+  z-index:9999; max-width:90%; text-align:center;
+}
 </style>
 </head>
 <body>
@@ -1034,6 +1093,7 @@
         <button data-tab="pulizie">Pulizie</button>
         <button data-tab="messaggi">Messaggi</button>
         <button data-tab="finanze">Finanze</button>
+        <button data-tab="statistiche">Statistiche</button>
         <button data-tab="tasse">Imposta di Soggiorno</button>
         <button data-tab="scadenze">Scadenze Fiscali</button>
         <button data-tab="impostazioni">Impostazioni</button>
@@ -1054,6 +1114,7 @@
       <button data-tab="pulizie">Pulizie</button>
       <button data-tab="messaggi">Messaggi</button>
       <button data-tab="finanze">Finanze</button>
+      <button data-tab="statistiche">Statistiche</button>
       <button data-tab="tasse">Imposta di Soggiorno</button>
       <button data-tab="scadenze">Scadenze Fiscali</button>
       <button data-tab="impostazioni">Impostazioni</button>
@@ -1149,6 +1210,10 @@
           <input type="number" id="f-ospiti" placeholder="0" min="0">
         </div>
         <div class="field">
+          <label>Nazionalità (facoltativo)</label>
+          <input type="text" id="f-nazionalita" placeholder="Es. Italia, Germania, Stati Uniti...">
+        </div>
+        <div class="field">
           <label>Orario di arrivo (facoltativo)</label>
           <input type="text" id="f-orario-arrivo" placeholder="Es. 16:00 o self check-in serale">
         </div>
@@ -1167,7 +1232,7 @@
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th><th>Ospiti</th><th>Orario arrivo</th><th></th></tr>
+            <tr><th>Ospite</th><th>Check-in</th><th>Check-out</th><th>Piattaforma</th><th>Importo</th><th>Ospiti</th><th>Nazionalità</th><th>Orario arrivo</th><th></th></tr>
           </thead>
           <tbody id="tabella-prenotazioni"></tbody>
         </table>
@@ -1352,6 +1417,32 @@
           <tbody id="tabella-finanze"></tbody>
         </table>
       </div>
+    </div>
+
+    <!-- STATISTICHE -->
+    <div class="page" id="page-statistiche" style="display:none;">
+      <h1 class="page-title">Statistiche</h1>
+      <p class="page-sub">Classifica basata sulle prenotazioni dell'anno selezionato con il campo "Nazionalità" compilato nella <a href="#" class="link-azzurro" onclick="vaiAllaPagina('calendario'); return false;">scheda Prenotazioni</a>. Compilare questo campo è facoltativo, ma più dati inserisci, più statistiche affidabili avrai per orientare la tua strategia e capire su quali mercati investire.</p>
+
+      <div class="grid-cards" id="statistiche-kpi">
+        <div class="card">
+          <div class="label">Prenotazioni con nazionalità indicata</div>
+          <div class="value" id="kpi-stat-compilate">0</div>
+        </div>
+        <div class="card">
+          <div class="label">Nazionalità diverse</div>
+          <div class="value" id="kpi-stat-diverse">0</div>
+        </div>
+        <div class="card">
+          <div class="label">Mercato principale</div>
+          <div class="value" id="kpi-stat-top" style="font-size:20px;">—</div>
+        </div>
+      </div>
+
+      <section>
+        <h2>Classifica nazionalità</h2>
+        <div id="statistiche-grafico"></div>
+      </section>
     </div>
 
     <!-- TASSE -->
@@ -1655,7 +1746,7 @@
     <!-- DATI -->
     <div class="page" id="page-dati" style="display:none;">
       <h1 class="page-title">Backup</h1>
-      <p class="page-sub">Ricorda di esportare un backup periodicamente per non perdere i dati.</p>
+      <p class="page-sub">Ogni mese, alla prima apertura dell'app, viene scaricato in automatico un backup nella cartella Download del dispositivo. Se un mese non apri l'app, o vuoi essere più tranquillo, esporta comunque un backup manuale qui sotto.</p>
 
       <div class="data-tools-row">
         <button class="btn-outline" onclick="inviaBackupEmail()">Esporta / Invia Backup</button>
@@ -1738,6 +1829,7 @@ let templatePersonalizzati = {}; // { [chiaveTemplate]: { [lingua]: 'testo con s
 let annoSelezionato = new Date().getFullYear();
 let nascondiPulizieFatte = false;
 const CHIAVE_SALVATAGGIO = 'host-hub-dati-v1';
+const CHIAVE_BACKUP_AUTO = 'host-hub-ultimo-backup-auto';
 
 function profiloHostVuoto(){
   return {
@@ -2060,6 +2152,32 @@ function esportaJSON(){
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
+}
+
+function controllaBackupAutomaticoMensile(){
+  try{
+    const ciSonoDati = prenotazioni.length > 0 || uscite.length > 0
+      || Object.values(profiloHost || {}).some(v => v);
+    if(!ciSonoDati) return; // niente da salvare, non scarichiamo un backup vuoto
+
+    const oggi = new Date();
+    const meseCorrente = `${oggi.getFullYear()}-${String(oggi.getMonth() + 1).padStart(2, '0')}`;
+    const ultimoBackupAuto = localStorage.getItem(CHIAVE_BACKUP_AUTO);
+
+    if(ultimoBackupAuto === meseCorrente) return; // già fatto questo mese
+
+    esportaJSON();
+    localStorage.setItem(CHIAVE_BACKUP_AUTO, meseCorrente);
+
+    const avviso = document.createElement('div');
+    avviso.className = 'toast-backup-auto';
+    avviso.textContent = '📥 Backup automatico del mese scaricato nella cartella Download.';
+    document.body.appendChild(avviso);
+    setTimeout(() => avviso.remove(), 6000);
+  }catch(e){
+    // se qualcosa va storto non blocchiamo mai l'uso dell'app per questo
+    console.warn('Backup automatico non riuscito:', e);
+  }
 }
 
 function inviaBackupEmail(){
@@ -2970,6 +3088,7 @@ function svuotaFormPrenotazione(){
   document.getElementById('f-piattaforma').value = "Airbnb";
   document.getElementById('f-importo').value = "";
   document.getElementById('f-ospiti').value = "";
+  document.getElementById('f-nazionalita').value = "";
   document.getElementById('f-orario-arrivo').value = "";
   document.getElementById('f-richieste-speciali').value = "";
 }
@@ -2981,6 +3100,7 @@ function aggiungiPrenotazione(){
   const piattaforma = document.getElementById('f-piattaforma').value;
   const importo = parseFloat(document.getElementById('f-importo').value) || 0;
   const numeroOspiti = parseInt(document.getElementById('f-ospiti').value) || 0;
+  const nazionalita = document.getElementById('f-nazionalita').value.trim();
   const orarioArrivo = document.getElementById('f-orario-arrivo').value.trim();
   const richiesteSpeciali = document.getElementById('f-richieste-speciali').value.trim();
 
@@ -2993,12 +3113,12 @@ function aggiungiPrenotazione(){
     const p = prenotazioni.find(x => x.id === prenotazioneInModifica);
     if(p){
       // non tocchiamo messaggioPreArrivoFatto/messaggioCheckoutFatto in modifica: restano quelli già segnati
-      Object.assign(p, { ospite, checkin, checkout, piattaforma, importo, numeroOspiti, orarioArrivo, richiesteSpeciali });
+      Object.assign(p, { ospite, checkin, checkout, piattaforma, importo, numeroOspiti, nazionalita, orarioArrivo, richiesteSpeciali });
     }
     annullaModificaPrenotazione();
   } else {
     prenotazioni.push({
-      id: nextId++, ospite, checkin, checkout, piattaforma, importo, numeroOspiti, orarioArrivo, richiesteSpeciali,
+      id: nextId++, ospite, checkin, checkout, piattaforma, importo, numeroOspiti, nazionalita, orarioArrivo, richiesteSpeciali,
       messaggioPreArrivoFatto: false, messaggioCheckoutFatto: false
     });
     svuotaFormPrenotazione();
@@ -3018,6 +3138,7 @@ function modificaPrenotazione(id){
   document.getElementById('f-piattaforma').value = p.piattaforma;
   document.getElementById('f-importo').value = p.importo;
   document.getElementById('f-ospiti').value = p.numeroOspiti || '';
+  document.getElementById('f-nazionalita').value = p.nazionalita || '';
   document.getElementById('f-orario-arrivo').value = p.orarioArrivo || '';
   document.getElementById('f-richieste-speciali').value = p.richiesteSpeciali || '';
 
@@ -3308,7 +3429,7 @@ function renderPrenotazioni(){
   const tbody = document.getElementById('tabella-prenotazioni');
   const prenAnno = prenotazioniAnno(annoSelezionato);
   if(prenAnno.length === 0){
-    tbody.innerHTML = `<tr><td colspan="8"><div class="empty">Nessuna prenotazione per il ${annoSelezionato}.</div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="9"><div class="empty">Nessuna prenotazione per il ${annoSelezionato}.</div></td></tr>`;
     return;
   }
   tbody.innerHTML = prenAnno
@@ -3324,6 +3445,7 @@ function renderPrenotazioni(){
         <td data-label="Piattaforma">${p.piattaforma}</td>
         <td data-label="Importo">€${p.importo.toLocaleString('it-IT')}</td>
         <td data-label="Ospiti">${p.numeroOspiti || 0}</td>
+        <td data-label="Nazionalità">${p.nazionalita && p.nazionalita.trim() ? p.nazionalita : '—'}</td>
         <td data-label="Orario arrivo">${p.orarioArrivo && p.orarioArrivo.trim() ? p.orarioArrivo : '—'}</td>
         <td data-label="">
           <button class="ghost" onclick="modificaPrenotazione(${p.id})">Modifica</button>
@@ -3332,6 +3454,50 @@ function renderPrenotazioni(){
       </tr>
     `;
     }).join('');
+}
+
+function renderStatistiche(){
+  const cont = document.getElementById('statistiche-grafico');
+  const prenAnno = prenotazioniAnno(annoSelezionato).filter(p => p.nazionalita && p.nazionalita.trim());
+
+  document.getElementById('kpi-stat-compilate').textContent = prenAnno.length;
+
+  if(prenAnno.length === 0){
+    document.getElementById('kpi-stat-diverse').textContent = '0';
+    document.getElementById('kpi-stat-top').textContent = '—';
+    cont.innerHTML = `<div class="empty">Nessuna nazionalità inserita per il ${annoSelezionato}. Compila il campo "Nazionalità" nella scheda Prenotazioni per vedere qui la classifica.</div>`;
+    return;
+  }
+
+  // raggruppa in modo case-insensitive, mantenendo la prima grafia inserita per la visualizzazione
+  const conteggio = {};
+  const nomeVisualizzato = {};
+  prenAnno.forEach(p => {
+    const chiave = p.nazionalita.trim().toLowerCase();
+    conteggio[chiave] = (conteggio[chiave] || 0) + 1;
+    if(!nomeVisualizzato[chiave]) nomeVisualizzato[chiave] = p.nazionalita.trim();
+  });
+
+  const classifica = Object.keys(conteggio)
+    .map(chiave => ({ nome: nomeVisualizzato[chiave], conteggio: conteggio[chiave] }))
+    .sort((a,b) => b.conteggio - a.conteggio);
+
+  document.getElementById('kpi-stat-diverse').textContent = classifica.length;
+  document.getElementById('kpi-stat-top').textContent = classifica[0].nome;
+
+  const max = classifica[0].conteggio;
+  cont.innerHTML = classifica.map((riga, i) => {
+    const percentuale = Math.round((riga.conteggio / max) * 100);
+    const percentualeSulTotale = Math.round((riga.conteggio / prenAnno.length) * 100);
+    return `
+      <div class="barra-riga ${i === 0 ? 'top1' : ''}">
+        <div class="barra-pos">${i+1}°</div>
+        <div class="barra-nome">${riga.nome}</div>
+        <div class="barra-traccia"><div class="barra-riempimento" style="width:${percentuale}%;"></div></div>
+        <div class="barra-valore">${riga.conteggio} prenotazion${riga.conteggio === 1 ? 'e' : 'i'} (${percentualeSulTotale}%)</div>
+      </div>
+    `;
+  }).join('');
 }
 
 function cambiaNascondiPulizieFatte(){
@@ -3825,6 +3991,7 @@ function renderTutto(){
   popolaSelettoreAnno();
   renderPanoramica();
   renderPrenotazioni();
+  renderStatistiche();
   renderPulizie();
   renderFinanze();
   renderTasse();
@@ -3886,6 +4053,10 @@ document.querySelectorAll('input[type="date"]').forEach(campo => {
 
 ricostruisciPulizie();
 renderTutto();
+
+// Backup automatico: se è passato al nuovo mese dall'ultimo backup automatico,
+// ne scarichiamo uno da solo (una volta sola per mese, alla prima apertura dell'app).
+setTimeout(controllaBackupAutomaticoMensile, 800);
 </script>
 
 </body>
